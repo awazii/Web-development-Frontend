@@ -1,0 +1,128 @@
+	@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+	* {
+		font-family: "Playwrite GB S", cursive;
+		font-weight: 500;
+		font-style: normal;
+
+	}
+	body {
+		font-family: 'Montserrat', 'sans-serif';
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.date{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 50px;
+		height: 50px;
+		border: 2px solid black;
+		background-color: #ffffff;
+	}
+
+	.clock-container {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		background-color: #ffffff;
+		border-radius: 50px;
+		padding: 60px 20px;
+		box-shadow: 8px 10px 11px rgba(137, 136, 136, 0.395), 0 15px 90px 30px rgb(246, 246, 246);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.greetings{
+		max-width: 320px;
+		margin: 0;
+		padding: 0;
+		font-size: 2.5rem;
+		text-align: center;
+		order: 1;
+	}
+	.greetings > img {
+		width: 150px;
+		margin-top: 10px;
+		animation: heartbeat 2s ease-in-out infinite; /* Slower and smoother */
+	}
+	
+	@keyframes heartbeat {
+		0% { transform: scale(1); }
+		25% { transform: scale(1.1); }
+		50% { transform: scale(1); }
+		75% { transform: scale(0.8); }
+		100% { transform: scale(1); }
+	}
+	
+	
+	.clock-col {
+		text-align: center;
+		margin-right: 40px;
+		margin-left: 40px;
+		min-width: 90px;
+		position: relative;
+	}
+
+	.clock-col:not(:last-child):before,
+	.clock-col:not(:last-child):after {
+		content: "";
+		background-color: rgba(3, 0, 0, 0.3);
+		height: 5px;
+		width: 5px;
+		border-radius: 50%;
+		display: block;
+		position: absolute;
+		right: -42px;
+	}
+
+	.clock-col:not(:last-child):before {
+		top: 35%;
+	}
+
+	.clock-col:not(:last-child):after {
+		top: 50%;
+	}
+
+	.clock-timer {
+		color: #000000;
+		font-size: 2.8rem;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	.clock-label {
+		color: rgba(0, 0, 0, 0.559);
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		margin-top: 10px;
+	}
+
+	@media (max-width: 825px) {
+		.clock-container {
+			flex-direction: column;
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+
+		.clock-col+.clock-col {
+			margin-top: 20px;
+		}
+
+		.clock-col:before,
+		.clock-col:after {
+			display: none !important;
+		}
+		.greetings{
+			max-width: 220px;
+			margin: 0;
+			padding: 0;
+			font-size: 2.0rem;
+			text-align: center;
+		}
+		.greetings>img{
+			width: 100px;
+			margin-top: 20px;
+		}
+	}

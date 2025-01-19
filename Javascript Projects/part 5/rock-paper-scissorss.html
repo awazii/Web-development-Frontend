@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-paper-scissors</title>
+    <link rel="stylesheet" href="rockpaperscissor.css">
+</head>
+
+<body>
+    <div class="center">
+        <h3>Rock Paper Scissors</h3>
+        <div class="gap">
+            <button onclick="if(!flag){
+                rock(player[0])} "><img src="/Javascript Projects/part 5/rock-emoji.png" class="move-icon"></button>
+            <button onclick="if (!flag){
+                paper(player[0])} "> <img src="/Javascript Projects/part 5/paper-emoji.png"
+                    class="move-icon"></button>
+            <button onclick="!flag&&scissor(player[0])">
+                <img src="/Javascript Projects/part 5/scissors-emoji.png" class="move-icon">
+            </button>
+        </div>
+        <h3 class="result"></h3>
+        <h3 class="Reason move-icon1"></h3>
+        <h4>Wins: <span id="WINS">0</span> </h4>
+        <h4>Loses: <span id="LOSES">0</span> </h4>
+        <h4>Draws: <span id="Draw">0</span> </h4>
+        <div>
+            <button class="reset" onclick="
+                if (!flag) {
+                    reset()
+                } ">Reset Score</button>
+            <button class="Auto reset" onclick="Auto()">Autoplay</button>
+        </div>
+    </div>
+    <script src="rockpaperscissor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css</title>
+    <style>
+        h1,h2,u /* this is selector */
+/*this is declaration*/{
+            color: rgb(255, 255, 255);
+            background-color: black;
+        }
+
+        b {
+            color: rgb(250, 253, 253);
+            font-weight: 1000;
+        }
+
+        details {
+            color: brown;
+        }
+
+        p {
+            background-color: rgba(54, 182, 232, 0.338);
+            color: rgb(0, 0, 0);
+            font-weight: 400;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border-color: green;
+        }
+
+        #email {
+            min-width: 320px;
+            padding: 0.5rem 1rem;
+            line-height: 1;
+            font: inherit;
+            border: 1px solid var(--color-mid);
+            border-radius: 0.25rem;
+        }
+
+        .info {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-block-start: 0f.5em;
+
+
+        }
+
+ :target {
+            background-color: rgb(221, 246, 31);
+
+
+
+        }
+
+        p.class {
+            color: rgb(13, 235, 255);
+            font-size: 16px;
+        }
+
+        .class:focus {
+            background-color: rgb(20, 232, 232);
+        }
+        summary{
+            list-style: none;
+            width: 15vw;
+            text-align: center;
+            background-color: rgba(54, 182, 232, 0.338);
+            color: rgb(0, 140, 255);
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+        summary:hover,p{
+            background-color: rgb(31, 190, 243);
+            color: rgb(255, 255, 255);
+        }
+        article{
+            background-color: rgba(233, 248, 248, 0.782);
+            width: 50vw;
+            margin: auto;
+            min-height: 50vh;
+            border-radius: 30px;
+            overflow: auto;
+
+        }
+        details{
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <head>
+        <H1> Css introduction</H1>
+        <a href="#target">Email address</a>
+
+    </head>
+    <main>
+        <article>
+            <details>
+                <summary class="summary">Readmore</summary>
+                <p><b>Lorem</b> ipsum dolor sit amet consectetur adipisicing elit. Vitae eaque ea, error quaerat, natus
+                    earum
+                    iure soluta explicabo, magni nesciunt velit maxime tenetur quidem adipisci? Autem nulla deleniti
+                    distinctio ad aliquid earum voluptate omnis dolore, maxime iste nobis assumenda, necessitatibus
+                    labore adipisci quod voluptates velit?
+                </p>
+            </details>
+            <details>
+                <summary>Names</summary>
+                <ul>
+                    <li>Awais
+                        <details>
+                            <summary>Age</summary>
+                            21
+                        </details>
+
+                    </li>
+                    <li>saad
+                        <details>
+                            <summary>Age</summary>
+                            21
+                        </details>
+
+                    </li>
+                    <li>habib
+                        <details>
+                            <summary>Age</summary>
+                            19
+                        </details>
+
+                    </li>
+                    <li>daud
+                        <details>
+                            <summary>Age</summary>
+                            28
+                        </details>
+
+                    </li>
+                </ul>
+            </details>
+
+        </article>
+        <form id="email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required placeholder="A valid email, like name@domain.com"
+                aria-describedby="emailinfo" />
+            <p class="info" id="emailinfo">Add a valid email address to see the state change</p>
+        </form>
+
+
+        <input id="target" type="email" required placeholder="A valid email, like name@domain.com" />
+        <p class="info" id="emailinfo">Add a valid email address to see the state change</p>
+
+
+    </main>
+    <footer>
+        <p title="lorem25">&copy; 2024 [Awazii]. All rights reserved.</p>
+        <div class="class">
+            <h3>hello</h3>
+            <button class="class">focus</button>
+            <p class="class"> <title>ssd</title>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium voluptate, illo
+                cum ea repellendus alias nisi error voluptatem aliquam omnis reiciendis quisquam dolorem quaerat
+                deserunt tempora quae labore rem.</p>
+                <title>ssd</title>
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

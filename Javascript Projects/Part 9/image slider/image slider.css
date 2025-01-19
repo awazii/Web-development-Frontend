@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playwrite GB S";
+   
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background:linear-gradient(-10deg, #00e1ff 0, rgb(255, 255, 255) 80%) ;
+    flex-direction: column;
+}
+.container{
+    width: 40vw;
+    aspect-ratio: 16/9;
+    position: relative;
+    border-radius: 35px;  
+    box-shadow:-11px -10px 20px 0px rgb(0 0 0 / 23%), 0 15px 90px 30px rgb(246, 246, 246)
+}
+.container .arrows>.left{
+    position: absolute;
+    bottom: 40%;
+    left: 2%;
+    z-index: 10;
+}
+.container .arrows>.right{
+    position: absolute;
+    bottom: 40%;
+    right: 2%;
+    z-index: 10;
+}
+.container .arrows svg{ 
+    border-radius: 50%;
+    border: none;
+    margin: none;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+.container .arrows .left:hover svg path,.container .arrows .right:hover svg path{
+    stroke: rgb(255, 0, 0);
+    transition: all .3s ease;
+}
+.container>.slider{
+    width: 100%;
+    border-radius: inherit;
+    overflow: hidden; 
+}
+.container .slides{
+    display: flex;
+    border-radius: inherit;
+    transition: all 1s ease;
+   
+}
+.container .slides>img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+.buttons{
+    width: 50vw;
+    display: flex;
+    justify-content:space-evenly;
+    align-items:center; 
+}
+.user{
+    background-color: #ffffff;
+    width: 210px;
+    padding: 10px;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.buttons button{
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(3, 0, 0, 0.3);
+    font-size: 1.3rem;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: capitalize;
+    height: 50px;
+}
+.buttons button:hover{
+    background-color:#333;
+   color: white;
+}
+.navigation{
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 10px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.navigation .btn-nav{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+   background-color: transparent;
+    border: 2px solid rgb(255, 255, 255);
+    transition: all 0.3s ease-out;
+}
+.btn-nav1.btn-nav1{
+    background-color: #ffffff;
+    width: 30px;
+    height: 20px;
+    border-radius:20%;
+}
+.Notice{
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 10px;
+    z-index: 100;
+    background-color: #010101;
+    color: #ffffff;
+    border-radius: 20px;
+    border: 2px solid white;
+    padding: 10px;
+ padding: 10px;
+ max-width: 300px;
+ text-align: center;
+ text-transform: capitalize;
+ font-size: 13px;
+}

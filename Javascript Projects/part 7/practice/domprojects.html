@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom-Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="yt">
+        <P>Youtube Subscribe Button</P>
+        <button class="Jsbutton cssbutton" onclick="Subscribe()">Subscribe</button>
+    </div>
+    <div class="Amazon">
+        <h3>Amazon Shipping Calculator</h3>
+        <h4>Orders under 40$ = + $10 Shipping</h4>
+        <h4>Orders Over 40$ = Free Shipping</h4>
+        <input class="input input1" type="number" placeholder="Enter your Order amount" onkeydown="enter(event)">
+        <button class="buttto" onclick="Cal()">Calculate</button>
+        <H2 class="result"></H2>
+    </div>
+    <div class="type1">
+        <p class="typing css-typing1"></p>
+        <input class="type css-typing" type="text" placeholder="Enter something........" onkeyup="func1()">
+    </div>
+    <div class="calculator1">
+        <p class="calculator displays"></p>
+        <div class="buttons">
+            <button class="grey" onclick="calculator('1')">1</button>
+            <button class="grey" onclick="calculator('2')">2</button>
+            <button class="grey" onclick="calculator('3')">3</button>
+            <button  class="yellow"onclick="calculator('+')">+</button>
+            <button  class="grey"onclick="calculator('4')">4</button>
+            <button  class="grey"onclick="calculator('5')">5</button>
+            <button class="grey" onclick="calculator('6')">6</button>
+            <button class="yellow" onclick="calculator('-')">-</button>
+            <button  class="grey"onclick="calculator('7')">7</button>
+            <button class="grey" onclick="calculator('8')">8</button>
+            <button  class="grey"onclick="calculator('9')">9</button>
+            <button class="yellow" onclick="calculator('*')">*</button>
+            <button class="grey" onclick="calculator('0')">0</button>
+            <button class="grey" onclick="calculator('.')">.</button>
+            <button class="grey" onclick="calculation()">=</button>
+            <button  class="yellow" onclick="calculator('/')">/</button>
+            <button class="grey" onclick="clear1()">C</button>
+            <button class="grey" onclick="Back()">X</button>
+        </div>
+    </div>
+            <script src="script.js"></script>
+</body>
+
+</html>

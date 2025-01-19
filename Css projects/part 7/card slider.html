@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card slider</title>
+    <style>
+        .container {
+
+            display: flex;
+            height: 80vh;
+            width: 90vw;
+            margin: 100px auto;
+            align-items: center;
+            gap: 40px 8px;
+        }
+
+        .item {
+
+            height: 100%;
+            border: 2px solid rgb(220, 219, 219);
+            border-radius: 30px;
+            /* display: flex;
+            align-items: flex-end;
+            justify-content: flex-start; */
+            box-shadow: 5px -4px 20px 0px;
+            color: rgba(95, 99, 101, 0.527);
+            transition: flex-grow .5s ease;
+            padding: 10px;
+            flex-grow: 1;
+        }
+
+        .item1 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/589/997/306/god-god-of-war-kratos-omega-wallpaper-c9d0783d513a7dbbb6b7f80f20f1960d.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+            transition: 0.8s;
+
+        }
+
+        .item2 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/708/846/337/anime-demon-slayer-kimetsu-no-yaiba-tanjirou-kamado-hd-wallpaper-19d0389db1ba2deb26a7684f2051864d.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+            transition: 0.8s;
+
+        }
+
+        .item3 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/611/838/413/spiderman-hd-4k-superheroes-wallpaper-742d39da299f54848a44738e4edc3299.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+            transition: 0.8s;
+
+        }
+
+        .item4 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/764/505/66/baby-groot-4k-hd-superheroes-wallpaper-56a4b88b9246d7825647d34a12b4c573.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+            transition: 0.8s;
+
+        }
+
+        .item5 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/626/596/17/god-of-war-god-of-war-2018-kratos-video-games-wallpaper-e9e0c84d010abdebf6c7a83fc02136cd.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+            transition: 0.8s;
+
+        }
+
+        .item:hover {
+            flex-grow: 50;
+        }
+
+        .container:hover .item:not(:hover) {
+            filter: grayscale(1);
+            transition: 0.5s;
+
+        }
+
+        .container:hover .item:not(:hover) .text {
+            opacity: 0;
+        }
+
+        .item:hover .text {
+            transform: translatey(0px);
+            opacity: 1;
+
+        }
+
+        img {
+            width: 70px;
+            background-color: rgba(120, 122, 124, 0.114);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin-left: 14.5px;
+        }
+
+        .text {
+
+            font-weight: 600;
+            font-size: 25px;
+            border-radius: 8px;
+            color: rgb(255, 255, 255);
+            transition: .5s;
+            transform: translatey(70px);
+            opacity: 0;
+            padding-bottom: 22px;
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .item:hover {
+                flex-grow: 30;
+            }
+
+            .item {
+                justify-content: center;
+            }
+
+            .text {
+
+                font-weight: 600;
+                font-size: 5px;
+                border-radius: 8px;
+                color: rgb(255, 255, 255);
+                transition: .5s;
+                transform: translatey(70px);
+                opacity: 0;
+                padding-bottom: 22px;
+            }
+
+            .container {
+
+                display: flex;
+                height: 50vh;
+                width: 90vw;
+                margin: 100px auto;
+                align-items: center;
+                gap: 40px 8px;
+            }
+
+            img {
+                width: 25px;
+                background-color: rgba(120, 122, 124, 0.114);
+                backdrop-filter: blur(10px);
+                border-radius: 30px;
+                margin: 1vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            <div class="item item1">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+                <div class="text">
+                    <span>god of war</span>
+                </div>
+            </div>
+            <div class="item item2">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+                <div class="text">
+                    <span>demon slayer</span>
+                </div>
+            </div>
+            <div class="item item3">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+                <div class="text">
+                    <span>Spiderman</span>
+                </div>
+            </div>
+            <div class="item item4">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+                <div class="text">
+                    <span>kena </span>
+                </div>
+            </div>
+            <div class="item item5">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+                <div class="text">
+                    <span>god of war</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

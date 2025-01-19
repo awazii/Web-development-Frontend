@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="localStorage.removeItem('local')">Delete</button>
+<script>
+    let objec = JSON.parse(localStorage.getItem("local")) ||  
+    {};//giving default value is must if you delete local storage
+                                                             //this is default value used by if shortcut called || or default operator
+                                                       
+// let objec={
+//     name:"awais",
+//     age:21
+// }
+let func=()=>{
+    objec.name="awais"
+    objec.age=21
+    console.log(`My name is ${objec.name} and my age is ${objec.age}`)
+    localStorage.setItem("local",JSON.stringify(objec));
+}
+func()
+//ok so local storage is only available for web browers
+//also i can literally made objects without defining it beacause is used json which is like object little brother
+function func1(a="default"){
+    console.log(a)
+}
+func1()//this and
+func1(undefined)//this is same by default varaible or function is undefined
+func1(null)//this is the value we assign although they work same but it is intenstionally not by default.
+</script> 
+<script src="objects.js"></script> 
+</body>
+</html>

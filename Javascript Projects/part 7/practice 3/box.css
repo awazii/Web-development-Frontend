@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+.container{
+    width: 600px;
+    height: 300px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ justify-content: space-evenly;
+}
+.container h3 {
+    font-size: 25px;
+    text-transform: capitalize;
+    color:rgb(87, 87, 87); 
+}
+.container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 70px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 12px;
+    color: rgb(0, 0, 0);
+
+}
+.one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        width: 50%;
+        margin: auto;
+        background-color: rgb(255, 255, 255);
+        border-radius: 40px;
+        text-align: center;
+        gap: 150px;
+    }
+
+    #jokes {
+      color:rgb(87, 87, 87); ;
+        padding: 10px;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 150px;
+        transition:all 1s ease;
+    }
+    button{
+        background-color: rgb(87, 87, 87);
+        text-decoration: none;
+        border: none;
+        outline: none;
+        width: 150px;
+        height: 50px;
+        border-radius: 20px;
+        color: aliceblue;
+        font-size: 22px;
+        text-align: center;
+        transition:all .3s ease;
+        margin-bottom: 50px;
+        margin-right: 10px;
+    }
+    button:hover{
+        color:rgb(87, 87, 87); 
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(87, 87, 87); 
+        transform: scale(1.1);
+        letter-spacing: 2px;
+    }
+    .clicks{
+        background-color: rgb(87, 87, 87);
+        color: aliceblue;
+    margin: 0;
+    margin-right: 10px;
+        font-weight: 550;
+        text-align: center;
+    }

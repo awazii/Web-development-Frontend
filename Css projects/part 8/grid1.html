@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <style>
+        .container {
+            width: 80vw;
+            height: 80vh;
+            border: 2px solid black;
+            display: grid;
+            /* grid-template-columns: [pehla] 120px [doosra] 100px [t]; */
+            /* grid-template-rows: 100px 100px 100px; */
+            grid-template-columns: repeat(4, 1fr);
+             grid-template-rows: repeat(3, 1fr); 
+             gap: 34px; 
+            /* row-gap: 10px; */
+            /* column-gap: 44px; */
+         /* grid-template-columns: repeat(4, minmax(100px, 1fr));  */
+            justify-items: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .item {
+            border: 2px solid red;
+            height: 55px;
+            width: 55px;
+        }
+
+        .item-1 {
+            border: 2px solid red;
+            height: 95px;
+            width: 85px;
+        }
+         .item-4 {
+            grid-row: 1/2;
+            grid-column: 1/2;
+        } 
+        .item-5 {
+            grid-row: 3/3;
+            grid-column:2/4;
+        } 
+
+
+         .item-1 {
+            grid-row: 1/2; 
+            /* or you can do  */
+            /* grid-row-start: 1;
+            grid-row-end: 2; */
+
+            /* same thing */
+             grid-column: 1/2;
+        } 
+        .tt{
+            width: 30vw;
+            height: 20vh;
+        }
+        .ttt{
+            justify-self: start;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item item-1">1</div>
+        <div class="item item-5 ttt">2</div>
+        <div class="item">3</div>
+        <div class="item item-4">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item item-5 tt">13</div>
+    </div>
+</body>
+
+</html>

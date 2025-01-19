@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+ box-sizing: border-box;
+}
+.cart1{
+    border: none;
+    padding: 12px 30px;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    font-size: 18px;
+  border-radius: 10px ;
+  font-weight: 550;
+  width: 140px;
+}
+.js-cart1{
+    border: none;
+    padding: 10px 20px;
+    background-color: rgb(230, 230, 230);
+    color: black;
+    font-size: 18px;
+  border-radius: 10px ;
+  font-weight: 550;
+}
+    </style>
+</head>
+<body>
+    <button class="cart1 js-button" onclick="click1()">Gaming</button>
+</body>
+<script>
+    let a,b;
+let click1=()=>{
+    a=document.querySelector(".js-button")
+    console.log(a.className)// it gives you all its class.
+//     b=a.classList.contains("js-cart1"); //contain check if it has that class or not
+//     if (!b) {
+//         a.classList.add("js-cart1") //to add class in an element
+//     }
+//   else if (b) {
+//     a.classList.remove("js-cart1") // to remove class from an element
+//   }
+  //or
+  a.classList.toggle("js-cart1") // its like on/off switch.
+}
+</script>
+</html>

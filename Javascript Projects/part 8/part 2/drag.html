@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="s">
+        <div class="card"></div>a
+    </div>
+    <script>
+        let currentX = 0, currentY = 0, startX = 0, startY = 0;
+        const card = document.querySelector(".card");
+
+        const mouseDown = (e) => {
+            startX = e.clientX;
+            startY = e.clientY;
+            card.style.backgroundColor = "green";
+            document.addEventListener("mousemove", mouseMove);
+            document.addEventListener("mouseup", mouseUp);
+        };
+
+        const mouseMove = (e) => {
+            currentX = startX-e.clientX;
+            currentY = startY-e.clientY;
+            startX = e.clientX;
+            startY = e.clientY;
+          
+            card.style.top = (card.offsetTop - currentY) + "px";
+            card.style.left = (card.offsetLeft - currentX) + "px";
+        };
+
+        const mouseUp = () => {
+            card.style.backgroundColor = "red";
+            document.removeEventListener("mousemove", mouseMove);
+            document.removeEventListener("mouseup", mouseUp);
+
+        };
+
+        card.addEventListener("mousedown", mouseDown);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake-Water-Gun</title>
+    <link rel="stylesheet" href="snakewatergun.css">
+</head>
+
+<body>
+    <div class="center">
+        <h3>Snake-Water-Gun</h3>
+        <div class="gap">
+            <button class="a" onclick="snake()"> <img src="snake.png" class="move-icon"></button>
+            <button class="b" onclick="water()">  <img src="water.png" class="move-icon"></button>
+            <button  class="c" onclick="gun()">
+                <img src="gun.png" class="move-icon">
+            </button>
+        </div>
+        <h3 class="result"></h3>
+        <h3 class="Reason move-icon1"></h3>
+        <h4>Wins: <span id="WINS">0</span> </h4>
+        <h4>Loses: <span id="LOSES">0</span> </h4>
+        <h4>Draws: <span id="Draw">0</span> </h4>
+        <div>
+            <button class="reset" onclick="reset()">Reset Button</button>
+        </div>
+    </div>
+    <script src="snakewatergun.js"></script>
+</body>
+
+</html>

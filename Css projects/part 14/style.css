@@ -1,0 +1,313 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    background-color: DB202C;
+}
+html{
+    scroll-behavior: smooth;
+}
+input{
+    display: none;
+}
+.headings{
+    text-align: center;
+    margin-top:80px;
+    position: relative;
+    display: inline-block;
+    width: 100%; 
+}
+.headings h3{
+    font-size: 50px;
+    font-weight: 350;
+    text-transform: uppercase;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.headings h3::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%; 
+    height: 3px;
+transform: translateX(-50%);
+    background-color:  rgb(255, 0, 0);
+    animation: harryKaAnimation 4s ease infinite;
+
+}
+@keyframes harryKaAnimation {
+    0% {
+        width: 30%;
+    }
+
+    50% {
+      width:100%;
+    }
+    100%{
+        width: 30%;
+    }
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 50px;
+    width: 90vw;
+    margin: 70px auto;
+    height: 8vh;
+    background-color: rgba(208, 205, 201, 0.284);
+    border-radius: 10px;
+    box-shadow: 3px 4px 14px 1px #2722225e;
+}
+ol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+ol li {
+    list-style: none;
+}
+ol li label{
+    font-size: 1.3rem;
+    color: rgba(67, 66, 65, 0.584);
+    font-weight: 500;
+    transition: all 0.4s ease;
+}
+label:hover{
+    color: black;
+}
+nav h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    width: 300px;
+    height: 100%;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgba(208, 205, 201, 0.576);
+    transition: all 0.4s ease;
+}
+nav h3:hover{
+    background-color: rgba(100, 98, 98, 0.298);
+    color: black;
+  
+}
+.container{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px; 
+   justify-items: center;
+   align-items: center;
+   width: 90vw;
+   margin: auto;
+
+}
+.gallery{
+    position: relative;
+    width: 30vw;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: all ease 0.5s ;
+}
+img:hover{
+    transform: scale(1.04);
+    opacity: 0.9;
+    z-index: 2;
+}
+#Gaming:checked ~ main .container .Anime1,#Gaming:checked ~ main .container .Onepiece{
+    display: none;
+}
+#Gaming:checked ~ header .gamingg {
+    background-color: rgba(208, 205, 201, 0.576);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+}
+#Anime:checked ~ main .container .Gaming1,#Anime:checked{
+    display: none;
+}
+#Anime:checked ~ header .gamingg2 {
+    background-color: rgba(208, 205, 201, 0.576);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+}
+#One-piece:checked ~ main .container .Gaming1,#One-piece:checked ~ main .container .Anime1{
+   display: none;
+}
+#One-piece:checked ~ header .gamingg3 {
+    background-color: rgba(208, 205, 201, 0.576);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+}
+#All-photos:checked ~ header .gamingg1 {
+    background-color: rgba(208, 205, 201, 0.576);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+}
+.gallery h4{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 15px;
+    font-size: 1.1rem;
+    transform: translatey(30px);
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    opacity: 0;
+    z-index: 3;
+    color: rgb(255, 255, 255);
+    transition:all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.446);
+    padding: 8px;
+    border-radius: 10px;
+}
+img:hover + h4{
+    transform: translatey(0px);
+    opacity: 1;
+}
+@media screen and (max-width:900px) {
+
+    .container{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px; 
+   justify-items: center;
+   align-items: center;
+   width: 90vw;
+   margin: auto;
+
+}
+.gallery{
+    position: relative;
+    width: 45vw;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+}
+.headings h3{
+    font-size: 35px;
+    font-weight: 350;
+    text-transform: uppercase;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 50px;
+    width: 100vw;
+    margin: 70px auto;
+    height: 10vh;
+    background-color: rgba(208, 205, 201, 0.284);
+    border-radius: 10px;
+    box-shadow: 3px 4px 14px 1px #2722225e;
+}
+nav h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    font-size: 1rem;
+    width: 250px;
+    height: 100%;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgba(208, 205, 201, 0.576);
+    transition: all 0.4s ease;
+}
+ol li label{
+    font-size: 1.2rem;
+    color: rgba(67, 66, 65, 0.584);
+    font-weight: 500;
+    transition: all 0.4s ease;
+}
+}
+@media screen and (max-width:600px) {
+
+    .container{
+    display:grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px; 
+   justify-items: center;
+   align-items: center;
+   width: 90vw;
+   margin: auto;
+
+}
+.gallery{
+    position: relative;
+    width: 90vw;
+    aspect-ratio: 16/9;
+    border-radius: 14px;
+}
+.headings h3{
+    font-size: 35px;
+    font-weight: 350;
+    text-transform: uppercase;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+nav h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    font-size: 1rem;
+    width: 130px;
+    height: 100%;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgba(208, 205, 201, 0.576);
+    transition: all 0.4s ease;
+}
+ol li label{
+    font-size: 1rem;
+    color: rgba(67, 66, 65, 0.584);
+    font-weight: 500;
+    transition: all 0.4s ease;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 5px;
+    width: 100vw;
+    margin: 70px auto;
+    height: 10vh;
+    background-color: rgba(208, 205, 201, 0.284);
+    border-radius: 10px;
+    box-shadow: 3px 4px 14px 1px #2722225e;
+}
+ol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+}
+
+

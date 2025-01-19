@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(149deg, rgb(247, 0, 255) 0%, rgb(255, 145, 0) 100%);
+}
+
+.slider {
+  width: 80%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.slide {
+    position: relative;
+  flex: 0 0 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  font-size: 2em;
+}
+img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+height: 100%;
+    object-fit: contain;
+}
+#slide3 img{
+    object-fit: cover;
+}
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide" id="slide1">
+                <img  id="slide1" src="/Css projects/part 7/Screenshot_27-8-2024_202152_www.instagram.com.jpeg" alt=""></div>
+            <div class="slide" id="slide2">
+                <img  src="/Css projects/part 6/past.jpg" alt=""></div>
+            <div class="slide" id="slide3">
+                <img  src="/Css projects/part 5/wallpaperflare.com_wallpaper (4).jpg" alt=""></div>
+          </div>
+      </div> 
+</body>
+</html>

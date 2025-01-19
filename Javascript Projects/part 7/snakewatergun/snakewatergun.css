@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff43;
+    font-family: Arial, sans-serif;
+}
+
+.center {
+    min-width: 50vw;
+    min-height: 80vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    box-shadow:15px 14px 16px 4px #6f6c6c76
+}
+
+button {
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 500px;
+    width: 150px;
+    height: 150px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    transition: all .3s ease;
+    border: 2px solid white;
+}
+.a{
+    background-color: rgb(48, 225, 48);
+}
+.b{
+    background-color: rgb(70, 255, 255);
+}
+.c{
+    background-color: rgb(239, 49, 49);
+}
+.reset{
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    transition: all .3s ease;
+    border: 2px solid white;
+}
+ button:active {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid black;
+} 
+
+button:hover {
+    cursor: pointer;
+
+}
+
+.gap {
+    display: flex;
+    gap: 10px;
+}
+h3{
+    font-size: 27px;
+}
+h4{
+    font-size: 27px;
+}
+.move-icon{
+    width: 70%;
+    filter: drop-shadow(7px 7px 10px #08080876);
+}
+button:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid black;
+} 
+.move-icon1{
+    display: flex;
+    align-items: center;
+
+}
+.move-icon1 img{
+    width: 100px;
+}
+@media (max-width: 991px)
+{
+    h3{
+    font-size: 19px;
+}
+    h4{
+    font-size: 19px;
+}
+button {
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 500px;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    transition: all .3s ease;
+    border: 2px solid white;
+}
+.move-icon1 img{
+    width: 70px;
+}
+.reset{  
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+}
+}

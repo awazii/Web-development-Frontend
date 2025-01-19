@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qoutes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 25vh auto;
+            width: 50vw;
+            min-height: 50vh;
+
+        }
+
+        .one {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(234, 231, 231, 0.625);
+            border-radius: 40px;
+            text-align: center;
+            gap: 150px;
+        }
+
+        #kratos {
+          color:rgb(87, 87, 87); ;
+    
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 150px;
+            transition:all 1s ease;
+        }
+        button{
+            background-color: rgb(87, 87, 87);
+            text-decoration: none;
+            border: none;
+            outline: none;
+            width: 150px;
+            height: 50px;
+            border-radius: 20px;
+            color: aliceblue;
+            font-size: 22px;
+            text-align: center;
+            transition:all .3s ease;
+            margin-bottom: 50px;
+        }
+        button:hover{
+            color:rgb(87, 87, 87); 
+            background-color: rgba(234, 231, 231, 0.625);
+            border: 1px solid rgb(87, 87, 87); 
+            transform: scale(1.1);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <h1 id="kratos">Press the button to get Kratos Qoutes</h1>
+        <button onclick="Genrate()">Click here</button>
+    </div>
+    <script>
+        let arr=["''The gods of Olympus have abandoned me. Now there is no hope.''","''I am what the gods have made me.''","''Death can have me, when it earns me.''","''War does not measure the strength of a man.''","''A choice from the gods is as useless as the gods themselves.''","''The power of hope is a dangerous thing, boy.''","'' will not be held captive by the gods any longer.''","''I have been away far too long.''","''You seem like a calm and reasonable person. Are you a calm and reasonable person?''","''For what you did that night, this city will be your grave.''"];
+        function Genrate() {
+            let b = Math.floor(Math.random()*arr.length);
+            document.getElementById("kratos").innerText=arr[b];
+            // Math.random() * (max - min+1) + min;
+        }
+    </script>
+</body>
+
+</html>

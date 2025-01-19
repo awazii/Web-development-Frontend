@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    font-family: "Playwrite GB S", cursive;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+body {
+    background:linear-gradient(45deg, #0281fffc 0, rgba(5, 207, 238, 0.333) 80%) ;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Stopwatch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Stopwatch-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 60px 20px;
+    box-shadow: 8px 10px 11px rgba(137, 136, 136, 0.395), 0 15px 90px 30px rgb(246, 246, 246);
+}
+.Stopwatch-col {
+    text-align: center;
+    margin-right: 40px;
+    margin-left: 40px;
+    min-width: 90px;
+    position: relative;
+}
+
+.Stopwatch-col:not(:last-child):before,
+.Stopwatch-col:not(:last-child):after {
+    content: "";
+    background-color: rgba(3, 0, 0, 0.3);
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    right: -42px;
+}
+
+.Stopwatch-col:not(:last-child):before {
+    top: 35%;
+}
+
+.Stopwatch-col:not(:last-child):after {
+    top: 50%;
+}
+
+.Timer-timer {
+    color: #000000;
+    font-size: 2.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.Stopwatch-label {
+    color: rgba(0, 0, 0, 0.559);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+option {
+    text-align: center;
+}
+.options{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+button{
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100px;
+    border: 2px solid rgba(3, 0, 0, 0.3);
+    font-size: 1.3rem;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+button:hover{
+    background-color:#333;
+   color: white;
+}
+

@@ -1,0 +1,108 @@
+/* top right button left is the rule to add all side margin/padding */
+/* y(top/bottom) x(left/right) */
+*{
+    box-sizing: border-box;
+    margin:  0;
+    padding:0;
+}
+ article p{
+    margin: 5px 200px;
+    padding: 20px 20px 2px 20px;
+    height: 90px;
+    width:  1000px;
+    background-color: rgb(252, 146, 107);
+    border-radius: 12px;
+    border: 2px solid black;
+}
+article p:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(139, 120, 120);
+}
+p.one
+{
+    margin: 3px 120px;
+    padding: 10px 15px;
+    width: 280px;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: rgb(242, 148, 148);
+}
+.one{
+    margin: 3px;
+    padding: 5px 42px;
+    width: 600px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 12px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(11, 11, 11);
+
+}
+h3{
+    margin: 12px;
+    padding: 5px 40px;
+    width: 500px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 200px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(11, 11, 11);
+
+}
+h3:hover{
+    background-color: crimson;
+}
+img{
+    margin: 50px 350px;
+    padding: 100px 20px;
+    width: 1000px;
+   border: 5px solid black;
+   border-radius: 20px
+   ;
+}
+h1.two{
+    margin:2px 680px;
+    width: 480px;
+    padding: 50px 99px;
+    background-color: chocolate;
+    border-radius: 20px
+}
+p.two{
+    margin: 3px 10px;
+    padding: 3px 5px;
+    width: 300px;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    background-color: rgb(242, 148, 148);
+}
+h6.two{
+    margin: 5px;
+    padding: 15px 40px 15px  50px;
+    width: 200px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(2, 2, 2);
+}
+h3.two{
+    margin:2px 5px;
+    padding: 5px 10px;
+    width: 500px;
+    
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+body{
+    background-color:#e48c73
+}
+a:visited{
+    color: red;
+  }
+  a:active{
+    color: chartreuse;
+  }
+  a:active{
+    background-color: rgb(255, 255, 255);
+  }
+
+

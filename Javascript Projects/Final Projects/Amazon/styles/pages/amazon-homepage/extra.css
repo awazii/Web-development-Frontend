@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.Extra-Info {
+    position: relative;
+    min-width: 120px;
+    margin-bottom: 10px;
+}
+
+.Extra-Info .info-img {
+    width: 220px;
+    aspect-ratio: 16/9;
+    position: absolute;
+    transition: all .7s ease;
+    opacity: 0;
+    pointer-events: none; /* to prevent the mouse issues*/
+}
+.Extra-Info .info-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.Extra-Info:hover .info-img {
+    transform: translateY(-140px);
+    opacity: 1;
+}
+.link-Info a {
+    color: black;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+.link-Info:hover a{
+    background-color: rgb(255, 216, 20);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}

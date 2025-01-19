@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: rgba(150, 150, 150, 0.457);" class="container gg">
+        <h3 style="color: brown;" class="Awazii" data-Mine="Ye mera Area h">Hey i am 1</h3>                                 <!-- to create custom attributes -->
+        <h3>Hey i am 2</h3>
+        <h3>Hey i am 3</h3>
+        <h3>Hey i am 4</h3>
+        <h3>Hey i am 5</h3>
+    </div>
+    <script>
+        let a=document.getElementsByClassName("gg")[0]
+        let b=document.getElementsByClassName("Awazii")[0]
+ console.log(a.getAttribute("class"))// to get any attribute of an element
+ console.log(a.hasAttribute("style"))// to tell if element has that attribute
+ a.setAttribute("class","Awazii zuzu daud")// to set any attribe in element we use set element 
+ a.removeAttribute("style")//  to remove any attribute
+ console.log(b.attributes)//  to give all attribute
+ console.log(b.dataset)//  to get custom attributes
+ console.log(b.dataset.mine)//  to get custom attributes
+ 
+    </script>
+</body>
+</html>

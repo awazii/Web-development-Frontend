@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css selectors</title>
+    <style>
+        /* Element selector */
+         div,p {
+               color/* this is property */: rgb(255, 255, 255);
+               background-color:/* this is value */ rgb(0, 0, 0);
+         }
+         /* Id selector */
+         #main{
+            color: rgb(0, 0, 0);
+            background-color: brown;
+         }
+         /* Class selector */
+         .footer{
+            color: rgb(0, 255, 170);
+            background-color: rgb(180, 77, 145);
+         }
+        /* Child selector */
+         p>u{
+            color:yellow;
+         }
+          /* descendant selector */
+         footer b{
+            color: rgb(255, 3, 3);
+         }
+         /* universal selector */ 
+           *{
+            margin: 0;
+            padding: 0;  
+          }
+          /* pseudo selector */
+          a:visited{
+            color: red;
+          }
+          button:active{
+             background-color: chartreuse;
+          }
+          a:active{
+            background-color: rgb(255, 255, 255);
+          }
+          a:hover{
+            color: rgb(8, 239, 247);
+          }
+          p:hover{
+            
+            background-color: rgb(222, 128, 128);
+          }
+          p:first-child{
+            background-color: rgb(29, 172, 172);
+            
+          }
+          .one:hover
+          {
+           background-color: coral;
+          }
+          .two{
+                color: aquamarine;
+          }
+          .three{
+                    background-color: crimson;
+          }  
+
+    </style>
+</head>
+<body>
+    <header>
+
+        <div><h1><em>this is Header</em></h1></div>
+    </header>
+    <main> 
+
+<h2 id="main"><em>This is main</em></h2>
+<div>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ex ea fuga repellendus excepturi similique facilis odio, voluptatibus nobis nihil nostrum quam itaque id amet. Eaque autem optio aperiam explicabo!</p>
+    </div>
+    <p><u>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut deleniti cupiditate illo!</u></p>
+    <H3>Pseudo selector</H3>
+    <a  target="_blank" href="https://www.youtube.com/watch?v=1cEG1T8beO4&list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&index=17">Css SELECTORS VIDEO</a><br>
+    <a  target="_blank" href="https://www.instagram.com/?hl=en>Instagram">Instagram</a><br>
+ <button>click here</button>
+ <form action="/action.php" method="post"> 
+  <textarea cols="20" name="comments" rows="5">Comment</textarea><br />
+  <label><input name="terms" type="checkbox" value="tandc" />Accept terms</label> <br />
+  <input type="submit" value="Submit" />
+  <label><input type="text"  placeholder="write here">enter your name</label>
+  
+</form>
+</div>
+<article>
+  </div>
+  <h2 class="one"> Element 1</h2>
+  <p class="one"> Element 2</p>
+  <h4 class="two three">hello boys</h4>
+</article>
+    
+</main>
+<footer>
+    <h3 class="footer"><em>This is footer</em></h3>
+    <p><b>Lorem</b> <u>ipsum dolor sit amet, consectetur adipisicing elit.</u> Commodi cum dolorem quisquam optio, maxime autem fuga ipsum aliquid quia dolore dolor quo repellat corporis totam veritatis, et alias explicabo nobis distinctio provident?</p>
+</footer>
+
+
+    
+</body>
+</html>

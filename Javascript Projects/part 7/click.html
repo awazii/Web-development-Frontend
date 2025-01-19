@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cart2 {
+            border: none;
+            padding: 10px 20px;
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-size: 18px;
+            border-radius: 10px;
+            font-weight: 550;
+        }
+        .g {
+            color: rgb(230, 230, 230);
+            background-color: black;
+        }
+        ul{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        li{
+            list-style: none;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+            <li class="ll">Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+        </nav>
+    </header>
+    <table>
+        <tr>
+            <td>Harry</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Awazii</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>Zuzu</td>
+            <td>400</td>
+        </tr>
+    </table>
+    <div class="container1">
+        <button id="L" class="cart2 cart3" onclick="clicka('gc')">Schedule for later</button>
+        <button class="cart2 cart3" onclick="clicka('gb')">Schedule for later</button>
+        <button class="cart2 cart3" onclick="clicka('ga')">Schedule for later</button>
+    </div>
+    <div class="containter2">
+        <button id="L" class="cart2" onclick="clickb('ga')">Schedule for later</button>
+    <button id="M" class="cart2" onclick="clickb('gb')">Schedule for later</button>
+    <button id="N" class="cart2" onclick="clickb('gc')">Schedule for later</button>
+    </div>
+ <script>
+    document.querySelector(".ll").style.color="white"
+    let nav=document.body.firstElementChild.firstElementChild.firstElementChild
+    let nav1=document.body.firstElementChild.firstElementChild.firstElementChild.lastElementChild
+    console.log(nav)
+ Array.from(nav.children).forEach(e=>{
+       e.style.backgroundColor="cyan" 
+ }
+ );
+    let match1 =document.getElementById("L")
+    console.log(match1.matches(".cart2"))
+    let close=document.querySelectorAll(".cart2");
+    console.log(close[0].closest("div"))//closest gives you the closest element that has that  css selector or also that element name 
+        let clicka=(value)=>{
+    let a = document.querySelectorAll(".cart2")
+    console.log(a)
+    let b=a[2].classList.contains("g")
+    let c=a[1].classList.contains("g")
+    let d=a[0].classList.contains("g")
+if (!b&&value==="ga") {
+    a[2].classList.add("g")
+}
+else if(b&&value==="ga"){
+    a[2].classList.remove("g")
+}
+else if (!c&&value==="gb") {
+    a[1].classList.add("g")
+}
+else if (c&&value==="gb") {
+    a[1].classList.remove("g")
+}
+else if (!d&&value==="gc") {
+    a[0].classList.add("g")
+}
+else if (d&&value==="gc") {
+    a[0].classList.remove("g")
+}
+}
+function clickb(value) {
+            let a = document.querySelectorAll(".cart2");
+            console.log(a);
+            if (value === "ga"&& a[3].matches("#L")) {// mathes check if the given element has that css selector or not
+                a[3].classList.toggle("g");//toggle is like a on off switch
+            } else if (value === "gb") {
+                a[4].classList.toggle("g");
+            } else if (value === "gc") {
+                a[5].classList.toggle("g");
+            }
+        }
+/*You
+i mean if i need to use for each function  without array from i have to use query selector
+Copilot
+Exactly. Since querySelectorAll returns a NodeList, which is directly iterable with forEach, it’s the go-to choice if you want to avoid converting with Array.from().*/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <form id="todoForm">
+        <h1>My to do list.</h1>
+        <h2><em>Must tasks</em></h2>
+        <ol>
+            <li><label for="a">Web development</label> <input id="a" type="checkbox"></li>
+            <li><label for="b">Book reading</label> <input id="b" type="checkbox"></li>
+            <li><label for="c">Namaz Fajr</label> <input id="c" type="checkbox"></li>
+            <li><label for="d">Namaz Duhar/jumma</label> <input id="d" type="checkbox"></li>
+            <li><label for="e">Namaz Asar</label> <input id="e" type="checkbox"></li>
+            <li><label for="f">Namaz Magrib</label> <input id="f" type="checkbox"></li>
+            <li><label for="g">Namaz Isha</label> <input id="g" type="checkbox"></li>
+            <li><label for="h">Quran Reading </label> <input id="h" type="checkbox"></li>
+            <li><label for="i">Bath</label> <input id="i" type="checkbox"></li>
+            <li><label for="j">Gym </label> <input id="j" type="checkbox"></li>
+            <li><label for="k">Teeth Brush</label> <input id="k" type="checkbox"></li>
+            <li><label for="l">Mha Atleast 1 episode</label> <input id="l" type="checkbox"></li>
+            <li><label for="m">Daily expense count</label> <input id="m" type="checkbox"></li>
+        </ol>
+        <h2><em>Optional tasks</em></h2>
+        <ul>
+            <li><label for="n">Gaming</label> <input id="n" type="checkbox"></li>
+            <li><label for="o">One Piece</label> <input id="o" type="checkbox"></li>
+            <li><label for="p">Netflix</label> <input id="p" type="checkbox"></li>
+        </ul>
+        <input type="text" id="newTask1" placeholder="Write new task here"><label for="q">Click here</label><input id="q" type="checkbox"><br>
+        <input type="text" id="newTask2" placeholder="Write new task here"><label for="r">Click here</label><input id="r" type="checkbox"><br>
+        <input type="text" id="newTask3" placeholder="Write new task here"><label for="s">Click here</label><input id="s" type="checkbox"><br>
+        <input type="text" id="newTask4" placeholder="Write new task here"><label for="t">Click here</label><input id="t" type="checkbox"><br>
+        <input type="text" id="newTask5" placeholder="Write new task here"><label for="u">Click here</label><input id="u" type="checkbox"><br>
+        <br>
+        <button type="button" onclick="saveData()">Save</button>
+        <input type="reset">
+    </form>
+
+    <script>
+        function saveData() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const tasks = [];
+            checkboxes.forEach(checkbox => {
+                tasks.push({
+                    id: checkbox.id,
+                    checked: checkbox.checked
+                });
+            });
+
+            const textInputs = document.querySelectorAll('input[type="text"]');
+            const newTasks = [];
+            textInputs.forEach(input => {
+                newTasks.push(input.value);
+            });
+
+            localStorage.setItem('checkboxStates', JSON.stringify(tasks));
+            localStorage.setItem('newTasks', JSON.stringify(newTasks));
+            alert('Data has been saved!');
+        }
+
+        function loadData() {
+            const tasks = JSON.parse(localStorage.getItem('checkboxStates')) || [];
+            tasks.forEach(task => {
+                const checkbox = document.getElementById(task.id);
+                if (checkbox) {
+                    checkbox.checked = task.checked;
+                }
+            });
+
+            const newTasks = JSON.parse(localStorage.getItem('newTasks')) || [];
+            const textInputs = document.querySelectorAll('input[type="text"]');
+            textInputs.forEach((input, index) => {
+                if (newTasks[index] !== undefined) {
+                    input.value = newTasks[index];
+                }
+            });
+        }
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>

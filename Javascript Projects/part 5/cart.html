@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food cart</title>
+</head>
+
+<body>
+    <div class="cart">
+        <div class="food1">
+            <h1> Coffee</h1>
+            <h3>Price: 5$</h3>
+            <h3>Quantity: <span id="food1">0</span></h3>
+            <button onclick="food1('Coffee')">+</button>
+            <button onclick="food1_1('Coffee')">-</button>
+            <h3>Total: $<span id="out">0</span></h3>
+        </div>
+        <div class="food2">
+            <h1>bagel</h1>
+            <h3>Price: 3$</h3>
+            <h3>Quantity: <span id="food2">0</span></h3>
+            <button onclick="food2( 'bagel')">+</button>
+            <button onclick="food_2( 'bagel')">-</button>
+            <h3>Total: $<span id="total1">0</span></h3>
+        </div>
+        <div class="food3">
+            <h1>Soup</h1>
+            <h3>Price: 9$</h3>
+            <h3>Quantity: <span id="food3">0</span></h3>
+            <button onclick="food3('soup')">+</button>
+            <button onclick="food_3('soup')">-</button>
+            <h3>Total: $<span id="total2">0</span></h3>
+        </div>
+    </div>
+    <h2>Grand Total: $<span id="Total3">0</span></h2>
+    <button onclick="Clear()">Clear Cart</button>
+    <script src="/Javascript Projects/part 5/practice5-4.js"></script>
+</body>
+
+</html>

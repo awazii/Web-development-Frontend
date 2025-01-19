@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel form</title>
+    <style>
+        body {
+            background-image: url(https://www.jotform.com/uploads/ugurg/form_files/Travel.6687d5862ca941.46197804.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top left;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <a href="https://www.jotform.com/build/242057427766463?s=templates">
+        <img width="150" height="90"
+            src="https://www.jotform.com/uploads/ugurg/form_files/Blue%20Minimalist%20Travel%20%28Instagram%20Story%29.665f10d2086484.01533690.png"
+            alt="travel pic">
+    </a>
+    <nav>
+        <ul>
+    
+            <li><a href="#personal-info"><button>Personal Information </button></a></li>
+            <li><a href="#emergency-contact"><button>Emergency Contact</button></a></li>
+            <li><a href="#travel-preferences"><button>Travel Preferences</button></a></li>
+            <li><a href="#health-safety">Health and Safety</a></li>
+            <li><a href="#additional-info">Additional Information</a></li>
+        </ul>
+    </nav>
+    <form action="https://www.jotform.com/build/242057427766463?s=templates" method="post">
+      
+        <h2>Travel Registration Form</h2>
+        <p>Please fill out the form below to register for the upcoming travel event.</p>
+        <div id="personal-info">
+            <h3>Full Name</h3>
+            <input type="text" name="username" placeholder="First Name" required>
+            <input type="text" name="username" placeholder="Last Name" required>
+            <h3>Date of Birth</h3>
+            <input type="date" name="birthdate" required>
+            <h3>Email Address</h3>
+            <input type="email" name="email" placeholder="Enter Email" id="email" required><br>
+            <label for="email">example@example.com</label>
+            <h3>Phone Number</h3>
+           
+            <label for="Phone">Please enter a valid phone number.
+                <input type="number" name="quantity" id="Phone" placeholder="(+92) 000-0000-000" required><br>
+            </label>
+            <h3>Address</h3>
+            <textarea placeholder="Enter address here" rows="2" cols="60" name="Address" id=""></textarea><br>
+            <input type="text" name="Line 2" placeholder="Street  Address Line 2" required>
+            <input type="text" name="City" placeholder="City" required>
+            <input type="number" name="username" placeholder="Postal/zipcode" required>
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="1">Select a country</option>
+                <option value="USA">United States</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Australia">Australia</option>
+                <option value="Pakistan">Pakistan</option>
+            </select>
+            <label for="sub-option">City:</label>
+            <select id="sub-option" name="sub-option" required>
+                <option value="">Select a city</option>
+            </select>
+        </div>
+
+        <script>
+            const countrySelect = document.getElementById('country');
+            const subOptionSelect = document.getElementById('sub-option');
+
+            const options = {
+                Pakistan: ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi', 'Quetta']
+            };
+
+            countrySelect.addEventListener('change', function() {
+                const selectedCountry = this.value;
+                subOptionSelect.innerHTML = '<option value="">Select a city</option>';
+
+                if (options[selectedCountry]) {
+                    options[selectedCountry].forEach(function(city) {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.text = city;
+                        subOptionSelect.add(option);
+                    });
+                }
+            });
+        </script>
+
+        <div id="emergency-contact">
+            <h4>Emergency Contact Information</h4>
+            <h5>Please provide the name and phone number of an emergency contact person.</h5>
+            <h3>Emergency Contact Name</h3>
+            <input type="text" name="username" placeholder="First Name" required>
+            <input type="text" name="username" placeholder="Last Name" required> 
+            <h3>Relationship</h3>
+            <input type="text" name="Relationship" placeholder="type here">
+            <h3>Emergency Contact Phone Number</h3>
+            <input type="number" name="quantity" id="Phone1" placeholder="(+92) 000-0000-000" required><br>
+            <label for="Phone1">Please enter a valid phone number.</label>
+        </div>
+
+        <div id="travel-preferences">
+            <h4>Travel Preferences</h4>
+            <h5>Please indicate your travel preferences below.</h5>
+            <h3>Preferred Travel Destination</h3>
+            <textarea name="Destination" rows="2" cols="32" id="" placeholder="Which country/city you wanna travel" required></textarea>
+            <h3>Preferred Travel Date From</h3>
+            <input type="date" id="date" name="birthdate" required> <br>
+            <label for="date">Date</label>
+            <h3>To</h3>
+            <input type="date" id="date1" name="birthdate" required> <br>
+            <label for="date1">Date</label>
+            <h3>Travel Budget (PKR)</h3>
+            <textarea name="Destination" rows="2" cols="27" id="" placeholder="e.g.23" required></textarea>
+            <h3>Travel Interests</h3>
+            <textarea name="Destination" rows="2" cols="27" id="hello" placeholder="Tell us....." required></textarea>
+        </div>
+
+        <div id="health-safety">
+            <h4>Health and Safety</h4>
+            <h5>Please answer the following health and safety questions.</h5>
+            <h3>Do you have any medical conditions or allergies?</h3>
+            <input id="yes" type="radio" name="allergies?" value="Yes"> <label for="yes">Yes</label>
+            <br><input id="No" type="radio" name="allergies?" value="No"> <label for="No">No</label>
+            <h3>Please specify</h3>
+            <textarea name="Destination" rows="4" cols="45" id="" placeholder="e.g.23" required></textarea>
+            <h3>Are you fully vaccinated against COVID-19?</h3>
+            <input id="yess" type="radio" name="agg?" value="Yess"> <label for="yess">Yes</label>
+            <br><input id="Noo" type="radio" name="agg?" value="Noo"> <label for="Noo">No</label>
+            <br><input id="Noo0" type="radio" name="agg?" value="Partially"> <label for="Noo0">Partially vaccinated</label>
+        </div>
+
+        <div id="additional-info">
+            <h4>Additional Information</h4>
+            <h3>Are you traveling alone or with others?</h3>
+            <input id="yes1" type="radio" name="traveling" value="Yes"> <label for="yes1">Alone</label>
+            <br><input id="No1" type="radio" name="traveling" value="No"> <label for="No1">With others</label>
+            <h3>Travelers</h3>
+            <input type="text" placeholder="Name"><br><br>
+            <label for="age">Age</label><br>
+            <select name="Age" id="age">
+                <option value="a">Please Select</option>
+                <option value="b">0-12</option>
+                <option value="c">12-17</option>
+                <option value="d">18+</option>
+            </select>
+            <h3>Additional Comments</h3>
+            <textarea name="Destination" rows="4" cols="55"  placeholder="e.g.23"  required></textarea>
+        </div>
+        <input type="submit">
+        <input type="reset">
+    </form>
+</body>
+
+</html>

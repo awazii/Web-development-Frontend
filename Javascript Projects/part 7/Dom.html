@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <button>Hello</button>
+    <button class="pangee">Hello1</button>
+    <button class="jsbutton">Hello</button>
+    <script>
+       console.log(document.querySelector('button').innerHTML)
+       document.querySelector('button').innerHTML="Changed"
+       let jsbutton=document.querySelector('.jsbutton')
+       jsbutton.innerText="changeeeeeeeeeee wwwew"
+       console.log(jsbutton.innerText)
+    //  let b= document.querySelector(".pangee").innerText="lora"
+    //  console.log(b.innerText) this is wrong
+    let b= document.querySelector(".pangee")
+    b.innerText="lora"//this is right.
+     console.log(b.innerText)
+        // document.title="DOM";
+        // console.log(document.body)
+        // document.body.innerHTML="Bund mara" 
+        // document.body.innerHTML="<button>Hello!</button>"
+let a=prompt("ENTER YOUR AGE");
+let ba=confirm("DO you want to see Promt again??")
+if (ba) {
+    a=prompt("ENTER YOUR AGE");
+}
+if (a>4) 
+{
+    location.href="https://google.com"
+}
+if (a>=18) {
+    alert("you can drive")
+    document.body.style.background="Green"
+}
+else if (a<0) {
+    console.error("Error")
+     document.body.style.background="red"
+}
+else{
+    alert("you cannot drive")
+     document.body.style.background="yellow"
+}
+    </script>
+</body>
+</html>
+//console.log      for getting output
+//console.table    for converting anything in table
+// console.assert   which tells if an assemptions are true or not
+// console.clear    to clear the the console
+// console .warn      for giving warning
+//console.info        to give information
+//console.time         which starts a timer 
+//comsole.timeend      which tells us how much time it take

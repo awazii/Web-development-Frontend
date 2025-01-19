@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Events</title>
+    <style>
+        *{
+box-sizing: border-box;
+}
+.cart1{
+   border: none;
+   padding: 12px 30px;
+   background-color: rgb(0, 0, 0);
+   color:white;
+   font-size: 18px;
+ border-radius: 10px ;
+ font-weight: 550;
+ width: 140px;
+}
+.js-cart1{
+   border: none;
+   padding: 10px 20px;
+   background-color: rgb(230, 230, 230);
+   color: black;
+   font-size: 18px;
+ border-radius: 10px ;
+ font-weight: 550;
+}
+.mouse3{
+    border: none;
+   padding: 10px 20px;
+   background-color: rgb(255, 0, 0);
+   color: rgb(255, 255, 255);
+   font-size: 18px;
+ border-radius: 10px ;
+ font-weight: 550;
+}
+   </style>
+</head>
+<body>
+    <button class="cart1 js-button">Gaming</button>
+<script>
+    let a=document.querySelector(".js-button");
+let click1=()=>{
+  a.classList.toggle("js-cart1") 
+}
+let click2=()=>{
+    a.classList.toggle("mouse3")
+}
+//event object has all the properites of the event that has triggered
+a.addEventListener("click",click1)
+a.addEventListener("mouseenter",click2)// to remove event Listener 
+// a.removeEventListener("click",click1)
+// you need a name  that contains that fucntion to remove any event 
+//onmouseenter="click1()"
+//on will not work in javascript event listener because it is only for html
+//for more details check notes ch 8
+/*
+Mouse Events:
+click: When the user clicks on an element.
+
+dblclick: When the user double-clicks on an element.
+
+mouseenter: When the mouse pointer enters an element.
+
+mouseleave: When the mouse pointer leaves an element.
+
+mousemove: When the mouse pointer moves within an element.
+
+mousedown: When the mouse button is pressed down on an element.
+
+mouseup: When the mouse button is released over an element.
+
+Keyboard Events:
+keydown: When a key is pressed down.
+
+keyup: When a key is released.
+
+keypress: When a key is pressed down and held.
+
+Form Events:
+submit: When a form is submitted.
+
+change: When the value of an element changes (useful for form inputs).
+
+input: When the value of an <input>, <textarea>, or <select> element is changed.
+
+focus: When an element gains focus.
+
+blur: When an element loses focus.
+
+Document/Window Events:
+load: When the whole page has loaded.
+
+resize: When the window is resized.
+
+scroll: When the user scrolls in the document or an element.
+
+unload: When the document or a child resource is being unloaded.
+
+Drag & Drop Events:
+dragstart: When the user starts dragging an element.
+
+drag: When an element is being dragged.
+
+dragenter: When a dragged element enters a drop target.
+
+dragover: When an element is being dragged over a drop target.
+
+dragleave: When a dragged element leaves a drop target.
+
+drop: When a dragged element is dropped on a drop target.
+
+dragend: When the dragging operation is finished.
+
+Touch Events (Mobile):
+touchstart: When a touch point is placed on the touch surface.
+
+touchmove: When a touch point is moved along the touch surface.
+
+touchend: When a touch point is removed from the touch surface.
+
+touchcancel: When a touch point has been disrupted.*/
+</script>
+</body>
+</html>

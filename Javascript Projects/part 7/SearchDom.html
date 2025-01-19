@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <style>
+        *{
+ box-sizing: border-box;
+}
+.cart{
+    border: none;
+    padding: 10px 50px;
+    background-color: rgb(255,216,20);
+    color: black;
+    font-size: 18px;
+  border-radius: 50px ;
+}
+.cart1{
+    border: none;
+    padding: 12px 30px;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    font-size: 18px;
+  border-radius: 10px ;
+  font-weight: 550;
+  width: 90%;
+
+}
+.cart2{
+    border: none;
+    padding: 10px 20px;
+    background-color: rgb(230, 230, 230);
+    color: black;
+    font-size: 18px;
+  border-radius: 10px ;
+  font-weight: 550;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    gap: 15px;
+}
+#Hello{
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    letter-spacing: 2px;
+    -webkit-text-stroke:1px  rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 800;
+}
+.g{
+    color: rgb(230, 230, 230); 
+    background-color: black;
+}
+    </style>
+</head>
+<body>
+    <a href="#">Boy</a>
+    <input type="text" name="name">
+    <div class="buttons">
+        <button class="cart cart3">Add to cart</button>
+        <button id="Hello" class="cart">Add to cart</button>
+        <button class="cart1">Request now</button>
+        <button class="cart2" onclick="clicka()">Schedule for later</button>
+    </div>
+    <script>
+let cart =document.getElementsByClassName("cart")
+cart[0].style.backgroundColor="green"
+cart[0].style.color="white"
+console.log(cart[0].innerText)
+let id = document.getElementById("Hello");
+id.style.backgroundColor="Black"
+id.style.color="transparent"
+//queryelectorall give all the element that has that query 
+//query selector give us that first query which is efficient way [0]
+let tag= document.getElementsByTagName("a")//element name
+console.log(tag[0].innerText)
+let name=document.getElementsByName("name")
+console.log(name)
+let further = document.getElementsByClassName("buttons")[0].getElementsByClassName("cart2")[0].innerText
+console.log(further)
+let clicka=()=>{
+    let a = document.getElementsByClassName("cart2")
+    console.log(a[0])
+    let b=a[0].classList.contains("g")
+    
+if (!b) {
+    a[0].classList.add("g")
+}
+else if(b){
+    a[0].classList.remove("g")
+}
+}
+    </script>
+</body>
+</html>

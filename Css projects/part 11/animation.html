@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations</title>
+    <style>
+        .container {
+            background-color: rgb(9, 106, 106);
+            height: 80vh;
+            width: 30vw;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: harryKaAnimation 5s ease-in-out 1s infinite;
+        }
+
+        .box {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* animation-name: harryKaAnimation; 
+            animation-duration: 1s;
+          
+            animation-timing-function: cubic-bezier(0, 0, 0, 0.96);
+            animation-delay: 1s;
+            animation-direction: reverse;
+            animation-play-state: paused; */
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+         animation-timing-function: linear;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 500px;
+            animation: harryKaAnimation 1s  1s infinite,
+                harry2 1s ease 1s infinite;
+                animation-timing-function: linear;
+        }
+
+
+        h1 {
+            z-index: 2;
+            width: 80PX;
+            background-color: rgb(1, 136, 255);
+            animation: harryKaAnimation 5s ease-in-out 1s infinite;
+
+        }
+
+        @keyframes harryKaAnimation {
+            from {}
+
+            to {
+                transform: translatex(500px);
+            }
+        }
+
+        @keyframes harry2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="/Css projects/part 6/past.jpg" alt="me">
+        </div>
+    </div>
+    <h1>
+        hello
+    </h1>
+</body>
+
+</html>

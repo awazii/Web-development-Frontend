@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+margin-bottom: 100px;
+    align-items: center;
+    padding-top: 30px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 30px;
+
+
+}
+
+.lii::after {
+    content: url(down-arrow-5-svgrepo-com.svg);
+}
+
+header nav ul li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li a img {
+    width: 25px;
+
+}
+
+.logo a img {
+    width: 170px;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+     gap: 24px; 
+    justify-items: center;
+    align-items: center;
+}
+.items a{
+    background-color: #5cb85c;;
+border-radius: 8px;
+padding: 8px;
+outline: none;
+border: none;
+color: rgb(255, 255, 255);
+text-decoration: none;
+justify-content: center;
+align-items: center;
+font-weight: 600;
+display: flex;
+
+
+}
+.items h3  {
+   text-align: center;
+   line-height: 2px;
+   padding: 20px;
+}
+.items h6  {
+   text-align: center;
+   line-height: 2px;
+   padding: 20px;
+   font-weight: 400;
+}
+.items{
+width: 280px;
+height: 180px;
+    background-color: #f4f4f4be;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.items div {
+    margin-top: 10px;      
+}
+main{
+    display: flex;
+    justify-content: center;
+}
+.lun h6{
+    visibility: hidden;
+}
+@media only screen and (max-width: 1169px){
+    header {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+margin-bottom: 100px;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.logo a img {
+    width: 150px;
+}
+
+
+}
+@media only screen and (max-width: 980px){
+    .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+     gap: 24px; 
+    justify-items: center;
+    align-items: center;
+
+}
+header {
+    display: flex;
+    flex-direction: column;
+   justify-content: flex-start;
+    gap: 50px;
+     padding-top: 30px;
+}
+
+.logo a img {
+    width: 150px;
+}
+
+
+}
+@media only screen and (max-width: 780px){
+    .container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+     gap: 24px; 
+    justify-items: center;
+    align-items: center;
+}
+main{
+    display: block;
+}
+header nav ul {
+    display: flex;
+    gap: 30px;
+}
+}
+@media only screen and (max-width: 653px){
+    header nav ul li {
+    list-style: none;
+    display: flex;
+   
+    font-size: 15px;
+
+}
+header nav ul {
+    display: flex;
+    flex-direction: column;
+align-items: flex-start;
+    gap: 25 px;
+}
+header{
+    margin-bottom: 10px;
+    gap: 30px;
+}
+
+
+}

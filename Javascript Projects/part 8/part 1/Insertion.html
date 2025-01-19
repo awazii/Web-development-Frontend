@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <h2>hello</h2>
+    <script>
+let a = document.getElementsByClassName("container")[0]
+a.innerHTML="<h1>Hola!!!<h1/>"
+    a.firstElementChild.className="Awazii"//to add class 
+   let p=document.createElement("p")//to create element
+   p.innerHTML="jello boys"// to insert it inner html
+   console.log(p.innerHTML)
+   //append only will be the direct child of body 
+   a.appendChild(p)// to put inside the html but it will be in the last element
+   a.prepend(p)// to put inside the html but it will be in the First element and you don't duplicate it
+   a.before(p)// it will be inserted before that element
+   a.after(p)// it will be inserted after that element
+let g=document.getElementsByTagName("h2")[0]
+g.replaceWith(a)// to replace that element
+    </script>
+</body>
+</html>

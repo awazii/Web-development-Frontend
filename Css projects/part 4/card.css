@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ body{
+    background-color: rgb(244, 243, 242);
+    font-family:prompt;
+ }
+ main{
+  display: flex;
+  justify-content: center;
+  gap: 20px;  
+
+ }
+ .box1
+ {
+    background-color: rgb(255, 255, 255);
+    width: 344px;
+    border-radius: 20px ;
+    border: px solid rgba(226, 224, 224, 0.85);
+    box-shadow: 3px 4px 20px 0px;
+    color: #97928bb0;
+
+ }
+ .box
+ {
+    background-color: rgb(255, 255, 255);
+    width: 380px;
+    border-radius: 20px ;
+    border: 1px solid rgba(226, 224, 224, 0.85);
+    box-shadow: 3px 4px 20px 0px;
+    color: #97928bb0;
+ }
+
+  .box .img img{
+   padding: 7px;
+   width: 380px;
+   border-radius: 20px ;
+}
+
+ .box1 .img img{
+   padding: 7px;
+   width: 344px;
+   height: 380px;
+   border-radius: 20px ;
+}
+
+
+ .nav ul{
+    display: flex;
+    list-style-type: none;
+ }
+.nav ul li {
+    margin-left: 10px;
+    border: 1px solid rgba(226, 224, 224, 0.85);
+    border-radius: 10px ;
+    padding: 3px;
+    text-align: center;
+    color: rgba(150, 152, 153, 0.938);
+}
+.headings h2 {
+font-weight: 550;
+margin: 10px;
+color: rgba(75, 79, 79, 0.789);
+}
+.para p{
+    font-weight: 400;
+margin: 10px;
+text-align: justify;
+padding: 4px;
+color: rgba(150, 152, 153, 0.938);
+font-size: 20px;
+}
+.para1{
+font-weight: 400;
+line-height: 30px;
+text-align: justify;
+color: rgba(150, 152, 153, 0.938);
+font-size: 16px;
+}
+summary{
+    list-style: none;
+    width: 100px;
+    text-align: center;
+    background-color: rgba(17, 182, 248, 0.165);
+    color: rgb(25, 162, 242);
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: auto;
+    
+}
+summary:hover{
+ 
+    color: rgba(150, 152, 153, 0.938);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(226, 224, 224, 0.85);
+}
+p{
+    
+color: rgba(150, 152, 153, 0.938);
+text-align: center;
+padding: 10px;
+}
+.social h2 {
+font-weight: 500;
+margin: 10px;
+color: rgba(75, 79, 79, 0.789);
+font-size: 20px;
+}
+.social img{
+width: 50px;
+margin-left: 10px;
+
+}
+
+

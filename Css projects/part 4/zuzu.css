@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+
+.im{
+    width:800px;
+}
+
+
+header {
+    background-color: rgb(23, 22, 22);
+    width: auto;
+
+    padding: 20px;
+}
+.zayn {
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+    font-style: normal;
+    margin: 0rem 0rem 1rem 0rem;
+    font-size: 1.8rem;
+    font-family: "Prompt", sans-serif;
+    font-weight: 700;
+    margin: 20px 0px;
+}
+
+
+.zayn,
+li a {
+    color: rgb(255, 255, 255);
+}
+
+.navbar ol {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.navbar ol li a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar a:hover {
+    background-color: rgba(182, 188, 194, 0.297);
+}
+
+.navbar a:active {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.end {
+    color: rgb(255, 255, 255);
+    background-color: rgb(23, 22, 22);
+    width: auto;
+   
+    padding: 60px;
+}
+
+#Extra div a img {
+ object-fit: contain;
+ width: 50px;
+ filter: invert(1);
+    margin-right: 3px;
+    margin-bottom: 4px;
+}
+
+button a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+
+}
+
+#button1 {
+    background-color: rgb(1, 1, 1);
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 100px;
+    padding: 8px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+.bbb{
+    display: flex;
+    justify-content: center;
+}
+button :active {
+    background-color: #ffffff;
+    color: black;
+}
+
+.navbar ol li a {
+    margin-right: 1.1rem;
+
+}
+
+#Extra {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+#Extra h2{
+    text-align: left;
+    font-weight: 700;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+    font-style: normal;
+    margin: 0rem 0rem 1rem 0rem;
+    font-size: 1.8rem;
+    font-family: "Prompt", sans-serif;
+    font-weight: 700;
+    margin: 20px 0px
+}
+#Extra div {
+    margin-right: 70px;
+}
+#Extra .p2{
+    font-size: 20px;
+    max-width: 850px;
+}
+#Extra .p{
+    font-size: 22px;
+    max-width: 500px;
+}
+
+section .Introduction {
+    background-image: url(https://zaynsportfolio.netlify.app/static/media/gradient-bg.2bda5c7b9f5f91b32575.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    padding-top: 130px;
+   border-radius: 0px 0px 10px 0px;
+ 
+    max-height: auto;
+}
+
+section .Introduction h2 {
+    padding: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+}
+
+section .Introduction p {
+    font-size: 1.15rem;
+    text-align: center;
+    width: 45vw;
+    margin: auto;
+    font-weight: 400;
+    color: rgba(78, 73, 73, 0.902);
+
+
+}
+
+.About-me div.tw h2 {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 3rem;
+}
+
+.paragraph {
+    text-align: center;
+    font-size: .9rem;
+    color: rgb(73, 67, 67);
+}
+.ma {
+    text-align: left;
+    font-size: 15px;
+    margin-top: 20px; 
+
+}
+
+.ma p {
+    color: rgb(73, 67, 67);
+    width:20vw;
+    font-size: larger;
+    text-align: left;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+
+}
+
+.mb {
+    text-align: left;
+    margin-top: 25px;
+}
+#buttons{
+    display: flex;
+    flex-wrap: wrap; 
+    width: 22vw;
+    gap: 1rem;
+}
+.box {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: justify;
+    
+} 
+.ma button{
+    background-color: black;
+    border-radius: 8px;
+    width: 160px;
+    height: 2rem;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+}
+.box:hover {
+    background-color: rgb(105, 113, 118);
+
+}
+
+button:hover {
+    background-color: rgb(105, 113, 118);
+}
+
+#button1:hover {
+    background-color: rgb(105, 113, 118);
+}
+
+.buttond {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 5px px;
+    padding-top: 5px;
+    border-radius: 10px;
+   width: 30px;
+   margin:  0px 0px 0px auto;
+  
+}
+
+.my-work h2 {
+    text-align: center;
+    width: 70vw;
+    margin: 30px auto;
+}
+
+.my-work p {
+    text-align: justify;
+    max-width: 600px; 
+    margin: 30px auto;
+}
+
+.but {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width: 11rem;
+    height: 2.5rem;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+
+
+}
+
+.but img {
+    width: 3vw;
+    height: 4vh;
+    padding-left: 6px;
+    padding-right: 6px;
+
+
+}
+#im{
+display: flex;
+justify-content: center;
+
+}
+.im {
+    box-shadow: 5px 6px 16px;
+    color: #474c5061;
+    border-radius: 15px;
+}
+
+.jj{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+ .live a button {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width:600px;
+    padding: 10px;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+.live1 a button {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width:300px;
+    padding: 10px;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+    font-weight: 500
+}
+.div2 h2 {
+    font-size: 50px;
+    max-width: 500px;
+    line-height: 50px;
+    font-weight: 550;
+    margin: 30px;
+}
+
+input {
+    margin-top: 10px;
+    padding: 15px;
+    width: 450px;
+    border: 2px solid rgba(214, 213, 213, 0.51);
+    border-radius: 8px;
+    overflow: hidden;
+    outline: none;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+textarea {
+    margin-top: 10px;
+    padding: 15px;
+    width: 450px;
+    border-radius: 8px; 
+   font-size: 20px;
+  border: 2px solid rgba(214, 213, 213, 0.51);
+    overflow: hidden;
+    outline: none;
+
+}
+.submit {
+    margin-top: 10px;
+    padding: 8px;
+    width: 450px;
+    color: #ffffff;
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 30px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.Aa{
+    position: relative;
+}
+.A{
+    position: absolute;
+}
+
+
+.submit:hover {
+    background-color: rgb(105, 113, 118);
+}
+.live button:hover{
+    background-color: rgb(105, 113, 118);
+}
+.live1 button:hover{
+    background-color: rgb(105, 113, 118);
+}
+.imgg {
+    background-color: rgba(140, 149, 149, 0.243);
+    border-radius: 30px;
+    width: 25px;
+    height: 30px;
+}
+h4 {
+    font-weight: 600;
+   max-width: 250px;
+    position: relative;
+    left: 40px;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+#flexbox{
+    display: flex;
+    justify-content: center;
+    gap: 0px 40px;
+}
+.contact1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    gap: 30px;
+}
+.input-container {
+    position: relative;
+  }
+  
+.input-container1 {
+    position: relative;
+  }
+  
+.input-container2 {
+    position: relative;
+  }
+  
+ .A {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    padding: 0 5px; 
+    background-color: #ffffff;
+    transition: all .2s; 
+  }
+  .B {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    background-color: #ffffff;
+    padding: 0 5px; 
+    transition: all .2s; 
+  }
+  .C {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    background-color: #ffffff;
+    padding: 0 5px; 
+    transition: all .2s; 
+  }
+  /* .D{
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    width: 200px;
+  } */
+.Aa:focus +
+.A,.Aa:not(:placeholder-shown) + .A {
+    transform: translateY(-15px) scale(.8);
+
+}
+.Bb:focus +
+.B,.Bb:not(:placeholder-shown) + .B {
+    transform: translateY(-15px) scale(.8);
+
+}
+textarea:focus +
+.C,textarea:not(:placeholder-shown) +.C {
+    transform: translateY(-15px) scale(.8);
+}
+@media only screen and (max-width: 768px) {
+    #flexbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px 40px;
+    }
+    #Extra div p {
+        font-size: 0.7rem;
+    }
+    .ma p {
+        color: rgb(73, 67, 67);
+        width:60vw;
+        font-size: larger;
+        text-align: left;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+    
+    }
+    body{
+        width: 100%;
+    }
+    .im{
+        max-width: 400px;
+    }
+    .box {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: justify;
+    
+} 
+.ma button,
+button {
+    background-color: black;
+    border-radius: 8px;
+    width: 160px;
+    height: 2rem;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+}
+
+#buttons{
+    display: flex;
+    flex-wrap: wrap; 
+    width: 60vw;
+    gap: 1rem;
+}
+.box {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: justify;  
+}
+.my-work p {
+    text-align: justify;
+    max-width: 450px; 
+    margin: 30px auto;
+}
+.live a button {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width:400px;
+    padding: 10px;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+.contact1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: auto;
+}
+#Extra {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 100px;
+}
+.submit {
+    margin-top: 10px;
+    padding: 8px;
+    width: 300px;
+    color: #ffffff;
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 30px;
+
+}
+#button1 {
+    background-color: rgb(1, 1, 1);
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 100px;
+    padding: 4px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+}
+
+@media only screen and (max-width: 480px) {
+
+    .im {
+        max-width: 80vw;
+    }
+    .my-work p {
+        text-align: justify;
+        width: 50vw; /* Adjusted to fit within the screen */
+        margin: 30px auto;
+    }
+    #flexbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px 40px;
+    }
+    .ma p {
+        color: rgb(73, 67, 67);
+        width:80vw;
+        font-size: larger;
+        text-align: left;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.199);
+    
+    }
+    #buttons{
+        display: flex;
+        flex-wrap: wrap; 
+        width: 80vw;
+        gap: 1rem;
+    }
+
+.About-me div.tw h2 {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 3rem;
+}
+
+.paragraph {
+    text-align: center;
+    font-size: .9rem;
+    color: rgb(73, 67, 67);
+   
+}
+
+#Extra div p {
+    font-size: 0.3rem;
+}
+button:hover {
+    background-color: rgb(105, 113, 118);
+}
+.live a button {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width:300px;
+    padding: 10px;
+    margin-top: 17px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+.contact1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: auto;
+}
+#Extra {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 100px;
+}
+.div2 h2 {
+    font-size: 40px;
+    max-width: 500px;
+    line-height: 50px;
+    font-weight: 550;
+    margin: 30px;
+}
+input {
+    margin-top: 10px;
+    padding: 15px;
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+textarea {
+    margin-top: 10px;
+    padding: 15px;
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    outline: none;
+
+
+}
+.submit {
+    margin-top: 10px;
+    padding: 8px;
+    width: 300px;
+    color: #ffffff;
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 30px;
+
+}
+}

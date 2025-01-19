@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Card Builder</title>
+    <link rel="stylesheet" href="dynamic.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACwWOixJVrKLFindK92kYMgTcQbw"
+                alt="img">
+            <h4 class="duration">31:00</h4>
+        </div>
+        <div class="flex">
+            <h2 class="heading">Introduction to Backend | Sigma Web Dev video #2</h2>
+            <div class="details">
+                <h4 class="channel">
+                    CodeWithHarry
+                </h4>
+                <h3 class="dot">.</h3>
+                <h4 class="views">0 views</h4>
+                <h3 class="dot">.</h3>
+                <h4 class="months">2 months ago</h4>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <div class="Thumbnail">
+            <h3>
+                To Change Thumbnail
+            </h3>
+            <input type="file" accept="image/*">
+
+        </div>
+        <div class="Durations">
+            <h3>
+                To Change Duration
+            </h3>
+            <input class="H" type="number" placeholder="Enter Hours">
+            <input class="M" type="number" placeholder="Enter Minutes">
+            <input class="S" type="number" placeholder="Enter Seconds">
+            <button onclick="calculations()">Submit</button>
+        </div>
+        <div class="title">
+            <h3>
+                To Change Title
+            </h3>
+            <input type="text">
+        </div>
+        <div class="Channelname">
+            <h3>
+                To Change Channel Name
+            </h3>
+            <input class="channel1" type="text">
+        </div>
+        <div class="view">
+            <h3>
+                To Change Views
+            </h3>
+            <input class="views3" type="number">
+        </div>
+        <div class="month2">
+            <h3>
+                To Change Months
+            </h3>
+            <input class="month" type="number">
+        </div>
+        <button onclick="Copy()">Make its copy</button>
+        <button onclick="delete1()">Delete all</button>
+    </div>
+</body>
+<script src="dynamic.js"></script>
+</html>

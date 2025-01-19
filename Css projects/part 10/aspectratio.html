@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 21px;
+}
+.lora{
+    position: relative;
+    display: flex;
+justify-content: center;
+    align-items: center;
+
+width: 30%;
+aspect-ratio: 4/3;
+border: 2px solid black;
+margin:10px auto;
+}
+.lora1{
+    position: relative;
+width: 30%;
+aspect-ratio: 16/9;
+border: 2px solid black;
+}
+    h1{
+   position: absolute;
+
+    }
+    .lora video{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    }
+    .lora1 video{
+        position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+    p{
+        clear: both; 
+       width: 90%;
+         text-align: justify;
+         font-size: 1.5rem;
+    }
+    .a{
+        display: flex;
+        justify-content: center;
+    }
+    a{
+        display: inline-block;
+  font-size: 1em;
+  background: #ff0000;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: 0.2s;
+  border-radius: 15px;
+ 
+    }
+    .awi p{
+        max-width: 700px;
+        line-height: 1.5em;
+    }
+    .Lu{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    @media screen and (max-width:500px) {
+        .lora,.lora1{
+width: 100%;
+
+}
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="lora">
+ <h1>hello</h1> 
+ <video loop autoplay muted src="/Css projects/part 8/3326928-hd_1920_1080_24fps.mp4"></video>
+        </div>
+        <div class="Lu">
+            <div class="lora1">
+                <video loop autoplay muted src="/Css projects/part 8/3326928-hd_1920_1080_24fps.mp4"></video>
+                 </div>
+        </div>
+  
+        <div >
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus velit molestiae voluptatibus doloremque sint quae minima? Aliquid debitis magnam non blanditiis. Tenetur, ut? Fugit voluptas voluptatibus quia praesentium consequatur sapiente impedit dolore corporis distinctio eum a amet placeat architecto, animi neque maxime fuga itaque ex ipsa? Asperiores quam delectus a, error, assumenda corrupti ea soluta consectetur exercitationem dolore ipsa, iure esse dolores omnis unde porro reiciendis ipsam necessitatibus. Excepturi, optio? Recusandae dicta animi porro hic quod.  </p>
+            
+        </div>
+        <div class="a">
+            <a href="#">hello how are you aaaaaaaaaaaaa</a>
+        </div>
+  <div class="awi">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, voluptas iusto fuga nam cumque, laudantium nostrum eveniet, nulla quas tenetur culpa reprehenderit dicta non modi voluptatibus tempore natus incidunt explicabo?</p>
+  </div>
+</body>
+</html>

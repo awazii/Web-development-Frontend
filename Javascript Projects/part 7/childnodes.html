@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 45px;
+            width: 56px;
+            border: 2px solid black;
+            margin: 5px;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<!-- document.head.title is always a string -->
+
+<body>
+    <!-- so text nodes can't have any childrens and also they  can be  the smallest form of text if there is nothing in it a single space will count they are used to separate each element of html with each other -->
+    <div class="container">
+        <!-- this is me  -->
+        <div class="box">Box1</div>
+        <div class="box">Box2</div>
+        <div class="box">Box3</div>
+        <div class="box">Box4</div>
+        <div class="box">Box5</div>
+    </div>
+
+    <table>
+        <caption>Hola!!!</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Harry</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Awazii</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>Zuzu</td>
+                <td>400</td>
+            </tr>
+
+        </tbody>
+        <tbody>
+            <tr>
+                <td>Harry</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Awazii</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>Zuzu</td>
+                <td>400</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Habib</td>
+                <td>300</td>
+            </tr>
+           
+            
+        </tfoot>
+    </table>
+
+    <script>
+        console.log("Hello world")
+
+        document.body.firstElementChild
+        document.body.firstElementChild.childNodes
+        document.body.firstElementChild.children
+        console.log(document.body.hasChildNodes())
+        let av = Array.from(document.body.firstElementChild.children)
+        console.log(av)
+        let a = 5;
+        let b = Array.from(Array(a + 1).keys())
+        console.log(b)
+        let c=document.body.firstElementChild.nextElementSibling;
+        console.log(c.rows)//gives you all tr's in the table
+        console.log(c.caption)//gives you caption in table
+        console.log(c.tHead)// gives you table head
+        console.log(c.tBody)// gives you table Body
+        console.log(c.tFoot)// gives you table Foot
+        console.log(c.tBodies[0].rows)// gives you table first body rows and other will gives you second row||
+        console.log(c.tBodies[1].rows)//this one||
+        console.log(c.tBodies[1].rows[0].cells[0].innerText)//gives you td of of certain tr and further you can select certain td and further its data
+        console.log(c.tBodies[1].rows[2].sectionRowIndex)//it will gives you certain body certain rows index number from start 0
+        console.log(c.tBodies[1].rows[0].rowIndex)//it will gives you certain body certain rows index number from its certain body not from start 0
+        console.log(c.tBodies[1].rows[0].cells[1].cellIndex)//its give you certain body certain rows certain cells index within its tr.
+    </script>
+</body>
+
+</html>

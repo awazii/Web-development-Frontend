@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="Timer.Css">
+</head>
+
+<body>
+    <div class="Timer-container">
+        <div class="Timer">
+            <div class="Timer-col">
+                <p class="Timer-hours Timer-timer">
+                </p>
+                <p class="Timer-label">
+                    Hours
+                </p>
+                <select class="Hours">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+                <select class="Hours">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+            <div class="Timer-col">
+                <p class="Timer-minutes Timer-timer">
+                </p>
+                <p class="Timer-label">
+                    Minutes
+                </p>
+                <select class="Minutes">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <select class="Minutes">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+            <div class="Timer-col">
+                <p class="Timer-seconds Timer-timer">
+                </p>
+                <p class="Timer-label">
+                    Seconds
+                </p>
+                <select class="Seconds">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <select class="Seconds">
+                    <option>Start</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+        </div>
+        <div class="options">
+            <div>
+                <button class="str">Start</button>
+                <button onclick="pause()">Pause</button>
+            </div>
+            <div>
+                <button onclick="play()">Play</button>
+                <button onclick="resett()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="Timer.js"></script>
+
+</body>
+
+</html>

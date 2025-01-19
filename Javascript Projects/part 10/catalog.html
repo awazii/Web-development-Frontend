@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .product-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Catalog</h1>
+        <input type="text" id="search" placeholder="Search products..." />
+        <select id="category-filter">
+            <option value="">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Appliances">Appliances</option>
+        </select>
+    </header>
+    
+    <section id="product-list">
+    </section>
+ 
+    <script>
+        const products = [
+            { id: 1, name: 'Laptop', price: 1200, category: 'Electronics', image: 'https://via.placeholder.com/300x200?text=Laptop', description: 'High performance laptop' },
+            { id: 2, name: 'Shirt', price: 30, category: 'Clothing', image: 'https://via.placeholder.com/300x200?text=Shirt', description: 'Comfortable cotton shirt' },
+            { id: 3, name: 'Coffee Maker', price: 60, category: 'Appliances', image: 'https://via.placeholder.com/300x200?text=Coffee+Maker', description: 'Brew fresh coffee' },
+            { id: 4, name: 'Headphones', price: 50, category: 'Electronics', image: 'https://via.placeholder.com/300x200?text=Headphones', description: 'Noise-canceling headphones' }
+        ];
+        function renderProducts(filteredProducts) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p class="price">$${product.price}</p>
+                `;
+                
+                productList.appendChild(productCard);
+            });
+        }
+        document.getElementById('search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+        });
+        document.getElementById('category-filter').addEventListener('change', (e) => {
+            const category = e.target.value;
+            const filteredProducts = category 
+                ? products.filter(product => product.category === category)
+                : products;
+            renderProducts(filteredProducts);
+        });
+        renderProducts(products);
+    </script>
+</body>
+</html>

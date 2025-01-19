@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>sss
+    <!--  -->
+    <div class="container">
+I AM A BOX           a
+<h1>HOla</h1>
+    </div>
+
+    <script>
+        console.dir(document.getElementsByTagName("div"))//console.dir shows Html AS a object with its properties
+        console.log(document.body.firstElementChild.tagName)//tag name is only for elements
+        console.log(document.body.firstChild.nextSibling.nodeName)//this is for every nodes
+        console.log(document.getElementsByClassName("container")[0].innerHTML)// FOR CONTENT INSIDE THAT ELEMENT as a string
+       console.log(document.querySelector(".container").outerHTML)//it is same as innerHTML but in this parent is also included as a string
+       // inner HTML is only valid for element tags for other nodes we can use .data or .node Value
+       console.log(document.body.firstChild.data)
+       console.log(document.body.firstChild.nodeValue)
+       console.log(document.body.firstElementChild.innerText)
+       console.log(document.body.firstElementChild.textContent)//text content also gives you white spaces but innerText only gives you text
+       console.log(document.getElementsByClassName("container")[0].firstElementChild.hidden=true)// to hide element
+       console.log(document.getElementsByClassName("container")[0].firstElementChild.hidden=false)//to unhide element
+    </script>
+</body>
+</html>

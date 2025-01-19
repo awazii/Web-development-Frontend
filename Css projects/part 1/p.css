@@ -1,0 +1,157 @@
+*{
+    box-sizing: border-box;
+    margin:  0;
+    padding:0;
+
+}
+body{
+    background-color: rgb(241, 240, 239);
+}
+th{
+padding: 7px 0px;
+background-color: #333;
+color: #fcfbfb;
+font-size: large;
+
+}
+ tbody td{
+    border-radius:10px 0px 10px 0px ; 
+}
+ tbody tr{
+    font-size: large;
+}
+tr:nth-of-type(odd){
+background-color: rgba(43, 45, 42, 0.113) ;
+} tr:nth-of-type(even){
+    background-color: rgba(142, 142, 138, 0.722) ;
+    }
+    /* tbody tr:last-of-type{
+        border-bottom : 1px solid rgb(120, 114, 114)
+        } */
+            tfoot tr:first-of-type{
+                border-bottom : 1px solid rgb(120, 114, 114)
+                }
+                /* tfoot tr:last-of-type{
+                    background-color: #333;  
+                } */
+                tfoot td:first-child{
+                    padding: 10px 10px 5px 430px;
+                    color: #ffffff;
+                    background-color: #333;
+                    font-size: x-large;
+                }
+                tfoot td:last-child{
+                    padding: 10px 10px 5px 195px;
+                    color: #ffffff;
+                    background-color: #333;
+                    font-size: x-large;
+                }
+                
+        
+.table td
+{
+padding: 5px 100px;  
+}
+#table tbody td{
+    padding: 5px 200px; 
+}
+
+#table{
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px 0px 15px 8px;
+   box-shadow: 1px 5px 30px rgb(9, 9, 9);
+margin: 30px 450px;
+padding: 2px;
+}
+.table{
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px 0px 15px 8px;
+ margin: 30px 450px;
+padding: 2px;
+box-shadow: 1px 5px 30px rgb(9, 9, 9);
+    
+}
+:target{
+border: 2px solid black;
+}
+body {
+font-family: Arial, sans-serif;
+}
+
+ul {
+list-style-type: none; /* To hide list icons */
+display: flex;    /* to make it in one line*/
+background-color: #333;
+font-size: large;
+}
+
+
+a {
+display: block;
+padding: 14px 20px;
+margin: 3px 10px;
+color: white;
+text-decoration: none; /* to make decoration end */
+}
+
+a:hover {
+background-color: #575757;
+}
+
+#section1 {
+padding:  20px 20px 20px 20px;
+margin: 20px 0px 0px 0px;
+
+}
+#section {
+    padding: 20px;
+    margin: 100px 0px 80px 0px;  
+    
+    }
+
+footer{
+    padding:  10px 0px 0px 0px;
+    background-color: #333;
+    box-shadow: -1px -5px 25px rgb(86, 84, 84);
+    
+}
+footer p
+{
+    margin: 0px 0px 0px 0px;
+    padding:  0px 0px 0px 300px;
+    width: 800px;
+    text-align: center;
+    height: auto;
+    color: white;
+
+    font-size: large;
+}
+h1.one{
+    margin: 10px 30px 10px 550px ;
+     padding: 10px 80px 10px 80px; 
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    font-weight:500px ;
+
+    border-radius: 10px ;
+    background-color: #bbb9b9;
+    color: #010101;
+  
+}
+ .one1{
+    margin: 10px 30px 10px 550px ;
+     padding: 10px 50px 10px 50px; 
+    border-radius: 15px ; 
+    width: 600px;
+    text-align: center;
+    font-weight:500px ;
+    height: 50px;
+    background-color: #bbb9b9;
+    color: #010101;
+}
+
+
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex-shrink</title>
+    <style>
+        .container {
+
+            display: flex;
+            height: 80vh;
+            width: 90vw;
+            margin: 100px auto;
+            align-items: center;
+            justify-content: center;
+          
+            background: url(https://r4.wallpaperflare.com/wallpaper/611/838/413/spiderman-hd-4k-superheroes-wallpaper-742d39da299f54848a44738e4edc3299.jpg) no-repeat ;
+            background-size: cover;
+            background-position: center center;
+            border-radius: 30px;
+        }
+
+        .item {
+            height: 100%;
+        width:100vw;
+            border: 2px solid rgb(220, 219, 219);
+            border-radius: 30px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 5px -4px 20px 0px;
+            color: rgba(95, 99, 101, 0.527);
+            transition:.8s ease;
+            
+        }
+        .items {
+            height: 100%;
+        width: 50%;
+            border: 2px solid rgb(220, 219, 219);
+            border-radius: 30px;
+            display: flex;
+            align-items: flex-start;
+            box-shadow: 5px -4px 20px 0px;
+            color: rgba(95, 99, 101, 0.527);
+            transition:.8s ease;
+            
+        }
+
+        .item1 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/589/997/306/god-god-of-war-kratos-omega-wallpaper-c9d0783d513a7dbbb6b7f80f20f1960d.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .item2 {
+            background: url(https://r4.wallpaperflare.com/wallpaper/708/846/337/anime-demon-slayer-kimetsu-no-yaiba-tanjirou-kamado-hd-wallpaper-19d0389db1ba2deb26a7684f2051864d.jpg) no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .item:active {
+flex-shrink: 4;
+transform: scale(0.5);
+            
+        }
+        .items:hover {
+transform: scale(0.5);
+            
+        }
+        img {
+            width: 70px;
+            background-color: rgba(120, 122, 124, 0.114);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin-left: 14.5px;
+        }
+        @media only screen and (max-width: 480px){
+
+            .item:active {
+                transform: scale(0.5);
+            flex-shrink: 3;
+        }
+        .item {
+                justify-content: center;
+            }
+            .container {
+
+display: flex;
+height: 50vh;
+width: 90vw;
+margin: 100px auto;
+align-items: center;
+gap: 40px 8px;
+}
+img {
+            width: 25px;
+            background-color: rgba(120, 122, 124, 0.114);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 1vw;
+        }
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="item item1">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+            </div>
+            <div class="item item2">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="items item1">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+            </div>
+            <div class=" items item2">
+                <div>
+                    <img src="/Css projects/part 5/svgwaves_io_svg.svg" alt="luffy">
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: linear-gradient(45deg, #f8d49d 0%, #ffdb58 100%);
+
+
+
+        }
+        .bulb{
+            background-color: black;
+            width: 200px;
+            height: 200px;
+            color:white
+        }
+        .bulb1{
+            background-color: rgb(255, 234, 0);
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bulb"></div>
+    <button onclick="alertt()">Click me</button>
+    <button onclick="alertt()">Click me</button>
+    <button onclick="alertt()">Click me</button>
+
+    <a target="_blank" href="https://www.youtube.com/watch?v=nU4YyI9SN9Q&list=RDMMHnLtNrvfZTU&index=4&ab_channel=JayGuldekar">youtube</a>
+    <script>
+        let a=0;
+        let ab=["apple ","Mango ","Banana "]
+       let alertt=()=>{
+        document.querySelector(".bulb").classList.toggle("bulb1")
+       }
+       let content=()=>{
+        let b= Math.floor(Math.random()*ab.length)
+       let a =document.querySelector(".bulb")
+       a.innerHTML=a.innerHTML+ab[b]
+       }
+       setInterval(content,5000)
+    </script>
+</body>
+</html>

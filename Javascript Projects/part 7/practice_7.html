@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<body>
+    <button class="button1">9a</button>
+    <button class="button2">9b</button>
+    <h2>You chose: <span class="Choose"></span></h2>
+    <div>
+        <button class="button3" onclick="func1('Heads')">Heads</button>
+        <button class="button4" onclick="func1('Tails')">Tails</button>
+    </div>
+    <div>
+        <h2>Your name is <span class="name">________</span>.</h2>
+        <input class="input" type="text" placeholder="Name" onkeydown="enter(event)"> 
+        <button onclick="name4()">Submit</button>
+    </div>
+    <script>
+console.log(document.querySelector(".button1"))
+document.querySelector(".button2").innerHTML="9b done"
+let func1=(value)=>{
+    if (value==="Heads") {
+        document.querySelector(".Choose").innerHTML=value
+        return
+    }
+    document.querySelector(".Choose").innerHTML=value
+}
+let name4=()=>{
+    let a= document.querySelector(".input")
+    console.log(a.value)
+    document.querySelector('.name').innerText=a.value
+}
+let enter=(value)=>{
+    if (value.key==="Enter") {
+        name4();
+    }
+}
+    </script>
+</body>
+</html>
