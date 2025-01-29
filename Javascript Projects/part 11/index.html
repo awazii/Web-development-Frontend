@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 1.2vw;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; 
+
+        }
+        .main{
+            min-width: 50%;
+            min-height: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 1rem;
+            align-items: center; 
+           border: 2px solid white;
+            border-radius: 20px;
+            padding: 20px 0px;
+        }
+        p{
+            max-width: 75%;
+            color: rgb(77, 255, 0);
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: capitalize;
+        }
+        span{
+            color: rgba(43, 255, 0, 0.853);
+            text-shadow: 0 0 14px rgb(85, 255, 0);
+        }
+.typed-cursor{
+    display: none;
+}
+    </style>
 </head>
 <body>
-    <script src="errorhandling.js"></script>
+    <div class="main">
+    </div>
+    <script type="module" src="exercise.js"></script>
 </body>
 </html>
