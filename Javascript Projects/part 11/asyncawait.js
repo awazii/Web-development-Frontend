@@ -18,6 +18,7 @@ function delay() {
     })  
 }
 liked()
+//fetch ai 
 async function getdata(){
     try {
         let fetchdata= await fetch('https://jsonplaceholder.typicode.com/todos/1')

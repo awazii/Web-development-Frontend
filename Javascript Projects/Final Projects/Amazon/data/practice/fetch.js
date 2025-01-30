@@ -6,7 +6,7 @@ let backendFetch = () => {
     }
     )
     .then((data) => {
-    console.log(data)
+    console.log(data) 
     }).then(() => {
         console.log("After fetch")
     }).catch((error) => {
