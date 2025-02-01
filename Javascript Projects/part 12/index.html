@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency-Exchanger</title>
+    <link rel="stylesheet" href="exchange.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="image-container">
+                <img src="currency_exchange_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+            </div>
+            <h1>Currency-Exchanger</h1>
+        </div>
+        <div class="base">
+            <label for="base-currency">Select your country</label>
+            <select id="base-currency">
+            </select>
+        </div>
+        <div class="target">
+            <label for="target-currency">Select target country</label>
+            <select id="target-currency">
+            </select>
+        </div>
+        <div class="Amount-container">
+            <label for="Amount">Amount</label>
+            <input type="number" id="Amount">
+        </div>
+        <button id="exchange">exchange</button>
+        <p class="result"></p>
+    </div>
+    <script src="exchange.js"></script>
+</body>
+
+</html>

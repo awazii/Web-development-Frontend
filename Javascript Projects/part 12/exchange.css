@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 1.2vw;
+    font-family: "Playwrite GB S", serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background: url(R.jpeg) no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.container {
+    width: 50vw;
+    max-height: fit-content;
+    border-radius: 50px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    background: rgba(0, 0, 0, 0.509);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgb(255, 255, 255);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    flex-basis: 28%;
+}
+
+.image-container img {
+    width: 2.5rem;
+}
+
+.base,
+.target,
+.Amount-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 25%;
+    max-width: 40%;
+    gap: 20px;
+
+}
+            /* to remove counters */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+select,
+input {
+    font-size: .8rem;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+option {
+    text-align: center;
+    font-size: .8rem;
+}
+label{
+    text-align: center;
+}
+#exchange{
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    padding: 30px;
+    max-width:700px;
+    margin: 30px 0px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid;
+    transition: all .3s ease;
+    text-transform: capitalize;
+}
+#exchange:hover{
+    letter-spacing: 5px;
+     transform: scale(1.05);
+}
+p{
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    max-width: 100%;
+}
+@media (max-width: 1700px){
+    .container{
+        gap: 20px;
+    }
+    h1{
+        font-size: 1.6rem;
+    }
+    label{
+        font-size: 1.3rem;
+    }
+    select,
+input {
+    font-size: 1.1rem;
+    padding: 10px;
+}
+#exchange{
+    font-size: 1.3rem;
+    margin: 10px;
+    padding: 10px;
+}
+p{
+    font-size: 1.8rem;
+}
+}
+@media (max-width: 1100px){
+    .container{
+        gap: 8px;
+
+    }
+    h1{
+        font-size: 1.6rem;
+    }
+    label{
+        font-size: 1.3rem;
+    }
+    select,
+input {
+    font-size: 1.1rem;
+    padding: 10px;
+}
+#exchange{
+    font-size: 1.3rem;
+    margin: 0;
+
+}
+p{
+    font-size: 1.8rem;
+}
+.base,
+.target,
+.Amount-container {
+    gap: 10px
+}
+}
+@media (max-width: 900px){
+    #exchange{
+    padding: 5px;
+}
+}
