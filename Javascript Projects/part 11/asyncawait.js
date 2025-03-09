@@ -28,3 +28,12 @@ async function getdata(){
         console.log('Error:',error);    
     }  
 }
+// async function always return promise 
+let ab= async () => {
+    console.log('I am a function');
+    return 1
+    }
+    ab().then((v) => {
+        console.log(v);
+    })
+

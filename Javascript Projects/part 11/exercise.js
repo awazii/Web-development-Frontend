@@ -19,6 +19,7 @@ async function Hacking(text) {
     let element =document.createElement("p")
     element.innerHTML=`${text}<span></span>`
     document.body.querySelector(".main").append(element)
+    console.log(element.firstElementChild)
 let dot=typing(element.firstElementChild)
     await new Promise((resolve) => {
         setTimeout(() => {
