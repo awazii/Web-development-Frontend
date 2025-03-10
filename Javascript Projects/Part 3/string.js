@@ -18,7 +18,7 @@ Javascript Strings propertoes and functions)
  console.log(`my name is "awaisssssssssssss"`.search("s"))
 
  let c="Awais";
- console.log(c.slice(0,-1))//it is for revorse removal.
+ console.log(c.slice(0,-1))//it is for slice everything except last.
  console.log("This is strings tutorial")
 let a = "Harry";
 console.log(a[0]);

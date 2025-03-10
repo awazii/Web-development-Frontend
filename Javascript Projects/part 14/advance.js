@@ -88,3 +88,30 @@ af=5
 var af // this is also called hoisting
 //hoisting is a mechanism where variables and function can be used before declaring them
 // var is hoisted but let and const are not hoisted
+
+//closures
+function outer(){
+    let a=1
+    function inner(){
+        let b=2
+        console.log(a+b);
+    }
+    return inner
+}
+let close=outer()
+close() // this is called closures
+// closures are the combination of function and lexical environment within which that function was declared SO INNER FUNCTION CAN ACCESS THE VARIABLES OF OUTER FUNCTION even after the outer function has finished executing
+//closure is a function that makes use of variables defined in outer functions that have previously returned
+
+//lexical environment
+function outer1(){
+    let a=1
+    function inner1(){
+        let b=2
+        console.log(a+b);
+    }
+    return inner1
+}
+let close1=outer1()
+close1() // this is called lexical environment
+// lexical environment is the environment where the function was declared  so inner function can access the variables of outer function
