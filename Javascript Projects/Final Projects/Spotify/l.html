@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Example</title>
+    <style>
+        .container {
+            height: 400px;
+            overflow-y: scroll; /* Enable scrolling for the container */
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .content {
+            height: 800px; /* Enough content to enable scrolling */
+            background: linear-gradient(to bottom, lightblue, lightcoral);
+        }
+
+        .navigation {
+            display: none;
+            position: sticky;
+            top: 10px;
+            background: #1DB954;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">Scroll to Top</div>
+        <div class="content">Scroll down to see the button appear!</div>
+    </div>
+    <script>
+        // Select the container (specific element) and the navigation button
+        const container = document.querySelector('.container');
+        const navbtn = document.querySelector('.navigation');
+
+        // Add scroll event listener to the specific element
+        container.addEventListener("scroll", () => {
+            if (container.scrollTop > 300) { // Check scrollTop of the specific element
+                navbtn.style.display = "block";
+            } else {
+                navbtn.style.display = "none";
+            }
+        });
+
+        // Add smooth scroll back to the top of the container
+        navbtn.addEventListener("click", () => {
+            container.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

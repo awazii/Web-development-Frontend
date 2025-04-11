@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection Observer Multiple Thresholds</title>
+    <style>
+        .tracked-element {
+            width: 80%;
+            margin: 50px auto;
+            height: 200px;
+            background: lightblue;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 100vh;"></div> <!-- Spacer to allow scrolling -->
+    <div class="tracked-element">Scroll Me!</div>
+    <script>
+        // Select the element to observe
+        const trackedElement = document.querySelector('.tracked-element');
+
+        // Define the Intersection Observer callback
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                // Check the intersection ratio
+                const visibility = entry.intersectionRatio;
+
+                // Perform different actions based on visibility threshold
+                if (visibility >= 0.25 && visibility < 0.5) {
+                    console.log('25% visible: Element is partially in view.');
+                    trackedElement.style.background = 'lightcoral';
+                } else if (visibility >= 0.5 && visibility < 0.75) {
+                    console.log('50% visible: Element is halfway in view.');
+                    trackedElement.style.background = 'lightgreen';
+                } else if (visibility >= 0.75 && visibility < 1) {
+                    console.log('75% visible: Element is mostly in view.');
+                    trackedElement.style.background = 'orange';
+                } else if (visibility === 1) {
+                    console.log('100% visible: Element is fully in view.');
+                    trackedElement.style.background = 'gold';
+                } else {
+                    console.log('Element is less than 25% visible or out of view.');
+                    trackedElement.style.background = 'lightblue';
+                }
+            });
+        };
+
+        // Create the Intersection Observer with multiple thresholds
+        const observer = new IntersectionObserver(observerCallback, {
+            threshold: [0.25, 0.5, 0.75, 1] // Multiple trigger points
+        });
+
+        // Start observing the element
+        observer.observe(trackedElement);
+    </script>
+</body>
+</html>
