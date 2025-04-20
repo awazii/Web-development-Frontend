@@ -1,0 +1,126 @@
+/* #1f1f1f */
+/* #b3b3b3 */
+.header{
+    width: 100%;
+    height: 60px;
+  
+    display: flex;
+    justify-content:space-between ;}
+
+.left,.middle,.right{
+    flex-shrink: 0;
+}
+.left{
+    width: 200px;
+}
+.logo{
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.middle{
+    width: 550px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.homebtn{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #1f1f1f;
+    border: none;
+    margin-left: 10px;
+    position: relative;
+}
+.search-bar{
+    width: 460px;
+    height: 48px;
+    background-color: #1f1f1f;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+}
+.searchbtn{
+    background-color:transparent;
+    border: none;
+    position: relative;
+}
+.search-box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.search{
+    border: none;
+    background-color:transparent ;
+    color: white;
+    font-size: 16px;
+    width: 360px;
+}
+.search:focus{
+    outline: none;
+}
+.search::placeholder{
+    color: #b3b3b3;
+    font-size: 16px;
+}
+.clear-search{
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+.right{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.user{
+      width: 50px;
+      height: 50px;
+      background-color:  #1f1f1f ;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: relative;
+}
+.info::after{
+    content: attr(data-info);
+    background-color: #282828;
+    width:max-content;
+    position: absolute;
+    bottom : -75%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+   font-weight: 600;
+    font-size: 13px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    opacity:0;
+    color: white;
+    box-shadow: 1px 0px 14px 3px rgb(0 0 0 / 60%);
+}
+.searchbtn.info::after,.clear-search.info::after{
+    bottom : -125%;
+}
+.info:hover::after{
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.user img{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    padding: 8px;
+}

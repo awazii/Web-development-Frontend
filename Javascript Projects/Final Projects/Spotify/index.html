@@ -5,13 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify</title>
     <link rel="shortcut icon" href="Assests/favicon.ico" type="image/x-icon">
-    <style>
-        body{
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="Styles/general.css">
+    <link rel="stylesheet" href="Styles/header.css">
 </head>
 <body>
-   <img src="Assests/logo.svg" alt="">
+<header class="header">
+    <div class="left">
+        <div class="logo">
+            <img src="Assests/logo.svg" alt="logo">
+        </div>
+    </div>
+    <div class="middle">
+        <button class="homebtn info"  data-info="Home">
+            <img src="Assests/home.svg" alt="homelogo">
+           </button> 
+           <div class="search-bar">
+            <div class="search-box">
+                <button class="searchbtn info" data-info="Search">
+                    <img src="Assests/search.svg" alt="searchlogo">
+                </button>
+                <input class="search" type="text" placeholder="What do you want to play?">
+            </div>
+                 <button class="clear-search info" data-info="Clear Search">
+                     <img src="Assests/cross.svg" alt="cross svg">
+                 </button>
+           </div>
+    </div>
+    <div class="right">
+        <div class="user info" data-info="Awais Ch">
+            <img src="Assests/ab67757000003b829de49812ff0dbbf04b5fbb97.jpeg" alt="user img">
+        </div>
+       </div>
+
+</header>
+  
 </body>
 </html>
