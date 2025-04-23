@@ -1,0 +1,243 @@
+.media-player{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.current-song,.controls,.volume-queue{
+    height: 8vh;
+    width: 30%;
+}
+.controls{
+    width: 38%;
+}
+.current-song{
+    display: flex;;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+    border: none;
+}
+.current-song-image{
+    width: 56px;
+    height: 56px;
+   position: relative;
+}
+.current-song-image:hover .expand{
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+.current-song-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.expand{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.616);
+    top: 10%;
+    right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    opacity: 0;
+    border-radius: 50%; 
+}
+.expand.info::after{
+    bottom: 30px;
+    font-size: 11.5px;
+}
+.expand:hover{
+    transform: scale(1.1);
+    background-color: black;
+    &.expand svg{
+        fill: white;
+    }
+}
+.current-song-details{
+    width: max-content;
+    height: 60px;
+    padding: 5px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.current-song-details *:hover{
+    text-decoration: underline white;
+}
+.current-song-artist{
+    color: #b3b3b3;
+}
+.like-btn-container{
+    margin-left: 15px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+.like-btn-container .liked{
+    background-color: transparent;
+    border: none;
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+.liked.info::after,.volume-btn.info::after,.queue.info::after,.repeat.info::after,.play-pause.info::after,.next.info::after,.prev.info::after,.shuffle.info::after,.shuffle.info::after,.playingview.info::after{
+    bottom: 40px;
+    &:hover svg{
+        fill: white;
+    }
+}
+.liked.info:hover svg, 
+.volume-btn.info:hover svg, 
+.queue.info:hover svg, 
+.repeat.info:hover svg, 
+.next.info:hover svg, 
+.prev.info:hover svg, 
+.shuffle.info:hover svg, 
+.playingview.info:hover svg {
+    fill: white;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.play-pause.info:hover{
+    background-color: rgba(255, 255, 255, 0.733);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.like-btn-container .liked svg{
+    width: 100%;
+    height: 100%;
+}
+.controls{
+    padding: 10px;
+    border: none;
+}
+.upper-controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+.controls-left,.controls-right,.controls-centre{
+    height: 32px;
+    display: flex;
+    gap: 8px;
+    align-self: center;
+}
+.shuffle,.prev,.play-pause,.next,.repeat,.playingview,.queue,.volume-btn{
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+.play-pause{
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.activated svg{
+    fill:#42d060 ;
+}
+.activated:hover svg{
+    fill: #35a84d !important;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+.activated::before{
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #42d060;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.play-pause svg {
+    fill: black;
+}
+.shuffle,.prev,.play-pause,.next,.repeat, svg{
+    fill: #b3b3b3;
+}
+.lower-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+}
+.lower-controls h6 {
+    color: #b3b3b3;
+}
+.progress-bar{
+    width: 100%;
+    height: 4px;
+    background-color: #4d4c4d;
+    border-radius: 50px;
+}
+.progress-bar:hover .progress{
+    background-color: #1DB954;
+    &:after{
+        opacity: 1;
+    }
+}
+.progress{ 
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+}
+.progress::after,.volume-fill::after{
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+ bottom:-80%;
+    right: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.volume-queue{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 30px;
+}
+.volume-wrapper{
+    display: flex;
+    align-items: center;
+}
+.volume-track{
+    width: 150px;
+    height: 4px;
+    background-color: #4d4c4d;
+    border-radius: 3px;
+    outline: none;
+}
+.volume-track:hover .volume-fill{
+    background-color: #1DB954;
+    &:after{
+        opacity: 1;
+    }
+}
+.volume-fill{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border-radius: 3px;
+    position: relative;
+}
+
+ 
+

@@ -1,9 +1,9 @@
 /* #1f1f1f */
+/* #2a2a2a */
 /* #b3b3b3 */
-.header{
+.Top-Bar{
     width: 100%;
     height: 60px;
-  
     display: flex;
     justify-content:space-between ;}
 
@@ -28,16 +28,24 @@
     align-items: center;
 }
 .homebtn{
-    width: 48px;
-    height: 48px;
+    width: 49px;
+    height: 49px;
     border-radius: 50%;
     background-color: #1f1f1f;
     border: none;
     margin-left: 10px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+.homebtn:hover{
+    background-color: #282828;
+    transform: scale(1.03);
 }
 .search-bar{
-    width: 460px;
+    width:90%;
     height: 48px;
     background-color: #1f1f1f;
     border-radius: 50px;
@@ -45,6 +53,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 12px;
+    transition: all 0.3s ease-in-out;
+}
+.search-bar:hover{
+    background-color: #282828;
+    &.search-bar .search-box svg{
+        fill: white;
+    }
 }
 .searchbtn{
     background-color:transparent;
@@ -55,13 +70,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 .search{
     border: none;
     background-color:transparent ;
     color: white;
     font-size: 16px;
-    width: 360px;
+    width:90%;
 }
 .search:focus{
     outline: none;
@@ -74,6 +90,9 @@
     background-color: transparent;
     border: none;
     position: relative;
+    &:hover svg{
+        fill: white;
+    }
 }
 .right{
     width: 200px;
@@ -110,7 +129,7 @@
     box-shadow: 1px 0px 14px 3px rgb(0 0 0 / 60%);
 }
 .searchbtn.info::after,.clear-search.info::after{
-    bottom : -125%;
+    bottom : -135%;
 }
 .info:hover::after{
     opacity: 1;
