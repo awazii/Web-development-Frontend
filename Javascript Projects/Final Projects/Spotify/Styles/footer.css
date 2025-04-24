@@ -85,7 +85,7 @@
     height: 16px;
     position: relative;
 }
-.liked.info::after,.volume-btn.info::after,.queue.info::after,.repeat.info::after,.play-pause.info::after,.next.info::after,.prev.info::after,.shuffle.info::after,.shuffle.info::after,.playingview.info::after{
+.liked.info::after,.volume-btn.info::after,.queue.info::after,.repeat.info::after,.play-pause-control.info::after,.next.info::after,.prev.info::after,.shuffle.info::after,.shuffle.info::after,.playingview.info::after{
     bottom: 40px;
     &:hover svg{
         fill: white;
@@ -103,7 +103,7 @@
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
-.play-pause.info:hover{
+.play-pause-control.info:hover{
     background-color: rgba(255, 255, 255, 0.733);
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
@@ -129,14 +129,14 @@
     gap: 8px;
     align-self: center;
 }
-.shuffle,.prev,.play-pause,.next,.repeat,.playingview,.queue,.volume-btn{
+.shuffle,.prev,.play-pause-control,.next,.repeat,.playingview,.queue,.volume-btn{
     background-color: transparent;
     border: none;
     width: 32px;
     height: 32px;
     position: relative;
 }
-.play-pause{
+.play-pause-control{
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -162,10 +162,10 @@
     left: 50%;
     transform: translateX(-50%);
 }
-.play-pause svg {
+.play-pause-control svg {
     fill: black;
 }
-.shuffle,.prev,.play-pause,.next,.repeat, svg{
+.shuffle,.prev,.play-pause-control,.next,.repeat, svg{
     fill: #b3b3b3;
 }
 .lower-controls{

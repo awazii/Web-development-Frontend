@@ -1,4 +1,4 @@
-.main-container{
+.main-container {
     display: grid;
     grid-template-columns: 16% 1fr 15%;
     width: 100%;
@@ -8,8 +8,10 @@
     margin: auto;
     padding-bottom: 2px;
 }
-.library,.content-area,.song-details{
+
+.library,
+.content-area,
+.song-details {
     background-color: #121212;
     border-radius: 8px;
-    /* overflow-y: scroll; */
 }
