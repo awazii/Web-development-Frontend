@@ -4,17 +4,12 @@
         padding-left: 0;
     }
 }
-.library:hover .library-header{
-    overflow: visible;
-}
-
 .library-header {
     width: 100%;
     padding: 12px 16px 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    overflow-x: hidden;
+    justify-content: space-between; 
 }
 
 .collapse-library {
@@ -37,6 +32,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+}
+.library:hover .collapse-library-btn {
+    visibility: visible;
 }
 
 .add-playlist {
@@ -140,7 +139,7 @@
 .playlist-container{
 padding: 10px;
 overflow-y: auto;
-height: 70vh;
+flex-grow: 1;
 overflow-x: hidden;
 }
 .playlist-container:hover::-webkit-scrollbar {
@@ -157,7 +156,9 @@ overflow-x: hidden;
 }
 .playlists{
     margin-top: 15px;
-   
+}
+.playlists h4:hover,.playlists span:hover{
+ text-decoration: underline;
 }
 ::-webkit-scrollbar {
     width: 10px;
