@@ -141,10 +141,8 @@ padding: 10px;
 overflow-y: auto;
 flex-grow: 1;
 overflow-x: hidden;
+scrollbar-gutter: stable;
 }
-.playlist-container:hover::-webkit-scrollbar {
-    display: block;
-  }
 .playlist-container h5{
     background-color: white;
     color: black;
@@ -163,7 +161,6 @@ overflow-x: hidden;
 ::-webkit-scrollbar {
     width: 10px;
     transition: all 0.3s ease-in-out;
-    display: none;
   }
   ::-webkit-scrollbar-thumb {
     background-color: #595959;
@@ -247,4 +244,6 @@ overflow-x: hidden;
     bottom: 40px;
     transform: translateX(0px);
   }
+
+
   
