@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudinary Music Player</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .playlist button {
+      background-color: #222;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 18px;
+
+    }
+    .playlist button:hover {
+      background-color: #444;
+    }
+    audio {
+      width: 90%;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎧 My Cloudinary Music Player</h1>
+  <div>
+    <p>Select a song to play:</p>
+    <ul class="playlist" id="playlist"></ul>
+  </div>
+  <audio id="audioPlayer" controls></audio>
+  <h2>Upload Playlist Image</h2>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="uploadImage()">Upload Image</button>
+  <h2>Upload Song</h2>
+  <input type="file" id="songInput" accept="audio/*,video/*">
+  <button onclick="uploadSong()">Upload Song</button>
+  </a>
+  <script>
+    const songs = [
+      {
+        name: "Justin Bieber - Intentions",
+        url: "https://res.cloudinary.com/dllocncsk/video/upload/v1746503544/Justin_Bieber_-_Intentions_Official_Video_Short_Version_ft_woj1bm.mp3"
+      }
+      , {
+        name: "Astrid_S_-_Hurts_So_Good",
+        url: "https://res.cloudinary.com/dllocncsk/video/upload/v1746505514/Astrid_S_-_Hurts_So_Good_Lyrics_vvhqqa.mp3"
+      }
+      , {
+        name: 'breakup song',
+        url: "https://res.cloudinary.com/dllocncsk/video/upload/v1746505978/BREAK_UP_PARTY_-_Yo_Yo_Honey_Singh_Feat._Leo_Official_Video_-_Punjabi_Songs_j8ob9n.mp4"
+      }
+      , {
+        name: "Justin_Bieber_-_Mistletoe",
+        url: "https://res.cloudinary.com/dllocncsk/video/upload/v1746507470/Songs/Justin_Bieber_-_Mistletoe_Official_Music_Video_xnjhmj.mp3"
+      }
+    ];
+    const playlist = document.getElementById("playlist");
+    const audioPlayer = document.getElementById("audioPlayer");
+    songs.forEach(song => {
+      const button = document.createElement("button");
+      button.textContent = song.name;
+      button.onclick = () => {
+        audioPlayer.src = song.url;
+        audioPlayer.play();
+      };
+      playlist.appendChild(button);
+    });
+    const cloudName = "dllocncsk";
+    const imagePreset = "user playlist's images";
+    const songPreset = "user songs";
+    async function uploadToCloudinary(file, preset, folderName) {
+      const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", preset);
+      formData.append("folder", folderName);
+      const res = await fetch(url, {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      console.log("Uploaded to Cloudinary:", data.secure_url);
+      alert("Uploaded! File URL: " + data.secure_url);
+    }
+    function uploadImage() {
+      const file = document.getElementById("imageInput").files[0];
+      if (file) {
+        uploadToCloudinary(file, imagePreset, "playlist images");
+      }
+    }
+    function uploadSong() {
+      const file = document.getElementById("songInput").files[0];
+      if (file) {
+        uploadToCloudinary(file, songPreset, "Songs");
+      }
+    }
+    const jsonData = JSON.stringify(songs, null, 2);
+    const blob = new Blob([jsonData], { type: "application/json" });  
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "songs.json";
+    a.click();
+  </script>
+</body>
+</html>
