@@ -1,4 +1,5 @@
- /*
+
+/*
 Javascript Strings propertoes and functions)
 1,.lenght it will give you the lenght of string
 2,.charAt() it will give you the string of specific index like awais.charAt(4) means s.
@@ -91,8 +92,8 @@ console.log(result); // ["ain", "ain", "ain"]
 Global and Case-Insensitive Search:
 let text = "The rain in SPAIN stays mainly in the plain";
 let result = text.match(/ain/gi);
-console.log(result); // ["ain", "AIN", "ain"]
- */
+console.log(result); // ["ain", "AIN", "ain"]       
+//  */
 
 let ext = "My email is awaisgamer1231@example.com";
 let emailPattern =  /([^\s@]+)@([^\s@]+\.[^\s@]+)/;

@@ -1,6 +1,6 @@
 export let songs_raw = [
     {
-        title: "ALLAH_HUMMA_SALLE_ALAA_Kalaam_by_TAHIR_Qadri",
+        title: "Allah Humma Salle Alla",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163201/ALLAH_HUMMA_SALLE_ALAA_Kalaam_by_TAHIR_Qadri_by_Abdul_Ghafoor_kiufmf.mp3",
         category: "Naat"
     },
@@ -15,7 +15,7 @@ export let songs_raw = [
         category: "Naat"
     },
     {
-        title: "Mustafa_Jane_Rahmat_Pe owais raza qadri",
+        title: "Mustafa Jane Rehmat Salaam",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163096/Naats_2018_-_Mustafa_Jane_Rahmat_Pe_Full_Audio_-_Alhaj_Owais_Raza_Qadri_-_Urdu_Naats_2018_gmh8co.mp3",
         category: "Naat"
     },
@@ -25,12 +25,12 @@ export let songs_raw = [
         category: "Naat",
     },
     {
-        title: "Humne Ankhon Se Dekha Ni Hai Magar by mehmood J",
+        title: "Humne Ankhon Se Dekha Ni Hai Magar",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162987/Humne_Aankhon_Se_Dekha_Nahi_Hai_Magar_-_Full_Naat_-_Emotional_Naat_-_Heart_Touching_Naat_adxohy.mp3",
         category: "Naat"
     },
     {
-        title: "Maula_Ya_Salli by Muhammad Ahsan",
+        title: "Maula Ya Salli muhammad ahasan",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162958/Maula_Ya_Salli_Wa_Sallim_Qaseeda_Burda_Sharif_in_Urdu_tbgc9f.mp3",
         category: "Naat"
     },
@@ -40,17 +40,17 @@ export let songs_raw = [
         category: "Qawali&old"
     },
     {
-        title: "Kali_Kali_Zulfon_Ke_Phande_Na by nusrat",
+        title: "Kali Kali Zulfon Ke Phande Nah Dalo",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163218/Kali_Kali_Zulfon_Ke_Phande_Na_-_Nusrat_Fateh_Ali_Khan_-_complete_full_version_-_OSA_Worldwide_ii5yod.mp3",
         category: "Qawali&old"
     },
     {
-        title: "Sochta_Hoon_Ke_Woh_Kitne_Masoom by nusrat",
+        title: "Sochta Hoon Woh Kitne Masoom Thay - Live Version",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163266/Sochta_Hoon_Ke_Woh_Kitne_Masoom_Live_Full_-_Ustad_Nusrat_Fateh_Ali_Khan_-_OSA_Worldwide_t4l0qq.mp3",
         category: "Qawali&old"
     },
     {
-        title: "Ye_Jo_Halka_Halka_Saroor_Hai by nusrat",
+        title: "Ye Jo Halka Halka Saroor",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163217/Ye_Jo_Halka_Halka_Saroor_Hai_-_Ustad_Nusrat_Fateh_Ali_Khan_-_OSA_Official_HD_Video_ehye7c.mp3",
         category: "Qawali&old"
     },
@@ -60,12 +60,13 @@ export let songs_raw = [
         category: "Qawali&old"
     },
     {
-        title: "Kitna_Bechain_Hoke_Kasoor by alka yagnik",
+        title: "Kitni bechain Hoke",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163159/Kitna_Bechain_Hoke_Kasoor_2001_HD_1080p_BluRay_Music_Video_YouTube_lih9re.mp3",
-        category: "Qawali&old"
+        category: "Qawali&old",
+        trackid:"3KVqw41sR0lTDtbDGWPtzf"
     },
     {
-        title: "Itna_Na_Mujhse_Tu_Pyar_Badha by lata",
+        title: "Itna_Na_Mujhse_Tu_Pyar_Badha",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163142/BW_to_Color_-_Itna_Na_Mujhse_Tu_Pyar_Badha_-_Chhaya_-_Lata_Talat_Mahmood_-_Asha_Parekh_Sunil_Dutt_gw3yxz.mp3",
         category: "Qawali&old"
     },
@@ -80,7 +81,7 @@ export let songs_raw = [
         category: "Qawali&old"
     },
     {
-        title: "Ek_Pardesi_Mera_Dil_Legaya",
+        title: "Ek Pardesi Mera Dil Le Gaya",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162970/Ek_Pardesi_Mera_Dil_Legaya_Lyrics_-_Phagun_-_Madhubala_-_M_Rafi_Asha_Bhosle_-_Lyrical_Music_upligt.mp3",
         category: "Qawali&old"
     },
@@ -135,7 +136,7 @@ export let songs_raw = [
         category: "love"
     },
     {
-        title: "Ek_Din_Aap_Yun_Humko_Mil_Jayenge",
+        title: "Ek Din Aap",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163013/Ek_Din_Aap_Yun_Humko_Mil_Jayenge_-_Alka_Yagnik_and_Kumar_Sanu_jxbkdv.mp3",
         category: "love"
     },
@@ -170,7 +171,7 @@ export let songs_raw = [
         category: "lofi"
     },
     {
-        title: "Hangover_lofi_slowed_and_reverb_remix",
+        title: "Hangover",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163121/Hangover_lofi_slowed_and_reverb_remix_--_salman_khan_and_shreya_ghoshal_q6thq6.mp3",
         category: "lofi"
     },
@@ -180,7 +181,7 @@ export let songs_raw = [
         category: "lofi"
     },
     {
-        title: "TU_AAKE_DEKH_LE slowed",
+        title: "TU AAKE DEKHLE",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163053/TU_AAKE_DEKH_LE_-_KING_-_SLOWED-REVERB_-_NIGHT_RLXX_mypa2y.mp3",
         category: "lofi"
     },
@@ -195,7 +196,7 @@ export let songs_raw = [
         category: "lofi"
     },
     {
-        title: "Khada_Hu_Aaj_Bhi_Wahi",
+        title: "Choo Lo",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162926/Khada_Hu_Aaj_Bhi_Wahi_Slowed_Reverb_-_Choo_Lo_-_Aalas_Ka_Pedh_-_The_Local_Train_-_SR_Lofi_vge7k2.mp3",
         category: "lofi"
     },
@@ -220,7 +221,7 @@ export let songs_raw = [
         category: "lofi"
     },
     {
-        title: "lovely by billie eilish",
+        title: "lovely",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162858/lovely_-_billie_eilish_ft._khalid_slowed_n_reverb_anmbwj.mp3",
         category: "lofi"
     },
@@ -250,22 +251,22 @@ export let songs_raw = [
         category: "hip-hop"
     },
     {
-        title: "Agency BY RAP DEMON",
+        title: "Agency",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162916/Agency_-_Talha_Anjum_-_Rap_Demon_-_Prod._by_UMAIR_Official_Lyric_Video_qnf5vy.mp3",
         category: "hip-hop"
     },
     {
-        title: "Tokyo_Drift_-_Teriyaki_Boyz",
+        title: "Teriyaki_Boyz",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162890/Tokyo_Drift_-_Teriyaki_Boyz_MUSIC_VIDEO_HD_upjpcf.mp3",
         category: "hip-hop"
     },
     {
-        title: "Hanumankind_Big_Dawgs_-_Ft._Kalmi",
+        title: "big dawgs",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162850/Hanumankind_Big_Dawgs_-_Ft._Kalmi_Official_Music_Video_-_Def_Jam_India_witrib.mp3",
         category: "hip-hop"
     },
     {
-        title: "No_Make_Up_-_Bilal_Saeed_Ft._Bohemia",
+        title: "No Make Up",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162823/No_Make_Up_-_Bilal_Saeed_Ft._Bohemia_-_Bloodline_Music_-_Official_Music_Video_nj8mfq.mp3",
         category: "hip-hop"
     },
@@ -305,12 +306,12 @@ export let songs_raw = [
         category: "hip-hop"
     },
     {
-        title: "boss",
+        title: "Boss  honey singh",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162781/boss_psqowm.mp3",
         category: "hip-hop"
     },
     {
-        title: "dil by bohemia",
+        title: "Dil",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162773/Dil_-_BOHEMIA_Ft._Deep_Jandu_Full_Song_Geet_MP3_oqbgpl.mp3",
         category: "hip-hop"
     },
@@ -360,9 +361,10 @@ export let songs_raw = [
         category: "sad"
     },
     {
-        title: "Enrique_Iglesias_-_Why_Not_Me_Lyrics",
+        title: "Why Not Me? enrigue Iglesias",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162891/Enrique_Iglesias_-_Why_Not_Me_Lyrics_twv15b.mp3",
-        category: "sad"
+        category: "sad",
+          trackid:"1YnRzw2S56QR16zhKZJMiv"
     },
     {
         title: "Finding_Her",
@@ -375,12 +377,12 @@ export let songs_raw = [
         category: "sad"
     },
     {
-        title: "Aadmi_Chutiya_Hai_Lyrics",
+        title: "Aadmi Chutiya Hai",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162870/Rahgir_-_Aadmi_Chutiya_Hai_Lyrics_lbhpqg.mp3",
         category: "sad"
     },
     {
-        title: "Sajni by ram sampath",
+        title: "Sajni (From 'Laapataa Ladies')",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162815/Sajni_Song_-_Arijit_Singh_Ram_Sampath_-_Laapataa_Ladies_-_Aamir_Khan_Productions_qzmdiq.mp3",
         category: "sad"
     },
@@ -395,7 +397,7 @@ export let songs_raw = [
         category: "motivation"
     },
     {
-        title: "game by sidhu",
+        title: "Game",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747163148/GAME_Full_Video_Shooter_Kahlon_-_Sidhu_Moose_Wala_-_Hunny_PK_Films_-_Gold_Media_-_5911_Records_t5jnta.mp3",
         category: "motivation"
     },
@@ -445,7 +447,7 @@ export let songs_raw = [
         category: "rap"
     },
     {
-        title: "Eminem_-_Godzilla_ft._Juice_WRLD",
+        title: "Godzilla",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162915/Eminem_-_Godzilla_ft._Juice_WRLD_Official_Music_Video_vobmia.mp3",
         category: "rap"
     },

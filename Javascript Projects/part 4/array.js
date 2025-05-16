@@ -51,3 +51,4 @@ console.log(array1); // but the orignal array is same
 console.log(array1.reverse()) 
 console.log(Array.isArray("a"))// to check if it is an array
 // array1.find return the first matching element or undefined if nothing finds
+

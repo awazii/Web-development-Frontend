@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>songs meta data </title>
+    <style>
+        .data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .demo {
+            border: 1px solid #ccc;
+            max-width: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .img-container {
+            width: 150px;
+            height: 150px;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h3{
+            font-size: 15px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>This page is only for developer to get ready final json file for songs</h1>
-      <script type="module" src="data/raw_songs.js"></script>
-      <script type="module" src="data/songs.js"></script>
+    <div class="data"></div>
+    <script type="module" src="data/raw_songs.js"></script>
+    <script type="module" src="data/songs.js"></script>
 </body>
+
 </html>
