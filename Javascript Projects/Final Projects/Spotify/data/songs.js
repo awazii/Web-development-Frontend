@@ -54,7 +54,7 @@ if (artists.length>1) {
 }
 else{
 song.credits.push(artists[0].name);
-song["top-artist"]=_fetchArtist(access_token,artists[0].id)
+song["top-artist"]=await _fetchArtist(access_token,artists[0].id)
 }
 console.log(song);
    let demo=document.createElement('div');
@@ -93,7 +93,7 @@ if (artists.length>1) {
   });
 }
 else{
-song["top-artist"]=_fetchArtist(access_token,artists[0].id)
+song["top-artist"]= await _fetchArtist(access_token,artists[0].id)
  song.credits.push(artists[0].name);
 }
 console.log(song);
@@ -139,9 +139,18 @@ const response = await fetch(url, {
 async function _artistdescription(artistname) {
   const formattedName = artistname.replace(/\s+/g, '_');
   const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${formattedName}`;
-  const response = await fetch(url);
-  const data = await response.json();
- return data.extract_html
+  try{
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('no wiki found for this artist');
+    }
+    const data = await response.json();
+    return data.extract_html
+  }
+  catch (error) {
+    console.error('Error fetching artist description:', error);
+    return null;
+  }
 }
 // console.log(final_songs);
 const jsonData = JSON.stringify(final_songs, null, 2);
