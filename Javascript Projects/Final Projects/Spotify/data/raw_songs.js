@@ -604,7 +604,7 @@ export let songs_raw = [
     {
         title: "Lil_Tecca_-_Ransom",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162786/Lil_Tecca_-_Ransom_Lyrics_vifbrd.mp3",
-        category: "juice's Album"
+        category: "hip-hop"
     },
     {
         title: "Imagination_-Shawn_Mendes",

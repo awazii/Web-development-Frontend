@@ -54,9 +54,9 @@ if (artists.length>1) {
 }
 else{
 song.credits.push(artists[0].name);
-song["top-artist"]=await _fetchArtist(access_token,artists[0].id)
 }
 console.log(song);
+song["top-artist"]=await _fetchArtist(access_token,artists[0].id)
    let demo=document.createElement('div');
 demo.classList.add('demo');
 demo.innerHTML=`
@@ -93,9 +93,9 @@ if (artists.length>1) {
   });
 }
 else{
-song["top-artist"]= await _fetchArtist(access_token,artists[0].id)
  song.credits.push(artists[0].name);
 }
+song["top-artist"]= await _fetchArtist(access_token,artists[0].id)
 console.log(song);
  let demo=document.createElement('div');
 demo.classList.add('demo');
