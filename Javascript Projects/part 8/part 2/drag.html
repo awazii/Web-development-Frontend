@@ -31,12 +31,8 @@
         };
 
         const mouseMove = (e) => {
-            console.log(startX,startY)
-            console.log(e.clientX,e.clientY)
-            console.log(card.offsetLeft,card.offsetTop)
             currentX = e.clientX-startX;
             currentY = e.clientY-startY;
-            console.log(currentX,currentY)
             startX = e.clientX;
             startY = e.clientY;
             card.style.top = (card.offsetTop + currentY) + "px";

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Exile&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.c-a-heading{
+    width: 100%;
+    margin: 20px 0px;
+}
+.c-a-heading h5{
+    background-color: white;
+    color: black;
+    width:40px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: 550;
+    text-align: center;
+}
+.banner{
+    width: 100%;
+    aspect-ratio: 16/3;
+    border-radius: 8px;
+    margin: 20px 0px;
+    position: relative;
+}
+.banner h2{
+    position: absolute;
+    top: 45%;
+    font-family: "Exile", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 10px;
+  max-width: max-content;
+  font-size: 30px;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.content{
+    height: 90vh;
+    margin: 20px 0px;
+}
+.category{
+    width: 100%;
+    overflow: hidden;
+}
+.category h2{
+    font-size: 22px;
+    padding: 20px;
+    padding-bottom: 0px;
+    padding-top: 10px 
+}
+.songs{
+    position: relative;
+}
+.songs:hover .custom-prev,.songs:hover .custom-next{
+     opacity: 1;
+}
+.songs-wrapper{
+    display: flex;
+    gap: 8px; 
+    width: 100%;
+    margin-bottom: 25px;
+}
+.custom-prev,.custom-next{
+    position: absolute;
+    top: 50%;
+    background-color: #1f1f1f;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all .3s ease;
+    &:hover {
+         background-color: #2e2d2dd8;
+    }
+    &:hover svg{
+         fill: white;
+    }
+}
+.custom-next{
+    right: 0;
+}
+.song{
+    width:190px;
+    aspect-ratio: 4/5;
+    flex-shrink: 0;
+    padding: 10px;
+
+    transition: all 0.3s ease;
+}
+.song:hover{
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    cursor: pointer;
+    & .play-pause-song{
+        opacity: 1;
+        bottom: 15px;
+    }
+}
+.song-image{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    position: relative;
+}
+.song-image .play-pause-song{
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: 5%;
+    bottom: 0%;
+    opacity: 0;
+    background-color:#1ed760;
+    transition: all 0.3s ease; 
+    & svg{
+        fill:rgb(0, 0, 0)
+    }
+    &:hover{
+        transform: scale(1.1);
+        background-color: #2bf772;
+    }
+}
+.song-image .play-pause-song::after{
+    left: -10%;
+    bottom: 110%;
+}
+.song-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+.song-title{
+    font-size: 14px;
+    font-weight: 550;
+    color: white;
+    padding: 0px 0px 5px 5px; 
+    margin-top: 10px;
+}
+
+.song-title h4,.song-artist h5{
+  overflow: hidden; 
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.song-artist{
+    color: #b3b3b3;
+    padding: 0px 0px 5px 5px;
+}
+.albums{
+    width: 100%;
+    display: grid;
+    grid-template-columns:450px 450px;
+    justify-content: center;
+    gap: 70px;
+    column-gap: 100px;
+    margin-top: 30px;
+}
+.album{
+    aspect-ratio: 3/4;
+    position: relative;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+}
+.album img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+.about-album{
+    width: calc(100% - 50px);
+    height: 100px;
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.album-song-img{
+    width: 100px;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+}
+.album-info-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+.album-song-name{
+    font-size: 17px;
+    &:hover h2{
+           text-decoration: underline;
+    }
+}
+.album-name h4{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: #b3b3b3;
+    font-size: 13px;
+}
+.album-name h4 span:last-child{
+    color: white;
+}
+ .album .play-pause-song{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0%;
+    right: 8%;
+    opacity: 0;
+    background-color: white;
+    transition: all .3s ease;
+      & svg{
+        fill:black
+    }
+    &:hover{
+        transform: scale(1.1);
+        background-color: #1ed760;
+    }
+ }
+ .album:hover .play-pause-song{
+        opacity: 1;
+            bottom: 5%;
+    }
