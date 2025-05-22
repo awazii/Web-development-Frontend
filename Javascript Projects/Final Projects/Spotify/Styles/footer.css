@@ -23,7 +23,7 @@
     height: 56px;
    position: relative;
 }
-.current-song-image:hover .expand{
+.current-song-image:hover .ex-col{
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
 }
@@ -32,7 +32,7 @@
     height: 100%;
     object-fit: cover;
 }
-.expand{
+.ex-col{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.616);
     top: 10%;
@@ -46,11 +46,11 @@
     opacity: 0;
     border-radius: 50%; 
 }
-.expand.info::after{
+.ex-col.info::after{
     bottom: 30px;
     font-size: 11.5px;
 }
-.expand:hover{
+.ex-col:hover{
     transform: scale(1.1);
     background-color: black;
     &.expand svg{
@@ -180,9 +180,11 @@
 }
 .progress-bar{
     width: 100%;
+    max-width: 100%;
     height: 4px;
     background-color: #4d4c4d;
     border-radius: 50px;
+    cursor: pointer;
 }
 .progress-bar:hover .progress{
     background-color: #1DB954;
@@ -190,8 +192,14 @@
         opacity: 1;
     }
 }
+.progress.drag,.volume-fill.drag{
+     background-color: #1DB954;
+       &:after{
+        opacity: 1;
+    }
+}
 .progress{ 
-    width: 40%;
+    width: 20%;
     height: 100%;
     background-color: white;
     position: relative;
@@ -223,7 +231,9 @@
     height: 4px;
     background-color: #4d4c4d;
     border-radius: 3px;
-    outline: none;
+    outline: none; 
+    cursor: pointer;
+
 }
 .volume-track:hover .volume-fill{
     background-color: #1DB954;
@@ -232,10 +242,31 @@
     }
 }
 .volume-fill{
-    width: 50%;
+    width: 30%;
     height: 100%;
     background-color: white;
     border-radius: 3px;
     position: relative;
 }
+button.disable:disabled {
+    border: 1px solid;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+button{
+    cursor: pointer;
+}
 
+.not-allowed{
+    pointer-events: none;
+    opacity: .5;
+}
+.collapse{
+    display: none;
+}
+.vol_one,
+.vol_two,
+.vol_three,
+.mute {
+    display: none;
+}

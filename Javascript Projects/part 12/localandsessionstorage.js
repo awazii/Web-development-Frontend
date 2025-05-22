@@ -1,6 +1,6 @@
 //local storage
 localStorage.setItem("key",JSON.stringify("value"))
-JSON.parse(localStorage.getItemItem("key","value"))
+JSON.parse(localStorage.getItem("key","value"))
 localStorage.removeItemItem("key","value")
 localStorage.clear()
 //these are used for  local storage mostly they will use 

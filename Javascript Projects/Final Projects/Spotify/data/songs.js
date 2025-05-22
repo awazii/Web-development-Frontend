@@ -30,8 +30,8 @@ let token = await _getToken(); // this is top level await we don't need to use a
 const _songdetails= async (token,title,num,id,song_url,category) => {
 const access_token= token;
 let song ={};
-// track 13 and 73  are those which search api is not giving us the correct result so we are using track id for them
-if (num===13 || num===73) {
+// track 13 ,83 73  are those which search api is not giving us the correct result so we are using track id for them
+if (num===13 || num===73 || num===83) {
   const url = `https://api.spotify.com/v1/tracks/${id}`;
   const result = await fetch(url, {
     headers: {

@@ -414,7 +414,8 @@ export let songs_raw = [
     {
         title: "Zinda",
         url: "https://res.cloudinary.com/dllocncsk/video/upload/v1747162906/Zinda_Lyric_Video_-_Bhaag_Milkha_Bhaag-Farhan_Akhtar-Siddharth_Mahadevan-Prasoon_Joshi_l8c9qq.mp3",
-        category: "motivation"
+        category: "motivation",
+        trackid:"7vZz8oJ5qAqB9MghufRK5k"
     },
     {
         title: "The_Script_-_Hall_Of_Fame_",

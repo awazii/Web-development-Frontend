@@ -1,4 +1,8 @@
-import { songs } from "./main.js"
+import { playstate, songs } from "./main.js"
+import { _playpause } from "./mediaplayer.js";
+import { song_details } from "./song-details.js";
+import { mediaplayer } from "./mediaplayer.js";
+export let appdata = {};
 export function main_content() {
     document.querySelector(".content-area").innerHTML = `    <div class="c-a-heading">
             <h5> All</h5>
@@ -24,6 +28,7 @@ export function main_content() {
     function rendercategories() {
         let html = ``
         let categories = ["Naat", "Qawali&old", "love", "lofi", "hip-hop", "sad", "motivation", "rap", "japanese"]
+        categories.sort((a, b) => b.localeCompare(a));
         let SongCatalog = []
         categories.forEach(category => {
             let obj = {
@@ -39,6 +44,9 @@ export function main_content() {
                 }
             })
         })
+        appdata.SongCatalog = SongCatalog
+        localStorage.setItem("appdata", JSON.stringify(appdata))
+        console.log(appdata)
         SongCatalog.forEach((catalog, index) => {
             html += `<div class="category">
                       <h2>${catalog.category}</h2>
@@ -64,7 +72,9 @@ export function main_content() {
                 html += `<div class="song">
                             <div class="song-image">
                                 <img src="${obj.image}" alt="title-img">
-                                <button class="play-pause-song" data-songid="${obj.id}"><svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg></button>
+                                <button class="play-pause-song" data-songid="${obj.id}"><svg class="play" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
+                                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
+                                </button>
                             </div>
                             <div class="song-title">
                                 <h4>${obj.title}</h4>
@@ -139,6 +149,43 @@ export function main_content() {
         });
         $(swiperEl).trigger('init', [$(swiperEl).slick('getSlick'), 0]);
     });
+    let currentplayingbutton = null;
+    document.querySelectorAll(".song").forEach(song => {
+        song.addEventListener("click", (e) => {
+            const button = e.target.closest("button");
+            if (button) {
+                if (playstate.isplaying&&currentplayingbutton === button) {
+                    console.log("same button is clicked")
+                    _playpause(currentplayingbutton)
+                }
+                else {
+                    console.log("different button is clicked")
+                    let songid = button.dataset.songid
+                    playstate.songid = songid
+                    let song = songs.find(song => song.id === songid)
+                    playstate.currentsong.src = song.url;
+                    playstate.default = null
+                    playstate.isplaying=true
+                    playstate.songdetails=true
+                    if (currentplayingbutton) {
+                        currentplayingbutton.querySelector(".play").style.display = "block"
+                        currentplayingbutton.querySelector(".pause").style.display = "none"
+                        currentplayingbutton.classList.remove("active")
+                    }
+                    currentplayingbutton = button
+                    mediaplayer(currentplayingbutton, song)
+                    song_details()
+                    button.querySelector(".pause").style.display = "block"
+                    button.querySelector(".play").style.display = "none"
+                    button.classList.add("active")
+                    playstate.currentsong.play()
+                }
+            }
+            else {
+                console.log("going to the playlist area")
+            }
+        })
+    })
     function renderalbum() {
         let albums_name = ["Arijit's Album", "Atif's Album", "juice's Album", "Shawn's Album"]
         const albums = albums_name.map(albumName => {
@@ -154,10 +201,9 @@ export function main_content() {
                 }
             };
         });
-        console.log(albums)
         let html = ``
         albums.forEach(album => {
-            html+=`
+            html += `
            <div class="album" data-album-name="${album.name}">
     <img src="${album.image}" alt="album-image">
     <div class="about-album">
@@ -186,3 +232,4 @@ export function main_content() {
         return html
     }
 }
+console.log(JSON.parse(localStorage.getItem("appdata")));
