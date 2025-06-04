@@ -27,172 +27,17 @@ export function library() {
         <div class="playlist-container">
             <h5>Playlists</h5>
             <div class="playlists">
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
+                <div class="playlist card">
+                    <div class="playlist-image card-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
                         <button class="play-pause-song info" data-info="Play">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
                         </button>
                     </div>
                     <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
+                        <div class="playlist-title card-title"><h4>Nostalgia</h4></div>
                         <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
                     </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-                <div class="playlist">
-                    <div class="playlist-image"><img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-                        <button class="play-pause-song info" data-info="Play">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"  data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                        </button>
-                    </div>
-                    <div class="playlist-details">
-                        <div class="playlist-title"><h4>Nostalgia</h4></div>
-                        <div class="playlist-detail"><span>Playlist</span><span class="dot"></span><span>10 songs</span></div>
-                    </div>
-                </div>
-              
+                </div>         
             </div>
         </div>  `
 }

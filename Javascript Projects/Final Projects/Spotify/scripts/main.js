@@ -7,7 +7,8 @@ export  let playstate={
     currentsong:new Audio(),
     default:true,
     isplaying:null,
-    songdetails:null
+    songdetails:null,
+    queue:null
 };
 let _fetchsongs=async ()=>{
     let main=document.querySelector('.main-container');

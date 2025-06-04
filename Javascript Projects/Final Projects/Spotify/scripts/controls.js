@@ -157,6 +157,8 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         playstate.default = true
         playstate.isplaying = null;
         playstate.songdetails=null;
+        playstate.queue = null;
+        console.log(playstate)
         let main = document.querySelector(".main-container")
         main.classList.add("two")
         let details = document.querySelector('.song-details')

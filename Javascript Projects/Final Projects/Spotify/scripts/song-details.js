@@ -1,5 +1,6 @@
 import { playstate, songs } from "./main.js"
 import { playingviewupdate } from "./mediaplayer.js"
+import { queueupdater } from "./mediaplayer.js"
 export function song_details() {
   if (playstate.default) {
     document.querySelector('.song-details').innerHTML = ``
@@ -102,6 +103,78 @@ export function song_details() {
       </div>
     </div>
   </div>
+   <div class="queue-container">
+            <div class="queue-header">
+                <h4>Queue</h4>
+                <button class="queue-closing-btn info" data-info="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3" width="16px" height="16px"
+                        data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M3.293 3.293a1 1 0 0 1 1.414 0L12 10.586l7.293-7.293a1 1 0 1 1 1.414 1.414L13.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414L12 13.414l-7.293 7.293a1 1 0 0 1-1.414-1.414L10.586 12 3.293 4.707a1 1 0 0 1 0-1.414z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="queues">
+                <div class="now-playing">
+                    <h4 class="now-playing-title">
+                        Now Playing
+                    </h4>
+                    <div class="now-playing-song card">
+                        <div class="now-playing-song-image card-image"><img
+                                src="https://i.scdn.co/image/ab67616d0000b273f7991610fad937fd9f29f55d" alt="playlist-image">
+                            <button class="play-pause-song info" data-info="Play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
+                                    role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
+                                    viewBox="0 0 16 16"
+                                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                                    <path
+                                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="now-playing-song-details">
+                            <div class="now-playing-song-title card-title">
+                                <h4>kamin - EMIN & JONY || speed up, reverb || Tiktokversion || Skyfiix</h4>
+                            </div>
+                            <div class="now-playing-song-artists">
+                                <h5>Aahil World,Amit Roy</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="queue-songs">
+                    <h4 class="next-from">
+                        Next from : <span>Liked Songs</span>
+                    </h4>
+                    <div class="queue-song card">
+                        <div class="queue-song-image card-image"><img
+                                src="https://i.scdn.co/image/ab67616d0000b273afd2bc3f876235be94c0d36d" alt="playlist-image">
+                            <button class="play-pause-song info" data-info="Play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
+                                    role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
+                                    viewBox="0 0 16 16"
+                                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                                    <path
+                                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="queue-song-details">
+                            <div class="queue-song-title card-title">
+                                <h4>Nostalgia</h4>
+                            </div>
+                            <div class="queue-song-artists">
+                                <h5>Aahil World,Amit Roy</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 `
     document.querySelector(".show-credits").addEventListener("click", (e) => {
@@ -127,9 +200,10 @@ export function song_details() {
       return html
     }
     document.querySelector(".hide-playview-btn").addEventListener("click", () => {
-      if (playstate.songdetails) {
         playingviewupdate()
-      }
     })
+    document.querySelector(".queue-closing-btn").addEventListener("click", () => {
+      queueupdater()
+      })
   }
 }

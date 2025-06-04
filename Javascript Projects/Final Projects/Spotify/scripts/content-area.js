@@ -9,7 +9,7 @@ export function main_content() {
         </div>
           <div class="content">
           <div class="banner">
-           <img src="https://c4.wallpaperflare.com/wallpaper/69/602/526/sakirah-rodaun-kev-art-banner-word-clouds-dark-background-hd-wallpaper-preview.jpg" alt="banner">
+           <img src="https://c4.wallpaperflare.com/wallpaper/705/252/985/anime-monkey-d-luffy-one-piece-wallpaper-preview.jpg" alt="banner">
            <h2>Your soundtrack, your vibe.
 </h2>
           </div>
@@ -167,6 +167,7 @@ export function main_content() {
                     playstate.default = null
                     playstate.isplaying=true
                     playstate.songdetails=true
+                    playstate.queue=null;
                     if (currentplayingbutton) {
                         currentplayingbutton.querySelector(".play").style.display = "block"
                         currentplayingbutton.querySelector(".pause").style.display = "none"
@@ -180,9 +181,6 @@ export function main_content() {
                     button.classList.add("active")
                     playstate.currentsong.play()
                 }
-            }
-            else {
-                console.log("going to the playlist area")
             }
         })
     })

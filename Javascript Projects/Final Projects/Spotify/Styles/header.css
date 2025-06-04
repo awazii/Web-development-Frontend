@@ -109,32 +109,9 @@
       border-radius: 50%;
       position: relative;
 }
-.info::after{
-    content: attr(data-info);
-    background-color: #282828;
-    width:max-content;
-    position: absolute;
-    bottom : -75%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-   font-weight: 600;
-    font-size: 13px;
-    padding: 5px 8px;
-    border-radius: 5px;
-    text-transform: capitalize;
-    opacity:0;
-    color: white;
-    box-shadow: 1px 0px 14px 3px rgb(0 0 0 / 60%);
-}
 .searchbtn.info::after,.clear-search.info::after{
     bottom : -135%;
 }
-.info:hover::after{
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
-}
-
 .user img{
     width: 100%;
     height: 100%;

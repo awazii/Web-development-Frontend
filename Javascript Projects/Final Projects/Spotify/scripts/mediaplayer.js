@@ -149,6 +149,15 @@ export function mediaplayer(currentplayingbutton, song) {
         controls(currentplayingbutton)
         document.querySelector(".playingview").addEventListener("click",playingviewupdate)
         document.querySelector(".ex-col").addEventListener("click",playingviewupdate)
+        document.querySelector(".queue").addEventListener("click", () => {
+            if (!playstate.songdetails) {
+                queueupdater()
+            playingviewupdate()
+            }else{
+                queueupdater()
+            }
+        })
+      
     }
 }
 export function _playpause(currentplayingbutton) {
@@ -172,16 +181,28 @@ export function _playpause(currentplayingbutton) {
     }
 }
 export function playingviewupdate() {
-       if (playstate.songdetails) {
+       if (playstate.songdetails&&!playstate.queue) {
                 playstate.songdetails = null
-                document.querySelector(".playingview").classList.remove("activated")
-                let main = document.querySelector(".main-container")
-                main.classList.add("two")
                 let excol = document.querySelector(".ex-col")
                 excol.dataset.info = "expand"
                 excol.querySelector(".expand").style.display = "none"
                 excol.querySelector(".collapse").style.display = "block"
                 document.querySelector('.song-details').style.display = "none"
+                document.querySelector(".playingview").classList.remove("activated")
+                 let main = document.querySelector(".main-container")
+                main.classList.add("two")
+                document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
+                    $(swiperEl).slick('setPosition');
+                })
+            }
+            else if (playstate.songdetails && playstate.queue) {
+                queueupdater()
+            }
+             else if (!playstate.songdetails && playstate.queue) {
+                 playstate.songdetails = true
+                let main = document.querySelector(".main-container")
+                main.classList.remove("two")
+                document.querySelector('.song-details').style.display = "block"
                 document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
                     $(swiperEl).slick('setPosition');
                 })
@@ -201,3 +222,25 @@ export function playingviewupdate() {
                 })
             }
 }
+ export function queueupdater() {
+            if (playstate.queue) {
+                playstate.queue = false
+                 document.querySelector(".playingview").classList.add("activated")
+                   let excol = document.querySelector(".ex-col")
+                excol.dataset.info = "collapse"
+                excol.querySelector(".expand").style.display = "block"
+                excol.querySelector(".collapse").style.display = "none"
+            }
+            else {
+                playstate.queue = true
+                document.querySelector(".playingview").classList.remove("activated")
+                 let excol = document.querySelector(".ex-col")
+                  excol.dataset.info = "expand"
+                excol.querySelector(".expand").style.display = "none"
+                excol.querySelector(".collapse").style.display = "block"
+            }
+             let queuecontainer= document.querySelector(".queue-container")
+            let queue=document.querySelector(".queue")
+            queue.classList.toggle("activated")
+           queuecontainer.classList.toggle("queue-visible")
+        }
