@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="Styles/content-area.css">
     <link rel="stylesheet" href="Styles/about.css">
     <link rel="stylesheet" href="Styles/queue.css">
+    <link rel="stylesheet" href="Styles/albumpage.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
@@ -30,7 +31,7 @@
         </div>
         <div class="middle">
             <button class="homebtn info" data-info="Home">
-                <img src="Assests/home.svg" alt="homelogo">
+                 <svg xmlns="http://www.w3.org/2000/svg" data-encore-id="icon" role="img" width="24px" height="24px" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 24 24"><path d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z"></path></svg>
             </button>
             <div class="search-bar">
                 <div class="search-box">
@@ -59,14 +60,111 @@
                 <img src="Assests/ab67757000003b829de49812ff0dbbf04b5fbb97.jpeg" alt="user img">
             </div>
         </div>
-
     </header>
     <main class="main-container">
         <div class="library">
         </div>
-        <div class="content-area">
-        </div>
-        <!-- <div class="song-details"></div> -->
+        <div class="content-area album-page">
+            <div class="album-artist-banner">
+                <img src="Assests/artist banners/juicewrld.jpeg" alt="">
+                <div class="artist-container">
+                    <div class="artist-image-container">
+                        <img src="https://i.scdn.co/image/ab6761610000e5eb23a60030944f7853c21565ef" alt="artist-image">
+                    </div>
+                    <div class="artist-details-container">
+                        <div class="verified">
+                            <div class="svg-container">
+                                <svg role="img" aria-hidden="false" xmlns="http://www.w3.org/2000/svg" width="24px"
+                                    height="24px" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="white" />
+                                    <path
+                                        d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572 3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667 1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678 1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372 0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5 13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658 1.658 0 0 1 1.678-1.678l3.595.043L10.814.5zm6.584 9.12a1 1 0 0 0-1.414-1.413l-6.011 6.01-1.894-1.893a1 1 0 0 0-1.414 1.414l3.308 3.308 7.425-7.425z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h5>Verified Artist</h5>
+                        </div>
+                        <div class="artist-name">
+                            <h1>Juice WRLD</h1>
+                        </div>
+                        <div class="artist-followers">
+                            <h3>90000 followers</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="albumbtn" data-songid="${obj.id}">
+                    <svg class="play" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="black"
+                        viewBox="0 0 16 16">
+                        <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05
+                        14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
+                    </svg>
+                    <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" role="img"
+                        aria-hidden="true" viewBox="0 0 16 16">
+                        <path
+                            d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="album-content">
+                <div class="album-songs-container">
+                    <h2>Popular</h2>
+                    <div class="album-songs every">
+                        <div class="album-song">
+                            <h3 class="num">1</h3>
+                            <div class="album-song-details">
+                                <div class="album-song-img">
+                                    <img src="https://i.scdn.co/image/ab67616d0000b273f7991610fad937fd9f29f55d"
+                                        alt="album-song-image">
+                                </div>
+                                <h3>Luiced Dreams</h3>
+                            </div>
+                            <div class="like-btn-container">
+                                <button class="liked info" data-info="Add to Liked Songs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3" width="24px" height="24px"
+                                        role="img" aria-hidden="true" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                        </path>
+                                        <path
+                                            d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                </div>
+                                <button class="album-song-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
+                                        data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>              
+                        </div>
+                        <button class="show-all-songs">See more</button>
+                    </div>
+                    <div class="about-artist">
+                        <h2>About</h2>
+                        <div class="biobox">
+                            <img src="https://i.scdn.co/image/ab6761610000e5eb23a60030944f7853c21565ef"
+                                alt="artist-image">
+                            <div class="rank">
+                                <h3>#176</h3>
+                                <p>in the world</p>
+                            </div>
+                            <div class="bio">
+                                <h3>357,454 Followers</h3>
+                                <p>Jarad Higgins, known professionally as Juice WRLD, was an American rapper, singer,
+                                    and songwriter. He is best known for his 2018 single "Lucid Dreams", which peaked at
+                                    number two on the Billboard Hot 100 and was certified diamond by the RIAA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="line-end"></div>
+            </div>
+            <!-- <div class="song-details"></div> -->
     </main>
     <footer class="media-player">
     </footer>
@@ -74,5 +172,4 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
-
 </html>

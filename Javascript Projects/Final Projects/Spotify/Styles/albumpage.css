@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.content-area.album-page {
+    background: linear-gradient(360deg, #121212 15%, #232831 110%);
+    padding: 0;
+}
+
+.album-artist-banner {
+    width: 100%;
+    height: calc(100% * 0.4);
+    gap: 50px;
+    position: relative;
+}
+
+.artist-container {
+    position: absolute;
+    top: 20%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.album-artist-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: 50% 35%;
+}
+
+.artist-image-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+.artist-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.artist-details-container {
+    height: 200px;
+    padding: 10px;
+}
+
+.verified {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+
+.svg-container svg {
+    fill: #4db3ff;
+}
+
+.artist-name h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 4.5rem
+}
+
+.artist-details-container .artist-followers {
+    color: white;
+}
+
+.artist-details-container .artist-followers h3 {
+    font-weight: 400;
+}
+
+.albumbtn {
+    all: unset;
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    right: 3%;
+    bottom: 10%;
+    opacity: 1;
+    background-color: #ffffff;
+    transition: all 0.1s ease;
+
+    & svg {
+        fill: rgb(0, 0, 0)
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: #2bf772;
+    }
+}
+
+.album-content {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.album-songs-container {
+    height: max-content;
+
+}
+
+.about-artist,
+.album-songs-container {
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.album-songs {
+    height: calc(60px *4);
+    overflow: hidden;
+}
+
+.about-artist {
+    padding-left: 10px;
+}
+
+.biobox {
+    width: 100%;
+    height: 370px;
+    border-radius: 8px;
+    margin-top: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transform: scale(1.02);
+    }
+}
+
+.biobox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    border-radius: inherit;
+    opacity: .7;
+}
+
+.rank {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background-color: #0074e0;
+    padding: 10px;
+    border-radius: 50%;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rank p {
+    font-size: .65rem;
+    width: 100%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.album-song {
+    width: 100%;
+    height: 50px;
+border: 1px solid #5c5c5c;
+    margin-top: 10px;
+    transition: all 0.1s ease;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+}
+
+.every {
+    height: max-content;
+}
+
+.show-all-songs {
+    all: unset;
+    color: #b7b6b7;
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: .9rem;
+
+    &:hover {
+        color: #ffffff;
+        cursor: pointer;
+    }
+}
+
+.album-song:hover {
+    background-color: #2a292a;
+    border: none;
+    & .album-song-btn,.like-btn-container {
+        opacity: 1;
+    }
+}
+
+.album-song-btn {
+    all: unset;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+  & svg{
+    fill: black;
+  }
+    &:hover {
+        background-color: #1ed760;
+        cursor: pointer;
+    }
+}
+.album-song-details{
+    width: 250px;
+}
+.album-song-img{
+    width: 40px;
+    height: 40px;
+}
+.album-song-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.album-song-details{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    & h3{
+        font-size: .9rem;
+    }
+}
+.num{
+    color: #c9c1c1;
+}
+.album-song:first-child .liked.info::after{
+   bottom: -250%;
+}
+.album-song .liked.info::after{
+   bottom: 180%;
+}
+.album-song .like-btn-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+}
+.line-end{
+    width: 95%;
+    height: 2px;
+    background-color: #5c5c5c;;
+    margin: 20px auto;
+}
+.album-song-details h3 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.bio{
+    position: absolute;
+    bottom: 0%;
+    width: 80%;
+    padding: 20px;
+    & p{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-weight: 500;
+    }
+    & h3{
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+}

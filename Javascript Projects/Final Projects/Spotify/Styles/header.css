@@ -38,6 +38,16 @@
     align-items: center;
     transition: all 0.3s ease-in-out;
     z-index: 10;
+    & svg{
+        fill: white;
+    }
+}
+.away{
+     & svg{
+        fill: none;
+        stroke: rgb(182, 178, 178);
+        stroke-width: 2px;
+    }
 }
 .homebtn:hover{
     background-color: #282828;

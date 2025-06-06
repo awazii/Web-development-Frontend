@@ -38,8 +38,6 @@
 background: linear-gradient(360deg, #121212 65%, #302555 100%);
 padding: 0 40px;
 overflow-y: auto;
-display: flex;
-  flex-direction: column;
 }
 .queue-container{
     display: flex;

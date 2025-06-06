@@ -143,7 +143,8 @@ export function mediaplayer(currentplayingbutton, song) {
                             d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z">
                         </path>
                     </svg>
-                </button>`
+                </button>
+                </div>`
             return html
         }
         controls(currentplayingbutton)

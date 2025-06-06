@@ -205,5 +205,8 @@ export function song_details() {
     document.querySelector(".queue-closing-btn").addEventListener("click", () => {
       queueupdater()
       })
-  }
+    document.querySelector(".open-queue").addEventListener("click", () => {
+     queueupdater()
+  })
+  }  
 }
