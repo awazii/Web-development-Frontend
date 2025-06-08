@@ -1,12 +1,14 @@
 import { song_details } from "./song-details.js"
-import { playstate } from "./main.js"
-import { _playpause } from "./mediaplayer.js";
-import { mediaplayer } from "./mediaplayer.js";
+import { playstate, recent } from "./main.js"
+import { _playpause,mediaplayer } from "./mediaplayer.js";
+import { cancelPlayTimer } from "./recent.js";
+import { startPlayTimer } from "./recent.js";
 export function controls(currentplayingbutton) {
     const progressContainer = document.querySelector(".progress-bar");
     const progressFill = document.querySelector(".progress");
     const elapsedTime = document.querySelector(".elapsed-time").firstElementChild;
     const totalDuration = document.querySelector(".total-duration").firstElementChild;
+    totalDuration.textContent=`0:00`
     let playpausebtn = document.querySelector(".play-pause-control")
     playpausebtn.querySelector(".play").style.display = "none"
     playpausebtn.querySelector(".pause").style.display = "block"
@@ -17,6 +19,7 @@ export function controls(currentplayingbutton) {
     let isDragging = false;
     playstate.currentsong.addEventListener("loadedmetadata", () => {
         durationconverter(playstate.currentsong.duration,totalDuration)
+        startPlayTimer(playstate.songid);
     });
     progressContainer.addEventListener("click", (event) => {
        const clickPosition = click_position(event)
@@ -158,7 +161,6 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         playstate.isplaying = null;
         playstate.songdetails=null;
         playstate.queue = null;
-        console.log(playstate)
         let main = document.querySelector(".main-container")
         main.classList.add("two")
         let details = document.querySelector('.song-details')
@@ -168,6 +170,7 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         })
         mediaplayer()
         song_details()
+        cancelPlayTimer()
         currentplayingbutton.classList.remove("active")
         currentplayingbutton.querySelector(".play").style.display = "block"
         currentplayingbutton.querySelector(".pause").style.display = "none"

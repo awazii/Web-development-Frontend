@@ -64,20 +64,20 @@ export function fetch_album() {
             }
         }
     })
-    appdata.albums = album;
+    appdata.album=album
     localStorage.setItem("appdata", JSON.stringify(appdata));
+    // localStorage.setItem("album", JSON.stringify(album));
 }
 export function render_album(category) {
     playstate.home = false
     playstate.albumpage = true
     let obj = {}
-    appdata.albums.find(album => {
+    appdata.album.find(album => {
         if (album.category === category) {
             console.log(album.category, category)
             obj = album
         }
     })
-    let html = "";
     let contentarea = document.querySelector(".content-area");
     contentarea.classList.add("album-page");
     contentarea.style.background = `linear-gradient(360deg, #121212 40%, ${obj.bg} 110%)`;

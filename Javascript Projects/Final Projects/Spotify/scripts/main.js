@@ -3,7 +3,10 @@ import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
 import { fetch_album } from "./album.js";
 export let songs = [];
-export let appdata = {};
+export let appdata = JSON.parse(localStorage.getItem("appdata"))||{};
+console.log(appdata)
+export let recent=appdata.recent|| {category: "Recently Played", songids: []}
+console.log(recent)
 export let playstate = {
     songid: null,
     currentsong: new Audio(),
@@ -32,7 +35,7 @@ _fetchsongs();
 let homebtn = document.querySelector(".homebtn")
 homebtn.addEventListener("click", () => {
     if (playstate.home) {
-         homebtn.classList.add("away")
+        //   homebtn.classList.remove("away")
         main_content()
     }
     else if (playstate.albumpage) {
@@ -41,7 +44,6 @@ homebtn.addEventListener("click", () => {
         playstate.albumpage = false;
         let contentarea=document.querySelector(".content-area")
         contentarea.classList.remove("album-page")
-
         main_content()
     }
 })

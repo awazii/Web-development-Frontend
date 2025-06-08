@@ -1,0 +1,57 @@
+// localStorage.removeItem("appdata");
+import { _rendersongs } from "./home.js";
+import { appdata, playstate } from "./main.js";
+import { recent } from "./main.js";
+import { render_recent } from "./home.js";
+import { slider } from "./home.js";
+export function update_recent(recentsong) {
+    console.log(recentsong, recent.songids.length)
+    if (!recent.songids.includes(recentsong)) {
+        if (recent.songids.length >= 10) {
+            console.log("recent songs limit reached");
+            recent.songids.pop();
+            recent.songids.unshift(recentsong)
+        }
+        else {
+            recent.songids.unshift(recentsong);
+        }
+    }
+    else {
+        console.log("song already exists in recent songs");
+        let index = recent.songids.indexOf(recentsong);
+        recent.songids.splice(index, 1)
+        recent.songids.unshift(recentsong)
+    }
+    appdata.recent = recent
+    localStorage.setItem("appdata", JSON.stringify(appdata));
+    console.log(appdata)
+    if (playstate.home) {
+        render_recent();
+    }
+}
+let playTimer = null;
+let playedSeconds = 0;
+let requiredSeconds = 30;
+export function startPlayTimer(songId) {
+    if (playTimer) {
+        clearInterval(playTimer);
+        playedSeconds=0
+    }
+    clearInterval(playTimer);
+    playTimer = setInterval(() => {
+        if (!playstate.currentsong.paused) {
+            playedSeconds++;
+            console.log("Played seconds:", playedSeconds);
+            if (playedSeconds >= requiredSeconds) {
+                clearInterval(playTimer);
+                update_recent(songId);
+                playedSeconds = 0; 
+            }
+        }
+    }, 1000);
+
+}
+export function cancelPlayTimer() {
+    clearInterval(playTimer);
+    playedSeconds = 0;
+}

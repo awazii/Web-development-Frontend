@@ -1,13 +1,14 @@
-import { playstate, songs } from "./main.js"
+import { playstate, recent, songs } from "./main.js"
 import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
-import{main_content} from './content-area.js'; 
+import { main_content } from './content-area.js';
+import { update_recent} from "./recent.js";
 export function fetch_home() {
-         playstate.albumpage = false;
-            playstate.home = true;
-     document.querySelector(".content-area").innerHTML = `    <div class="c-a-heading">
+    playstate.albumpage = false;
+    playstate.home = true;
+    document.querySelector(".content-area").innerHTML = `    <div class="c-a-heading">
             <h5> All</h5>
         </div>
           <div class="content">
@@ -16,9 +17,10 @@ export function fetch_home() {
            <h2>Your soundtrack, your vibe.
 </h2>
           </div>
-            <div class="top-playlists"></div>
+            <div class="mostplayed"></div>
             <div class="dailymix"></div>
-            <div class="recent"></div>
+            <div class="recent">
+            </div>
             <div class="categories">
             ${rendercategories()}
             </div>
@@ -48,13 +50,12 @@ export function fetch_home() {
             })
         })
         appdata.SongCatalog = SongCatalog
-        localStorage.setItem("appdata", JSON.stringify(appdata))
-        console.log(appdata)
+        localStorage.setItem("appdata", JSON.stringify(appdata));
         SongCatalog.forEach((catalog, index) => {
             html += `<div class="category">
                       <h2>${catalog.category}</h2>
                       <div class="songs">
-                      <div class="songs-wrapper">
+                      <div class="songs-wrapper catalog">
                       ${_rendersongs(catalog.ids)}
                       </div>
                        <div class="custom-prev${index} custom-prev">
@@ -67,97 +68,19 @@ export function fetch_home() {
                       </div>
                 </div>`
         })
-        function _rendersongs(ids) {
-            let song_ids = ids
-            let html = ``
-            song_ids.forEach(id => {
-                let obj = songs.find(song => song.id === id);
-                html += `<div class="song">
-                            <div class="song-image">
-                                <img src="${obj.image}" alt="title-img">
-                                <button class="play-pause-song" data-songid="${obj.id}"><svg class="play" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
-                                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
-                                </button>
-                            </div>
-                            <div class="song-title">
-                                <h4>${obj.title}</h4>
-                            </div>
-                            <div class="song-artist">
-                                <h5>${obj.credits.join(',')}</h5>
-                            </div>
-                        </div>`
-            }
-            )
-            return html
-        }
         return html
     }
-    document.querySelectorAll('.songs-wrapper').forEach((swiperEl, index) => {
-        $(swiperEl).slick({
-            arrows: true,
-            dots: false,
-            infinite: false,
-            speed: 300,
-            slidesToShow: 6,
-            slidesToScroll: 3,
-            responsive: [
-                {
-                    breakpoint: 1750,
-                    settings: { slidesToShow: 5, slidesToScroll: 3 }
-                },
-                {
-                    breakpoint: 1600,
-                    settings: { slidesToShow: 3, slidesToScroll: 3 }
-                },
-                {
-                    breakpoint: 1100,
-                    settings: { slidesToShow: 3, slidesToScroll: 3 }
-                },
-                {
-                    breakpoint: 900,
-                    settings: { slidesToShow: 2, slidesToScroll: 2, dots: false, infinite: true }
-                },
-                {
-                    breakpoint: 600,
-                    settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
-                },
-                {
-                    breakpoint: 480,
-                    settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
-                }
-            ]
-        });
-        $(`.custom-prev${index}`).on('click', function () {
-            $(swiperEl).slick('slickPrev');
-        });
-
-        $(`.custom-next${index}`).on('click', function () {
-            $(swiperEl).slick('slickNext');
-        });
-        $(swiperEl).on('init reInit afterChange', function (event, slick, currentSlide) {
-            const $prevBtn = $(`.custom-prev${index}`)
-            const $nextBtn = $(`.custom-next${index}`)
-            const current = currentSlide || 0;
-            const maxVisible = slick.slideCount - slick.options.slidesToShow;
-            if (current === 0) {
-                $prevBtn.hide();
-            } else {
-                $prevBtn.show();
-            }
-            if (current >= maxVisible) {
-                $nextBtn.hide();
-            } else {
-                $nextBtn.show();
-            }
-        });
-        $(swiperEl).trigger('init', [$(swiperEl).slick('getSlick'), 0]);
-    });
+    let catalogcontainer = document.querySelector(".categories")
+    catalogcontainer.querySelectorAll('.songs-wrapper').forEach((swiperEl, index) => {
+        slider(swiperEl, index)
+    })
+    render_recent();
     let currentplayingbutton = null;
     document.querySelectorAll(".song").forEach(song => {
         song.addEventListener("click", (e) => {
             const button = e.target.closest("button");
             if (button) {
-                if (playstate.isplaying&&currentplayingbutton === button) {
+                if (playstate.isplaying && currentplayingbutton === button) {
                     console.log("same button is clicked")
                     _playpause(currentplayingbutton)
                 }
@@ -168,15 +91,16 @@ export function fetch_home() {
                     let song = songs.find(song => song.id === songid)
                     playstate.currentsong.src = song.url;
                     playstate.default = null
-                    playstate.isplaying=true
-                    playstate.songdetails=true
-                    playstate.queue=null;
+                    playstate.isplaying = true
+                    playstate.songdetails = true
+                    playstate.queue = null;
                     if (currentplayingbutton) {
                         currentplayingbutton.querySelector(".play").style.display = "block"
                         currentplayingbutton.querySelector(".pause").style.display = "none"
                         currentplayingbutton.classList.remove("active")
                     }
                     currentplayingbutton = button
+                    console.log(playstate)
                     mediaplayer(currentplayingbutton, song)
                     song_details()
                     button.querySelector(".pause").style.display = "block"
@@ -241,4 +165,113 @@ export function fetch_home() {
             main_content(album.dataset.albumName);
         })
     })
+}
+export function _rendersongs(ids) {
+    let song_ids = ids
+    let html = ``
+    song_ids.forEach(id => {
+        let obj = songs.find(song => song.id === id);
+        html += `<div class="song">
+                            <div class="song-image">
+                                <img src="${obj.image}" alt="title-img">
+                                <button class="play-pause-song" data-songid="${obj.id}"><svg class="play" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
+                                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
+                                </button>
+                            </div>
+                            <div class="song-title">
+                                <h4>${obj.title}</h4>
+                            </div>
+                            <div class="song-artist">
+                                <h5>${obj.credits.join(',')}</h5>
+                            </div>
+                        </div>`
+    }
+    )
+    return html
+}
+export function slider(swiperEl, index) {
+    if (swiperEl.classList.contains("slick-initialized")) {
+        $(swiperEl).slick('unslick');
+    }
+    $(swiperEl).slick({
+        arrows: true,
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 6,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 1750,
+                settings: { slidesToShow: 5, slidesToScroll: 3 }
+            },
+            {
+                breakpoint: 1600,
+                settings: { slidesToShow: 3, slidesToScroll: 3 }
+            },
+            {
+                breakpoint: 1100,
+                settings: { slidesToShow: 3, slidesToScroll: 3 }
+            },
+            {
+                breakpoint: 900,
+                settings: { slidesToShow: 2, slidesToScroll: 2, dots: false, infinite: true }
+            },
+            {
+                breakpoint: 600,
+                settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
+            },
+            {
+                breakpoint: 480,
+                settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
+            }
+        ]
+    });
+    $(`.custom-prev${index}`).on('click', function () {
+        $(swiperEl).slick('slickPrev');
+    });
+
+    $(`.custom-next${index}`).on('click', function () {
+        $(swiperEl).slick('slickNext');
+    });
+    $(swiperEl).on('init reInit afterChange', function (event, slick, currentSlide) {
+        const $prevBtn = $(`.custom-prev${index}`)
+        const $nextBtn = $(`.custom-next${index}`)
+        const current = currentSlide || 0;
+        const maxVisible = slick.slideCount - slick.options.slidesToShow;
+        if (current === 0) {
+            $prevBtn.hide();
+        } else {
+            $prevBtn.show();
+        }
+        if (current >= maxVisible) {
+            $nextBtn.hide();
+        } else {
+            $nextBtn.show();
+        }
+    });
+    $(swiperEl).trigger('init', [$(swiperEl).slick('getSlick'), 0]);
+}
+export function render_recent() {
+    let recentcontainer = document.querySelector(".recent")
+    console.log(recent.songids.length)
+    if (recent.songids.length >= 7) {
+        recentcontainer.innerHTML = `<div class="category">
+                      <h2>${appdata.recent.category}</h2>
+                      <div class="songs">
+                      <div class="songs-wrapper">
+                      ${_rendersongs(appdata.recent.songids)}
+                      </div>
+                       <div class="custom-prev9 custom-prev">
+       <svg class="left" width="16px" height="16px"  data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" "><path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path></svg>
+    </svg>
+      </div>
+      <div class="custom-next9 custom-next">
+        <svg class="right" width="16px" height="16px" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"><path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path></svg>
+      </div>
+                      </div>
+                </div>`
+        let recentslider = recentcontainer.querySelector(".songs-wrapper")
+        slider(recentslider, 9)
+    }
 }
