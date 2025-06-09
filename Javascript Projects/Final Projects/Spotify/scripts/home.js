@@ -4,11 +4,13 @@ import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
 import { main_content } from './content-area.js';
-import { update_recent} from "./recent.js";
+import { update_recent } from "./recent.js";
+import { dailymix } from "./main.js";
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
     playstate.home = true;
-    document.querySelector(".content-area").innerHTML = `    <div class="c-a-heading">
+    document.querySelector(".content-area").innerHTML = `<div class="c-a-heading">
             <h5> All</h5>
         </div>
           <div class="content">
@@ -18,7 +20,8 @@ export function fetch_home() {
 </h2>
           </div>
             <div class="mostplayed"></div>
-            <div class="dailymix"></div>
+            <div class="dailymix">
+            </div>
             <div class="recent">
             </div>
             <div class="categories">
@@ -75,6 +78,7 @@ export function fetch_home() {
         slider(swiperEl, index)
     })
     render_recent();
+    _dailymix();
     let currentplayingbutton = null;
     document.querySelectorAll(".song").forEach(song => {
         song.addEventListener("click", (e) => {
@@ -274,4 +278,49 @@ export function render_recent() {
         let recentslider = recentcontainer.querySelector(".songs-wrapper")
         slider(recentslider, 9)
     }
+}
+export function _dailymix() {
+    let dailymixcontainer=document.querySelector(".dailymix")
+    let today = dayjs().format('DD-MM-YYYY');
+    const dailyTitles = {
+        0: "Sunday Slowdown",
+        1: "Monday Mix",
+        2: "Tuesday Turnup",
+        3: "Midweek Vibes",
+        4: "Throwback Thursday",
+        5: "Friday Fire",
+        6: "Weekend Waves"
+    };
+    if (today === dailymix.date) {
+       dailymixcontainer.innerHTML= _renderdailymix(dailymix)
+    }
+    else {
+           dailymix.date = today;
+           dailymix.category=dailyTitles[dayjs().day()];
+           const mixSongs = [...songs].sort(() => 0.5 - Math.random()).slice(0, 30);
+           dailymix.songids = mixSongs.map(song => song.id);
+            appdata.dailymix = dailymix;
+            localStorage.setItem("appdata", JSON.stringify(appdata));
+       dailymixcontainer.innerHTML= _renderdailymix(dailymix)
+    }
+        let dailymixslider=dailymixcontainer.querySelector(".songs-wrapper")
+        slider(dailymixslider,10)
+}
+function _renderdailymix(dailymix) {
+    let html = `<div class="category">
+                      <h2>${dailymix.category}</h2>
+                      <div class="songs">
+                      <div class="songs-wrapper">
+                      ${_rendersongs(dailymix.songids)}
+                      </div>
+                       <div class="custom-prev10 custom-prev">
+       <svg class="left" width="16px" height="16px"  data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" "><path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path></svg>
+    </svg>
+      </div>
+      <div class="custom-next10 custom-next">
+        <svg class="right" width="16px" height="16px" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="black"><path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path></svg>
+      </div>
+                      </div>
+                </div>`;
+    return html
 }

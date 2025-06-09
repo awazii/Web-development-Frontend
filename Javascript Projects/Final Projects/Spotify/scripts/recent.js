@@ -31,7 +31,7 @@ export function update_recent(recentsong) {
 }
 let playTimer = null;
 let playedSeconds = 0;
-let requiredSeconds = 30;
+let requiredSeconds = 20;
 export function startPlayTimer(songId) {
     if (playTimer) {
         clearInterval(playTimer);

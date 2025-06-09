@@ -7,6 +7,7 @@ export let appdata = JSON.parse(localStorage.getItem("appdata"))||{};
 console.log(appdata)
 export let recent=appdata.recent|| {category: "Recently Played", songids: []}
 console.log(recent)
+export let dailymix= appdata.dailymix || {category: "Daily Mix",date :null, songids: []}
 export let playstate = {
     songid: null,
     currentsong: new Audio(),
