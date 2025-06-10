@@ -2,10 +2,10 @@ import { playstate, recent, songs } from "./main.js"
 import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
-import { appdata } from "./main.js";
+import { appdata,dailymix } from "./main.js";
 import { main_content } from './content-area.js';
+import { _equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
-import { dailymix } from "./main.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
@@ -77,44 +77,9 @@ export function fetch_home() {
     catalogcontainer.querySelectorAll('.songs-wrapper').forEach((swiperEl, index) => {
         slider(swiperEl, index)
     })
+    addEventListeners(catalogcontainer, "home");
     render_recent();
     _dailymix();
-    let currentplayingbutton = null;
-    document.querySelectorAll(".song").forEach(song => {
-        song.addEventListener("click", (e) => {
-            const button = e.target.closest("button");
-            if (button) {
-                if (playstate.isplaying && currentplayingbutton === button) {
-                    console.log("same button is clicked")
-                    _playpause(currentplayingbutton)
-                }
-                else {
-                    console.log("different button is clicked")
-                    let songid = button.dataset.songid
-                    playstate.songid = songid
-                    let song = songs.find(song => song.id === songid)
-                    playstate.currentsong.src = song.url;
-                    playstate.default = null
-                    playstate.isplaying = true
-                    playstate.songdetails = true
-                    playstate.queue = null;
-                    if (currentplayingbutton) {
-                        currentplayingbutton.querySelector(".play").style.display = "block"
-                        currentplayingbutton.querySelector(".pause").style.display = "none"
-                        currentplayingbutton.classList.remove("active")
-                    }
-                    currentplayingbutton = button
-                    console.log(playstate)
-                    mediaplayer(currentplayingbutton, song)
-                    song_details()
-                    button.querySelector(".pause").style.display = "block"
-                    button.querySelector(".play").style.display = "none"
-                    button.classList.add("active")
-                    playstate.currentsong.play()
-                }
-            }
-        })
-    })
     function renderalbum_card() {
         let albums_name = ["Arijit's Album", "Atif's Album", "juice's Album", "Shawn's Album"]
         const albums = albums_name.map(albumName => {
@@ -277,10 +242,11 @@ export function render_recent() {
                 </div>`
         let recentslider = recentcontainer.querySelector(".songs-wrapper")
         slider(recentslider, 9)
+        addEventListeners(recentcontainer, "home");
     }
 }
 export function _dailymix() {
-    let dailymixcontainer=document.querySelector(".dailymix")
+    let dailymixcontainer = document.querySelector(".dailymix")
     let today = dayjs().format('DD-MM-YYYY');
     const dailyTitles = {
         0: "Sunday Slowdown",
@@ -292,19 +258,20 @@ export function _dailymix() {
         6: "Weekend Waves"
     };
     if (today === dailymix.date) {
-       dailymixcontainer.innerHTML= _renderdailymix(dailymix)
+        dailymixcontainer.innerHTML = _renderdailymix(dailymix)
     }
     else {
-           dailymix.date = today;
-           dailymix.category=dailyTitles[dayjs().day()];
-           const mixSongs = [...songs].sort(() => 0.5 - Math.random()).slice(0, 30);
-           dailymix.songids = mixSongs.map(song => song.id);
-            appdata.dailymix = dailymix;
-            localStorage.setItem("appdata", JSON.stringify(appdata));
-       dailymixcontainer.innerHTML= _renderdailymix(dailymix)
+        dailymix.date = today;
+        dailymix.category = dailyTitles[dayjs().day()];
+        const mixSongs = [...songs].sort(() => 0.5 - Math.random()).slice(0, 30);
+        dailymix.songids = mixSongs.map(song => song.id);
+        appdata.dailymix = dailymix;
+        localStorage.setItem("appdata", JSON.stringify(appdata));
+        dailymixcontainer.innerHTML = _renderdailymix(dailymix)
     }
-        let dailymixslider=dailymixcontainer.querySelector(".songs-wrapper")
-        slider(dailymixslider,10)
+    let dailymixslider = dailymixcontainer.querySelector(".songs-wrapper")
+    slider(dailymixslider, 10)
+    addEventListeners(dailymixcontainer, "home");
 }
 function _renderdailymix(dailymix) {
     let html = `<div class="category">
@@ -323,4 +290,70 @@ function _renderdailymix(dailymix) {
                       </div>
                 </div>`;
     return html
+}
+export function playsong(button,equaliser) {
+    if (playstate.isplaying && playstate.currentplayingbutton === button) {
+        console.log("same button is clicked")
+        _playpause();
+        _equaliserchecker(equaliser)
+    }
+    else {
+        console.log("different button is clicked")
+        let songid = button.dataset.songid
+        playstate.songid = songid
+        let song = songs.find(song => song.id === songid)
+        playstate.currentsong.src = song.url;
+        playstate.default = null
+        playstate.isplaying = true
+        playstate.songdetails = true
+        playstate.queue = null;
+        if (playstate.currentplayingbutton) {
+            playstate.currentplayingbutton.querySelector(".play").style.display = "block"
+            playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
+            playstate.currentplayingbutton.classList.remove("active")
+        }
+        playstate.currentplayingbutton = button
+        console.log(playstate)
+        mediaplayer(playstate.currentplayingbutton, song)
+        song_details()
+        button.querySelector(".pause").style.display = "block"
+        button.querySelector(".play").style.display = "none"
+        button.classList.add("active")
+        console.log(button)
+        playstate.currentsong.play()
+    }
+}
+function resetbuttons() {
+
+}
+export function addEventListeners(element, location) {
+    if (location === "home") {
+        element.querySelectorAll(".song").forEach(song => {
+            song.addEventListener("click", (e) => {
+                const button = e.target.closest("button");
+              const source = button.closest(".category").firstElementChild.innerHTML;
+              playstate.source=source
+              console.log(playstate)
+                if (button) {
+                    playsong(button);
+                }
+            })
+        })
+    }
+    else if (location === "album") {
+        element.querySelectorAll(".album-song-btn").forEach(button => {
+            button.addEventListener("click", (e) => {
+                let equaliser = button.closest(".album-song").querySelector(".equaliser")
+                 if (playstate.equaliser) {
+                    playstate.equaliser.style.opacity=0
+                 }
+               equaliser.style.opacity = 1
+               playstate.equaliser = equaliser
+              let id= button.dataset.songid
+              let source= songs.find(song=>song.id===id)
+              playstate.source=source.category
+                playsong(button,equaliser);
+            })
+        })
+    }
 }

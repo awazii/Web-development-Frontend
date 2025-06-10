@@ -17,6 +17,10 @@ export let playstate = {
     queue: null,
     home: true,
     albumpage: false,
+    currentplayingbutton :null,
+    nowplaybtn: null,
+    equaliser:null,
+    source:null
 };
 let _fetchsongs = async () => {
     let main = document.querySelector('.main-container');

@@ -161,24 +161,32 @@ export function mediaplayer(currentplayingbutton, song) {
       
     }
 }
-export function _playpause(currentplayingbutton) {
+export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
-    currentplayingbutton.classList.toggle("active")
+    playstate.currentplayingbutton.classList.toggle("active")
+    playstate.nowplaybtn.classList.toggle("active")
+    
     if (playstate.currentsong.paused) {
         playstate.currentsong.play();
         playpausebtn.querySelector(".play").style.display = "none"
         playpausebtn.querySelector(".pause").style.display = "block"
-        currentplayingbutton.querySelector(".play").style.display = "none"
-        currentplayingbutton.querySelector(".pause").style.display = "block"
+        playstate.currentplayingbutton.querySelector(".play").style.display = "none"
+        playstate.currentplayingbutton.querySelector(".pause").style.display = "block"
+        playstate.nowplaybtn.querySelector(".play").style.display = "none"
+        playstate.nowplaybtn.querySelector(".pause").style.display = "block"
         playpausebtn.dataset.info = "pause"
+        playstate.nowplaybtn.dataset.info="pause"
     }
     else {
         playstate.currentsong.pause()
         playpausebtn.querySelector(".play").style.display = "block"
         playpausebtn.querySelector(".pause").style.display = "none"
-        currentplayingbutton.querySelector(".play").style.display = "block"
-        currentplayingbutton.querySelector(".pause").style.display = "none"
+        playstate.currentplayingbutton.querySelector(".play").style.display = "block"
+        playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
+        playstate.nowplaybtn.querySelector(".play").style.display = "block"
+        playstate.nowplaybtn.querySelector(".pause").style.display = "none"
         playpausebtn.dataset.info = "play"
+        playstate.nowplaybtn.dataset.info="play"
     }
 }
 export function playingviewupdate() {

@@ -1,5 +1,5 @@
 import { playstate, songs } from "./main.js"
-import { playingviewupdate } from "./mediaplayer.js"
+import { playingviewupdate ,_playpause} from "./mediaplayer.js"
 import { queueupdater } from "./mediaplayer.js"
 export function song_details() {
   if (playstate.default) {
@@ -24,7 +24,7 @@ export function song_details() {
         <path d="M15 16a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14Zm-8.5-1.5v-13h8v13h-8Zm-1.5 0H1.5v-13H5v13Z"></path>
       </svg>
     </div>
-    <h4>${song.category}</h4>
+    <h4>${playstate.source}</h4>
   </div>
 </div>
 
@@ -123,31 +123,34 @@ export function song_details() {
                     </h4>
                     <div class="now-playing-song card">
                         <div class="now-playing-song-image card-image"><img
-                                src="https://i.scdn.co/image/ab67616d0000b273f7991610fad937fd9f29f55d" alt="playlist-image">
+                                src="${song.image}" alt="playlist-image">
                             <button class="play-pause-song info" data-info="Play">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
-                                    role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
-                                    viewBox="0 0 16 16"
-                                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
-                                    <path
-                                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
-                                    </path>
-                                </svg>
+                             <svg class="play" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="black"
+                        viewBox="0 0 16 16">
+                        <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05
+                        14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
+                    </svg>
+                    <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" role="img"
+                        aria-hidden="true" viewBox="0 0 16 16">
+                        <path
+                            d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z">
+                        </path>
+                    </svg>
                             </button>
                         </div>
                         <div class="now-playing-song-details">
                             <div class="now-playing-song-title card-title">
-                                <h4>kamin - EMIN & JONY || speed up, reverb || Tiktokversion || Skyfiix</h4>
+                                <h4>${song.title}</h4>
                             </div>
-                            <div class="now-playing-song-artists">
-                                <h5>Aahil World,Amit Roy</h5>
+                            <div class="now-playing-song-artists card-artist">
+                                <h5>${song.credits.join(",")}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="queue-songs">
                     <h4 class="next-from">
-                        Next from : <span>Liked Songs</span>
+                        Next from : <span>${playstate.source}</span>
                     </h4>
                     <div class="queue-song card">
                         <div class="queue-song-image card-image"><img
@@ -200,13 +203,21 @@ export function song_details() {
       return html
     }
     document.querySelector(".hide-playview-btn").addEventListener("click", () => {
-        playingviewupdate()
+      playingviewupdate()
     })
     document.querySelector(".queue-closing-btn").addEventListener("click", () => {
       queueupdater()
-      })
+    })
     document.querySelector(".open-queue").addEventListener("click", () => {
-     queueupdater()
-  })
-  }  
+      queueupdater()
+    })
+    let nowplaybtn = document.querySelector(".now-playing-song").querySelector(".play-pause-song")
+    nowplaybtn.addEventListener("click",_playpause)
+    nowplaybtn.querySelector(".pause").style.display = "block"
+    nowplaybtn.querySelector(".play").style.display = "none"
+    nowplaybtn.classList.add("active")
+    nowplaybtn.dataset.info="pause"
+    playstate.nowplaybtn = nowplaybtn
+    console.log(playstate.nowplaybtn)
+  }
 }

@@ -102,7 +102,7 @@
         bottom: 15px;
     }
 }
-.song .play-pause-song.active{
+.song .play-pause-song.active,.album-song-btn.active,.now-playing-song  .play-pause-song.active{
      opacity: 1;
     bottom: 15px;
 }

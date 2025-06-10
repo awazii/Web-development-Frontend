@@ -3,6 +3,7 @@ import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
+import { playsong, addEventListeners } from "./home.js";
 export function fetch_album() {
     let album = [
         {
@@ -64,7 +65,7 @@ export function fetch_album() {
             }
         }
     })
-    appdata.album=album
+    appdata.album = album
     localStorage.setItem("appdata", JSON.stringify(appdata));
     // localStorage.setItem("album", JSON.stringify(album));
 }
@@ -141,7 +142,7 @@ export function render_album(category) {
                             </div>
                             <div class="bio">
                                 <h3>${obj.details.followers.toLocaleString()
-                                 } Followers</h3>
+        } Followers</h3>
                                 <p>${obj.details.description}</p>
                             </div>
                         </div>
@@ -150,10 +151,10 @@ export function render_album(category) {
                 <div class="line-end"></div>`;
     function render_songs(obj) {
         let html = ``
-obj.songids.forEach((songid, index) => {
-        let song = songs.find(song => song.id === songid);
-     html+=` <div class="album-song">
-                            <h3 class="num">${index+1}</h3>
+        obj.songids.forEach((songid, index) => {
+            let song = songs.find(song => song.id === songid);
+            html += ` <div class="album-song">
+                            <h3 class="num">${index + 1}</h3>
                             <div class="album-song-details">
                                 <div class="album-song-img">
                                     <img src="${song.image}"
@@ -161,30 +162,28 @@ obj.songids.forEach((songid, index) => {
                                 </div>
                                 <h3>${song.title}</h3>
                             </div>
-                            <div class="like-btn-container">
-                                <button class="liked info" data-info="Add to Liked Songs">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3" width="24px" height="24px"
-                                        role="img" aria-hidden="true" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
-                                        </path>
-                                        <path
-                                            d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z">
-                                        </path>
-                                    </svg>
-                                </button>
+                            <div class="like-equaliser-container">
+                            <div class="equaliser"> <img src="Assests/equaliser-animated-green.f5eb96f2.gif"></div>
+                                 <div class="like-btn-container">
+                <button class="liked info" data-info="Add to Liked Songs">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3" width="24px" height="24px" role="img" aria-hidden="true"
+                        viewBox="0 0 16 16">
+                        <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                        </path>
+                        <path
+                            d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z">
+                        </path>
+                    </svg>
+                </button>
+                </div>
                                 </div>
                                 <button class="album-song-btn" data-songid="${song.id}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
-                                        data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16">
-                                        <path
-                                            d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
-                                        </path>
-                                    </svg>
+                                    <svg class="play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
+                                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
                                 </button>
                             </div>`
-    }
-    )
+        }
+        )
         return html;
     }
     document.querySelector(".show-all-songs").addEventListener("click", () => {
@@ -196,4 +195,16 @@ obj.songids.forEach((songid, index) => {
             document.querySelector(".show-all-songs").innerText = "See more";
         }
     })
-} 
+    let albumsongs = document.querySelector(".album-songs");
+    addEventListeners(albumsongs, "album")
+}
+export function _equaliserchecker(equaliser) {
+    if (playstate.albumpage) {
+        if (playstate.currentsong.paused) {
+            equaliser.style.opacity = 0
+        }
+        else {
+            equaliser.style.opacity = 1
+        }
+    }
+}
