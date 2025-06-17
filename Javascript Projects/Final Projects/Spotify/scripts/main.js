@@ -51,70 +51,65 @@ homebtn.addEventListener("click", () => {
     }
 })
 export function reassignbtn() {
-    if (playstate.source) {
-        if (playstate.albumpage) {
-            console.log("inside")
-            let albumbtn = document.querySelector(".albumbtn")
-            let songs = document.querySelector(".album-songs")
-            songs.querySelectorAll(".album-song").forEach(song => {
-                let equaliser = song.querySelector(".equaliser")
-                let songbtn = song.querySelector(".album-song-btn")
-                console.log(playstate.songid, songbtn.dataset.songid, playstate.songid === songbtn.dataset.songid)
-                if (playstate.songid === songbtn.dataset.songid) {
-                    if (playstate.source === songbtn.dataset.category) {
-                        playstate.currentplayingbutton = songbtn
-                        playstate.equaliser = equaliser
-                        playstate.albumbtn = albumbtn
-                        if (!playstate.currentsong.paused) {
-                            playstate.currentplayingbutton.querySelector(".pause").style.display = "block"
-                            playstate.currentplayingbutton.querySelector(".play").style.display = "none"
-                            playstate.currentplayingbutton.classList.add("active")
-                            playstate.albumbtn.querySelector(".pause").style.display = "block"
-                            playstate.albumbtn.querySelector(".play").style.display = "none"
-                            playstate.albumbtn.classList.add("Playing")
-                            equaliser.style.opacity = 1
-                        }
-                    }
+    playstate.source && playstate.albumpage ? handleAlbumPageReassign() : handleHomePageReassign()
+}
+function handleAlbumPageReassign() {
+    console.log("inside album page");
+    let albumbtn = document.querySelector(".albumbtn")
+    let songs = document.querySelector(".album-songs")
+    songs.querySelectorAll(".album-song").forEach(song => {
+        let equaliser = song.querySelector(".equaliser")
+        let songbtn = song.querySelector(".album-song-btn")
+        console.log(playstate.songid, songbtn.dataset.songid, playstate.songid === songbtn.dataset.songid)
+        if (playstate.songid === songbtn.dataset.songid) {
+            if (playstate.source === songbtn.dataset.category) {
+                playstate.currentplayingbutton = songbtn
+                playstate.equaliser = equaliser
+                playstate.albumbtn = albumbtn
+                if (!playstate.currentsong.paused) {
+                    setButtonVisualState(playstate.currentplayingbutton, true, true)
+                    setButtonVisualState(playstate.albumbtn, true, false)
+                    playstate.albumbtn.classList.add("Playing")
+                    equaliser.style.opacity = 1
+                }
+            }
 
-                }
-            })
         }
-        else if (!playstate.albumpage) {
-            console.log(playstate.albumpage)
-            console.log("inside1")
-            let categories = document.querySelectorAll(".category")
-            console.log(categories)
-            let songscontainer;
-            let albumcards = document.querySelectorAll(".album")
-            albumcards.forEach(card => {
-                if (card.dataset.albumName === playstate.source) {
-                    let albmbtn = card.querySelector(".play-pause-song")
-                    playstate.albumbtn = albmbtn
-                    playstate.albumbtn.querySelector(".pause").style.display = "block"
-                    playstate.albumbtn.querySelector(".play").style.display = "none"
-                    playstate.albumbtn.classList.add("Playing","active")
-                }
-            })
-            categories.forEach(category => {
-                let heading = category.firstElementChild
-                if (playstate.source === heading.innerHTML) {
-                    songscontainer = category
-                }
-            })
-            if (songscontainer) {
-                songscontainer.querySelectorAll(".song").forEach(song => {
-                    let songbtn = song.querySelector(".play-pause-song")
-                    if (playstate.songid === songbtn.dataset.songid) {
-                        playstate.currentplayingbutton = songbtn
-                        if (!playstate.currentsong.paused) {
-                            playstate.currentplayingbutton.querySelector(".pause").style.display = "block"
-                            playstate.currentplayingbutton.querySelector(".play").style.display = "none"
-                            playstate.currentplayingbutton.classList.add("active")
-                        }
-                    }
-                })
+    })
+}
+function handleHomePageReassign() {
+    console.log(playstate.albumpage)
+    console.log("inside home page");
+    let categories = document.querySelectorAll(".category")
+    console.log(categories)
+    let songscontainer;
+    let albumcards = document.querySelectorAll(".album")
+    albumcards.forEach(card => {
+        if (card.dataset.albumName === playstate.source) {
+            let albmbtn = card.querySelector(".play-pause-song")
+            playstate.albumbtn = albmbtn
+            playstate.albumbtn.classList.add("Playing")
+            if (!playstate.currentsong.paused) {
+                setButtonVisualState(playstate.albumbtn, true, true)
             }
         }
+    })
+    categories.forEach(category => {
+        let heading = category.firstElementChild
+        if (playstate.source === heading.innerHTML) {
+            songscontainer = category
+        }
+    })
+    if (songscontainer) {
+        songscontainer.querySelectorAll(".song").forEach(song => {
+            let songbtn = song.querySelector(".play-pause-song")
+            if (playstate.songid === songbtn.dataset.songid) {
+                playstate.currentplayingbutton = songbtn
+                if (!playstate.currentsong.paused) {
+                    setButtonVisualState(playstate.currentplayingbutton, true, true)
+                }
+            }
+        })
     }
 }
 export function setButtonVisualState(button, isPlaying, useActive) {
