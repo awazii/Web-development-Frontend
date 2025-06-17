@@ -1,5 +1,5 @@
 import { song_details } from "./song-details.js"
-import { playstate, recent } from "./main.js"
+import { playstate, recent ,setButtonVisualState} from "./main.js"
 import { _playpause,mediaplayer } from "./mediaplayer.js";
 import { cancelPlayTimer } from "./recent.js";
 import { startPlayTimer } from "./recent.js";
@@ -113,41 +113,32 @@ export function controls(currentplayingbutton) {
             volumeBtn.dataset.info = "mute"
         }
     });
-    function updateVolumeIcon(volume) {
-        const muteIcon = volumeBtn.querySelector(".mute");
-        const volOne = volumeBtn.querySelector(".vol_one");
-        const volTwo = volumeBtn.querySelector(".vol_two");
-        const volThree = volumeBtn.querySelector(".vol_three");
-        if (playstate.currentsong.muted || volume === 0) {
-            muteIcon.style.display = "block";
-            volOne.style.display = "none";
-            volTwo.style.display = "none";
-            volThree.style.display = "none";
-        } else if (volume > 0 && volume <= 0.33) {
-            muteIcon.style.display = "none";
-            volOne.style.display = "block";
-            volTwo.style.display = "none";
-            volThree.style.display = "none";
-        } else if (volume > 0.33 && volume <= 0.66) {
-            muteIcon.style.display = "none";
-            volOne.style.display = "none";
-            volTwo.style.display = "block";
-            volThree.style.display = "none";
-        } else {
-            muteIcon.style.display = "none";
-            volOne.style.display = "none";
-            volTwo.style.display = "none";
-            volThree.style.display = "block";
-        }
-        if (volume===0) {
-            volumeBtn.dataset.info = "Unmute"
-            mute = true
-        }
-        else{
-            volumeBtn.dataset.info = "mute"
-             mute = false
-        }
+    function toggleIconVisibility(elements, visibleIndex) {
+    elements.forEach((el, index) => {
+        el.style.display = index === visibleIndex ? "block" : "none";
+    });
+}
+ function updateVolumeIcon(volume) {
+    const muteIcon = volumeBtn.querySelector(".mute");
+    const volIcons = [
+        volumeBtn.querySelector(".vol_one"),
+        volumeBtn.querySelector(".vol_two"),
+        volumeBtn.querySelector(".vol_three")
+    ];
+    
+    if (playstate.currentsong.muted || volume === 0) {
+        toggleIconVisibility([muteIcon, ...volIcons], 0);
+    } else if (volume > 0 && volume <= 0.33) {
+        toggleIconVisibility([muteIcon, ...volIcons], 1);
+    } else if (volume > 0.33 && volume <= 0.66) {
+        toggleIconVisibility([muteIcon, ...volIcons], 2);
+    } else {
+        toggleIconVisibility([muteIcon, ...volIcons], 3);
     }
+
+    volumeBtn.dataset.info = volume === 0 ? "Unmute" : "Mute";
+    mute = volume === 0;
+}
     playstate.currentsong.volume = 0.5;
     volumeFill.style.width = "50%";
     updateVolumeIcon(0.5);
@@ -177,8 +168,8 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         mediaplayer()
         song_details()
         cancelPlayTimer()
-        playstate.currentplayingbutton.classList.remove("active")
-        playstate.currentplayingbutton.querySelector(".play").style.display = "block"
-        playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
+      playstate.currentplayingbutton && setButtonVisualState(playstate.currentplayingbutton,false,true) 
+        playstate.albumpage? setButtonVisualState(playstate.albumbtn,false,false):
+        setButtonVisualState(playstate.albumbtn,false,true)
     })
 }

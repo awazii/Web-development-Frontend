@@ -1,8 +1,8 @@
-import { playstate, recent, songs ,reassignbtn} from "./main.js"
+import { playstate, recent, songs, reassignbtn } from "./main.js"
 import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
-import { appdata, dailymix,setButtonVisualState } from "./main.js";
+import { appdata, dailymix, setButtonVisualState } from "./main.js";
 import { main_content } from './content-area.js';
 import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
@@ -123,17 +123,19 @@ export function fetch_home() {
     }
     document.querySelectorAll(".album").forEach(album => {
         album.addEventListener("click", (e) => {
-            let albumbtn=e.target.closest(".play-pause-song")
+            let albumbtn = e.target.closest(".play-pause-song")
             if (albumbtn) {
-                console.log("btn is clicked")
+                console.log("btn is clicked", albumbtn.dataset)
+                playstate.songid = albumbtn.dataset.songid
                 _albumbtn(albumbtn)
-            }else{
-            playstate.albumpage = true;
-            playstate.home = false;
-            let homebtn = document.querySelector(".homebtn")
-            homebtn.classList.add("away")
-            main_content(album.dataset.albumName);
-            reassignbtn()}
+            } else {
+                playstate.albumpage = true;
+                playstate.home = false;
+                let homebtn = document.querySelector(".homebtn")
+                homebtn.classList.add("away")
+                main_content(album.dataset.albumName);
+                reassignbtn()
+            }
         })
     })
 }
@@ -293,34 +295,30 @@ function _renderdailymix(dailymix) {
                 </div>`;
     return html
 }
-export function playsong(button,equaliser,albumbtn) {
+export function playsong(button, equaliser, albumbtn) {
     if (playstate.isplaying && playstate.currentplayingbutton === button) {
         console.log("same button is clicked")
         _playpause();
     }
     else {
         console.log("different button is clicked")
-        let songid = button.dataset.songid
-        playstate.songid = songid
-        let song = songs.find(song => song.id === songid)
+        let song = songs.find(song => song.id === playstate.songid)
         playstate.currentsong.src = song.url;
         playstate.default = null
         playstate.isplaying = true
         playstate.songdetails = true
         playstate.queue = null;
-        if (playstate.currentplayingbutton&& playstate.currentplayingbutton!=="albumbtn") {
-            setButtonVisualState(playstate.currentplayingbutton,false,true)
+        if (playstate.currentplayingbutton) {
+            setButtonVisualState(playstate.currentplayingbutton, false, true)
         }
         if (albumbtn) {
-            playstate.currentplayingbutton=albumbtn
-            playstate.albumbtn=button
-            console.log("album btn")
+            playstate.currentplayingbutton = null
+            playstate.albumbtn = button
         }
-        else if (!albumbtn) {
-            playstate.currentplayingbutton = button 
-             console.log(" btn")
-        }
-        console.log(playstate)
+       else if (!albumbtn) {
+        playstate.currentplayingbutton = button
+       }
+       console.log(playstate)
         mediaplayer(song)
         song_details()
         if (playstate.albumpage) {
@@ -328,7 +326,7 @@ export function playsong(button,equaliser,albumbtn) {
                 equaliser()
             }
         }
-        setButtonVisualState(button,true,true)
+        setButtonVisualState(button, true, true)
         console.log(button)
         playstate.currentsong.play()
     }
@@ -339,6 +337,7 @@ export function addEventListeners(element, location) {
             song.addEventListener("click", (e) => {
                 const button = e.target.closest("button");
                 const source = button.closest(".category").firstElementChild.innerHTML;
+                playstate.songid = button.dataset.songid
                 playstate.source = source
                 console.log(playstate)
                 if (button) {
@@ -353,13 +352,14 @@ export function addEventListeners(element, location) {
                 let id = button.dataset.songid
                 let source = songs.find(song => song.id === id)
                 playstate.source = source.category
-               let albumbtn= document.querySelector(".albumbtn")
-               albumbtn.classList.add("Playing")
-               playstate.albumbtn=albumbtn
-               setButtonVisualState(playstate.albumbtn,true,false)
-                playsong(button,()=>{
-                equaliserchecker(button) 
-                }); 
+                let albumbtn = document.querySelector(".albumbtn")
+                albumbtn.classList.add("Playing")
+                playstate.albumbtn = albumbtn
+                setButtonVisualState(playstate.albumbtn, true, false)
+                playstate.songid = button.dataset.songid
+                playsong(button, () => {
+                    equaliserchecker(button)
+                });
             })
         })
     }
@@ -367,17 +367,17 @@ export function addEventListeners(element, location) {
 export function _albumbtn(button) {
     if (button.classList.contains("Playing")) {
         console.log("playing")
-      _playpause()
+        _playpause()
     }
-    else{
-        console.log(button.dataset ,button.dataset.songid)
+    else {
+        console.log(button.dataset, button.dataset.songid)
         button.classList.add("Playing")
         if (playstate.albumbtn) {
             playstate.albumbtn.classList.remove("Playing")
-            setButtonVisualState(playstate.albumbtn,false,true)
+            setButtonVisualState(playstate.albumbtn, false, true)
         }
-        playstate.source=button.dataset.albumName
-            playsong(button, null,"albumbtn");
-            reassignbtn()
+        playstate.source = button.dataset.albumName
+        playsong(button, null, "albumbtn");
+        reassignbtn()
     }
 }

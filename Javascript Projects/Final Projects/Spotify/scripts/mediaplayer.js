@@ -163,7 +163,7 @@ export function mediaplayer(song) {
 }
 export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
-    if (playstate.currentplayingbutton!=="albumbtn") {
+    if (playstate.currentplayingbutton) {
         playstate.currentplayingbutton.classList.toggle("active")    
     }
     playstate.nowplaybtn.classList.toggle("active")
@@ -173,7 +173,7 @@ export function _playpause() {
     if (playstate.currentsong.paused) {
         playstate.currentsong.play();
         setButtonVisualState(playpausebtn,true,false)
-         if (playstate.currentplayingbutton!=="albumbtn") {
+         if (playstate.currentplayingbutton) {
               setButtonVisualState(playstate.currentplayingbutton,true,false)
             }
             setButtonVisualState(playstate.nowplaybtn,true,false)
@@ -187,7 +187,7 @@ export function _playpause() {
     else {
         playstate.currentsong.pause()
          setButtonVisualState(playpausebtn,false,false)
-         if (playstate.currentplayingbutton!=="albumbtn") {
+         if (playstate.currentplayingbutton) {
              setButtonVisualState(playstate.currentplayingbutton,false,false)}
              setButtonVisualState(playstate.nowplaybtn,false,false)
              setButtonVisualState(playstate.albumbtn,false,false)
