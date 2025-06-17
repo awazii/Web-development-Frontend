@@ -1,10 +1,10 @@
-import { playstate, recent, songs } from "./main.js"
+import { playstate, recent, songs ,reassignbtn} from "./main.js"
 import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
-import { appdata,dailymix } from "./main.js";
+import { appdata, dailymix,setButtonVisualState } from "./main.js";
 import { main_content } from './content-area.js';
-import { _equaliserchecker } from "./album.js";
+import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
@@ -113,13 +113,9 @@ export function fetch_home() {
         </div>
     </div> 
 </div> 
-  <button class="play-pause-song" data-song-id="${album.song.id}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" data-encore-id="icon"
-                            role="img" aria-hidden="true" viewBox="0 0 16 16">
-                            <path
-                                d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
-                            </path>
-                        </svg>
+  <button class="play-pause-song" data-album-name="${album.name}" data-songid="${album.song.id}">
+                     <svg class="play" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
+                                <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
                     </button>
       </div>`
         })
@@ -127,11 +123,17 @@ export function fetch_home() {
     }
     document.querySelectorAll(".album").forEach(album => {
         album.addEventListener("click", (e) => {
+            let albumbtn=e.target.closest(".play-pause-song")
+            if (albumbtn) {
+                console.log("btn is clicked")
+                _albumbtn(albumbtn)
+            }else{
             playstate.albumpage = true;
             playstate.home = false;
             let homebtn = document.querySelector(".homebtn")
             homebtn.classList.add("away")
             main_content(album.dataset.albumName);
+            reassignbtn()}
         })
     })
 }
@@ -291,11 +293,10 @@ function _renderdailymix(dailymix) {
                 </div>`;
     return html
 }
-export function playsong(button,equaliser) {
+export function playsong(button,equaliser,albumbtn) {
     if (playstate.isplaying && playstate.currentplayingbutton === button) {
         console.log("same button is clicked")
         _playpause();
-        _equaliserchecker(equaliser)
     }
     else {
         console.log("different button is clicked")
@@ -307,33 +308,39 @@ export function playsong(button,equaliser) {
         playstate.isplaying = true
         playstate.songdetails = true
         playstate.queue = null;
-        if (playstate.currentplayingbutton) {
-            playstate.currentplayingbutton.querySelector(".play").style.display = "block"
-            playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
-            playstate.currentplayingbutton.classList.remove("active")
+        if (playstate.currentplayingbutton&& playstate.currentplayingbutton!=="albumbtn") {
+            setButtonVisualState(playstate.currentplayingbutton,false,true)
         }
-        playstate.currentplayingbutton = button
+        if (albumbtn) {
+            playstate.currentplayingbutton=albumbtn
+            playstate.albumbtn=button
+            console.log("album btn")
+        }
+        else if (!albumbtn) {
+            playstate.currentplayingbutton = button 
+             console.log(" btn")
+        }
         console.log(playstate)
-        mediaplayer(playstate.currentplayingbutton, song)
+        mediaplayer(song)
         song_details()
-        button.querySelector(".pause").style.display = "block"
-        button.querySelector(".play").style.display = "none"
-        button.classList.add("active")
+        if (playstate.albumpage) {
+            if (equaliser) {
+                equaliser()
+            }
+        }
+        setButtonVisualState(button,true,true)
         console.log(button)
         playstate.currentsong.play()
     }
-}
-function resetbuttons() {
-
 }
 export function addEventListeners(element, location) {
     if (location === "home") {
         element.querySelectorAll(".song").forEach(song => {
             song.addEventListener("click", (e) => {
                 const button = e.target.closest("button");
-              const source = button.closest(".category").firstElementChild.innerHTML;
-              playstate.source=source
-              console.log(playstate)
+                const source = button.closest(".category").firstElementChild.innerHTML;
+                playstate.source = source
+                console.log(playstate)
                 if (button) {
                     playsong(button);
                 }
@@ -343,17 +350,34 @@ export function addEventListeners(element, location) {
     else if (location === "album") {
         element.querySelectorAll(".album-song-btn").forEach(button => {
             button.addEventListener("click", (e) => {
-                let equaliser = button.closest(".album-song").querySelector(".equaliser")
-                 if (playstate.equaliser) {
-                    playstate.equaliser.style.opacity=0
-                 }
-               equaliser.style.opacity = 1
-               playstate.equaliser = equaliser
-              let id= button.dataset.songid
-              let source= songs.find(song=>song.id===id)
-              playstate.source=source.category
-                playsong(button,equaliser);
+                let id = button.dataset.songid
+                let source = songs.find(song => song.id === id)
+                playstate.source = source.category
+               let albumbtn= document.querySelector(".albumbtn")
+               albumbtn.classList.add("Playing")
+               playstate.albumbtn=albumbtn
+               setButtonVisualState(playstate.albumbtn,true,false)
+                playsong(button,()=>{
+                equaliserchecker(button) 
+                }); 
             })
         })
+    }
+}
+export function _albumbtn(button) {
+    if (button.classList.contains("Playing")) {
+        console.log("playing")
+      _playpause()
+    }
+    else{
+        console.log(button.dataset ,button.dataset.songid)
+        button.classList.add("Playing")
+        if (playstate.albumbtn) {
+            playstate.albumbtn.classList.remove("Playing")
+            setButtonVisualState(playstate.albumbtn,false,true)
+        }
+        playstate.source=button.dataset.albumName
+            playsong(button, null,"albumbtn");
+            reassignbtn()
     }
 }

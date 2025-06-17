@@ -1,7 +1,7 @@
-import { playstate } from "./main.js"
+import { playstate,setButtonVisualState } from "./main.js"
 import { default_media } from "./default.js"
 import { controls } from "./controls.js"
-export function mediaplayer(currentplayingbutton, song) {
+export function mediaplayer(song) {
     if (playstate.default) {
         default_media()
     }
@@ -147,109 +147,117 @@ export function mediaplayer(currentplayingbutton, song) {
                 </div>`
             return html
         }
-        controls(currentplayingbutton)
-        document.querySelector(".playingview").addEventListener("click",playingviewupdate)
-        document.querySelector(".ex-col").addEventListener("click",playingviewupdate)
+        controls(playstate.currentplayingbutton)
+        document.querySelector(".playingview").addEventListener("click", playingviewupdate)
+        document.querySelector(".ex-col").addEventListener("click", playingviewupdate)
         document.querySelector(".queue").addEventListener("click", () => {
             if (!playstate.songdetails) {
                 queueupdater()
-            playingviewupdate()
-            }else{
+                playingviewupdate()
+            } else {
                 queueupdater()
             }
         })
-      
+
     }
 }
 export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
-    playstate.currentplayingbutton.classList.toggle("active")
+    if (playstate.currentplayingbutton!=="albumbtn") {
+        playstate.currentplayingbutton.classList.toggle("active")    
+    }
     playstate.nowplaybtn.classList.toggle("active")
-    
+    if (playstate.albumbtn) {
+        playstate.albumbtn.classList.toggle("active")
+    }
     if (playstate.currentsong.paused) {
         playstate.currentsong.play();
-        playpausebtn.querySelector(".play").style.display = "none"
-        playpausebtn.querySelector(".pause").style.display = "block"
-        playstate.currentplayingbutton.querySelector(".play").style.display = "none"
-        playstate.currentplayingbutton.querySelector(".pause").style.display = "block"
-        playstate.nowplaybtn.querySelector(".play").style.display = "none"
-        playstate.nowplaybtn.querySelector(".pause").style.display = "block"
+        setButtonVisualState(playpausebtn,true,false)
+         if (playstate.currentplayingbutton!=="albumbtn") {
+              setButtonVisualState(playstate.currentplayingbutton,true,false)
+            }
+            setButtonVisualState(playstate.nowplaybtn,true,false)
+            setButtonVisualState(playstate.albumbtn,true,false)
         playpausebtn.dataset.info = "pause"
-        playstate.nowplaybtn.dataset.info="pause"
+        playstate.nowplaybtn.dataset.info = "pause"
+        if (playstate.albumpage) {
+            playstate.equaliser.style.opacity = 1                       
+        }
     }
     else {
         playstate.currentsong.pause()
-        playpausebtn.querySelector(".play").style.display = "block"
-        playpausebtn.querySelector(".pause").style.display = "none"
-        playstate.currentplayingbutton.querySelector(".play").style.display = "block"
-        playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
-        playstate.nowplaybtn.querySelector(".play").style.display = "block"
-        playstate.nowplaybtn.querySelector(".pause").style.display = "none"
+         setButtonVisualState(playpausebtn,false,false)
+         if (playstate.currentplayingbutton!=="albumbtn") {
+             setButtonVisualState(playstate.currentplayingbutton,false,false)}
+             setButtonVisualState(playstate.nowplaybtn,false,false)
+             setButtonVisualState(playstate.albumbtn,false,false)
         playpausebtn.dataset.info = "play"
-        playstate.nowplaybtn.dataset.info="play"
+        playstate.nowplaybtn.dataset.info = "play"
+         if (playstate.albumpage) {
+        playstate.equaliser.style.opacity = 0}
     }
 }
 export function playingviewupdate() {
-       if (playstate.songdetails&&!playstate.queue) {
-                playstate.songdetails = null
-                let excol = document.querySelector(".ex-col")
-                excol.dataset.info = "expand"
-                excol.querySelector(".expand").style.display = "none"
-                excol.querySelector(".collapse").style.display = "block"
-                document.querySelector('.song-details').style.display = "none"
-                document.querySelector(".playingview").classList.remove("activated")
-                 let main = document.querySelector(".main-container")
-                main.classList.add("two")
-                document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
-                    $(swiperEl).slick('setPosition');
-                })
-            }
-            else if (playstate.songdetails && playstate.queue) {
-                queueupdater()
-            }
-             else if (!playstate.songdetails && playstate.queue) {
-                 playstate.songdetails = true
-                let main = document.querySelector(".main-container")
-                main.classList.remove("two")
-                document.querySelector('.song-details').style.display = "block"
-                document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
-                    $(swiperEl).slick('setPosition');
-                })
-            }
-            else {
-                playstate.songdetails = true
-                document.querySelector(".playingview").classList.add("activated")
-                let main = document.querySelector(".main-container")
-                main.classList.remove("two")
-                document.querySelector('.song-details').style.display = "block"
-                let excol = document.querySelector(".ex-col")
-                excol.dataset.info = "collapse"
-                excol.querySelector(".expand").style.display = "block"
-                excol.querySelector(".collapse").style.display = "none"
-                document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
-                    $(swiperEl).slick('setPosition');
-                })
-            }
+    if (playstate.songdetails && !playstate.queue) {
+        playstate.songdetails = null
+        let excol = document.querySelector(".ex-col")
+        excol.dataset.info = "expand"
+        excol.querySelector(".expand").style.display = "none"
+        excol.querySelector(".collapse").style.display = "block"
+        document.querySelector('.song-details').style.display = "none"
+        document.querySelector(".playingview").classList.remove("activated")
+        let main = document.querySelector(".main-container")
+        main.classList.add("two")
+        document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
+            $(swiperEl).slick('setPosition');
+        })
+    }
+    else if (playstate.songdetails && playstate.queue) {
+        queueupdater()
+    }
+    else if (!playstate.songdetails && playstate.queue) {
+        playstate.songdetails = true
+        let main = document.querySelector(".main-container")
+        main.classList.remove("two")
+        document.querySelector('.song-details').style.display = "block"
+        document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
+            $(swiperEl).slick('setPosition');
+        })
+    }
+    else {
+        playstate.songdetails = true
+        document.querySelector(".playingview").classList.add("activated")
+        let main = document.querySelector(".main-container")
+        main.classList.remove("two")
+        document.querySelector('.song-details').style.display = "block"
+        let excol = document.querySelector(".ex-col")
+        excol.dataset.info = "collapse"
+        excol.querySelector(".expand").style.display = "block"
+        excol.querySelector(".collapse").style.display = "none"
+        document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
+            $(swiperEl).slick('setPosition');
+        })
+    }
 }
- export function queueupdater() {
-            if (playstate.queue) {
-                playstate.queue = false
-                 document.querySelector(".playingview").classList.add("activated")
-                   let excol = document.querySelector(".ex-col")
-                excol.dataset.info = "collapse"
-                excol.querySelector(".expand").style.display = "block"
-                excol.querySelector(".collapse").style.display = "none"
-            }
-            else {
-                playstate.queue = true
-                document.querySelector(".playingview").classList.remove("activated")
-                 let excol = document.querySelector(".ex-col")
-                  excol.dataset.info = "expand"
-                excol.querySelector(".expand").style.display = "none"
-                excol.querySelector(".collapse").style.display = "block"
-            }
-             let queuecontainer= document.querySelector(".queue-container")
-            let queue=document.querySelector(".queue")
-            queue.classList.toggle("activated")
-           queuecontainer.classList.toggle("queue-visible")
-        }
+export function queueupdater() {
+    if (playstate.queue) {
+        playstate.queue = false
+        document.querySelector(".playingview").classList.add("activated")
+        let excol = document.querySelector(".ex-col")
+        excol.dataset.info = "collapse"
+        excol.querySelector(".expand").style.display = "block"
+        excol.querySelector(".collapse").style.display = "none"
+    }
+    else {
+        playstate.queue = true
+        document.querySelector(".playingview").classList.remove("activated")
+        let excol = document.querySelector(".ex-col")
+        excol.dataset.info = "expand"
+        excol.querySelector(".expand").style.display = "none"
+        excol.querySelector(".collapse").style.display = "block"
+    }
+    let queuecontainer = document.querySelector(".queue-container")
+    let queue = document.querySelector(".queue")
+    queue.classList.toggle("activated")
+    queuecontainer.classList.toggle("queue-visible")
+}

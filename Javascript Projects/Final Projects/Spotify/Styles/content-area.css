@@ -106,6 +106,10 @@
      opacity: 1;
     bottom: 15px;
 }
+.album .play-pause-song.active{
+     opacity: 1;
+    bottom: 30px;
+}
 .song-image{
     width: 100%;
     aspect-ratio: 1/1;

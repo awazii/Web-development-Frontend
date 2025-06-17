@@ -1,9 +1,8 @@
 // localStorage.removeItem("appdata");
 import { _rendersongs } from "./home.js";
 import { appdata, playstate } from "./main.js";
-import { recent } from "./main.js";
+import { recent,reassignbtn } from "./main.js";
 import { render_recent } from "./home.js";
-import { slider } from "./home.js";
 export function update_recent(recentsong) {
     console.log(recentsong, recent.songids.length)
     if (!recent.songids.includes(recentsong)) {
@@ -27,6 +26,7 @@ export function update_recent(recentsong) {
     console.log(appdata)
     if (playstate.home) {
         render_recent();
+        reassignbtn();
     }
 }
 let playTimer = null;

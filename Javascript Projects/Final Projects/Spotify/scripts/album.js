@@ -3,7 +3,7 @@ import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
-import { playsong, addEventListeners } from "./home.js";
+import { playsong, addEventListeners,_albumbtn } from "./home.js";
 export function fetch_album() {
     let album = [
         {
@@ -109,13 +109,13 @@ export function render_album(category) {
                         </div>
                     </div>
                 </div>
-                <button class="albumbtn" data-songid="">
+                <button class="albumbtn" data-album-name="${obj.category}" data-songid="${obj.songids[0]}">
                     <svg class="play" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" fill="black"
                         viewBox="0 0 16 16">
                         <path d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05
                         14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
                     </svg>
-                    <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" role="img"
+                    <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" role="img"
                         aria-hidden="true" viewBox="0 0 16 16">
                         <path
                             d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z">
@@ -177,7 +177,7 @@ export function render_album(category) {
                 </button>
                 </div>
                                 </div>
-                                <button class="album-song-btn" data-songid="${song.id}">
+                                <button class="album-song-btn"  data-category="${obj.category}" data-songid="${song.id}">
                                     <svg class="play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"  fill="black" viewBox="0 0 16 16""><path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path></svg>
                                 <svg class="pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"  role="img" aria-hidden="true" viewBox="0 0 16 16" ><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
                                 </button>
@@ -197,14 +197,24 @@ export function render_album(category) {
     })
     let albumsongs = document.querySelector(".album-songs");
     addEventListeners(albumsongs, "album")
+    let albumbtn=document.querySelector(".albumbtn")
+    albumbtn.addEventListener("click",()=>{
+            _albumbtn(albumbtn)
+    })
 }
-export function _equaliserchecker(equaliser) {
-    if (playstate.albumpage) {
-        if (playstate.currentsong.paused) {
-            equaliser.style.opacity = 0
-        }
-        else {
-            equaliser.style.opacity = 1
-        }
+export function equaliserchecker(button) {
+    let equaliser = button.closest(".album-song").querySelector(".equaliser")
+    console.log(equaliser, playstate.equaliser, equaliser === playstate.equaliser)
+    if (!playstate.equaliser) {
+        playstate.equaliser = equaliser
+        playstate.equaliser.style.opacity = 1
+    }
+    else if (playstate.equaliser && playstate.equaliser === equaliser) {
+         playstate.equaliser.style.opacity = 1
+    }
+    else if (playstate.equaliser && playstate.equaliser !== equaliser) {
+        playstate.equaliser.style.opacity = 0
+        playstate.equaliser = equaliser
+        playstate.equaliser.style.opacity = 1
     }
 }

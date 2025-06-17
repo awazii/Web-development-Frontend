@@ -29,7 +29,7 @@ export function controls(currentplayingbutton) {
 
     progressContainer.addEventListener("mousedown", () => {
         isDragging = true;
-        playstate.currentsong.muted = true;
+        playstate.currentsong.pause();
         progressFill.classList.add("drag");
     });
 
@@ -45,7 +45,7 @@ export function controls(currentplayingbutton) {
     document.addEventListener("mouseup", (event) => {
         if (isDragging) {
             isDragging = false;
-            playstate.currentsong.muted = false;
+            playstate.currentsong.play()
             const clickPosition = click_position(event)
             playstate.currentsong.currentTime = clickPosition * playstate.currentsong.duration;
             progressFill.classList.remove("drag");
@@ -53,7 +53,11 @@ export function controls(currentplayingbutton) {
     });
     function click_position(event) {
          const rect = progressContainer.getBoundingClientRect();
+         console.log(event.clientX,rect.left,rect.width)
             const clickPosition = Math.min((event.clientX - rect.left) / rect.width, 1);
+            if (clickPosition<0) {
+                clickPosition=0
+            }
             return clickPosition
     }
     const volumeBtn = document.querySelector(".volume-btn");
@@ -103,7 +107,6 @@ export function controls(currentplayingbutton) {
         }
         else {
             playstate.currentsong.muted = false
-            playstate.currentsong.volume = 0.5;
             mute = false
             volumeFill.style.width = `${playstate.currentsong.volume * 100}%`;
             updateVolumeIcon(playstate.currentsong.volume)
@@ -165,14 +168,17 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         main.classList.add("two")
         let details = document.querySelector('.song-details')
         details.style.display = "none"
+        if (playstate.albumpage) {
+            playstate.equaliser.style.opacity=0
+        }
         document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
             $(swiperEl).slick('setPosition');
         })
         mediaplayer()
         song_details()
         cancelPlayTimer()
-        currentplayingbutton.classList.remove("active")
-        currentplayingbutton.querySelector(".play").style.display = "block"
-        currentplayingbutton.querySelector(".pause").style.display = "none"
+        playstate.currentplayingbutton.classList.remove("active")
+        playstate.currentplayingbutton.querySelector(".play").style.display = "block"
+        playstate.currentplayingbutton.querySelector(".pause").style.display = "none"
     })
 }
