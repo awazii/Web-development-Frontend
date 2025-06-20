@@ -1,11 +1,12 @@
 import { playstate, recent, songs, reassignbtn } from "./main.js"
-import { _playpause } from "./mediaplayer.js";
+import { _playpause, queueupdater } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata, dailymix, setButtonVisualState } from "./main.js";
 import { main_content } from './content-area.js';
 import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
+import { queuegenerator } from "./queue.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
@@ -41,14 +42,14 @@ export function fetch_home() {
         categories.forEach(category => {
             let obj = {
                 category,
-                ids: []
+                songids: []
             }
             SongCatalog.push(obj)
         })
         songs.forEach(song => {
             SongCatalog.forEach(catalog => {
                 if (song.category === catalog.category) {
-                    catalog.ids.push(song.id)
+                    catalog.songids.push(song.id)
                 }
             })
         })
@@ -59,7 +60,7 @@ export function fetch_home() {
                       <h2>${catalog.category}</h2>
                       <div class="songs">
                       <div class="songs-wrapper catalog">
-                      ${_rendersongs(catalog.ids)}
+                      ${_rendersongs(catalog.songids)}
                       </div>
                        <div class="custom-prev${index} custom-prev">
        <svg class="left" width="16px" height="16px"  data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 16 16" "><path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path></svg>
@@ -295,40 +296,59 @@ function _renderdailymix(dailymix) {
                 </div>`;
     return html
 }
-export function playsong(button, equaliser, albumbtn) {
+export function playsong(button, equaliser, albumbtn, manualclick) {
     if (playstate.isplaying && playstate.currentplayingbutton === button) {
         console.log("same button is clicked")
         _playpause();
     }
     else {
         console.log("different button is clicked")
+        console.log("🎵 Playing new song:", playstate.songid);
         let song = songs.find(song => song.id === playstate.songid)
         playstate.currentsong.src = song.url;
         playstate.default = null
         playstate.isplaying = true
         playstate.songdetails = true
-        playstate.queue = null;
         if (playstate.currentplayingbutton) {
+            console.log("removing", playstate.currentplayingbutton)
             setButtonVisualState(playstate.currentplayingbutton, false, true)
         }
-        if (albumbtn) {
+        if (manualclick) {
+            console.log("entered")
+            queuegenerator()
+        }
+        console.log(playstate)
+        mediaplayer(song)
+        song_details()
+        if (playstate.queue) {
+            playstate.queue = null;
+            queueupdater()
+        }
+        playstate.currentsong.onloadeddata = () => {
+             if (albumbtn) {
             playstate.currentplayingbutton = null
             playstate.albumbtn = button
         }
-       else if (!albumbtn) {
-        playstate.currentplayingbutton = button
-       }
-       console.log(playstate)
-        mediaplayer(song)
-        song_details()
-        if (playstate.albumpage) {
+        else {
+            playstate.currentplayingbutton = button
+        }
+        if (button === "dummy") {
+            playstate.currentplayingbutton = null
+        }
+            if (playstate.albumpage) {
             if (equaliser) {
                 equaliser()
             }
         }
-        setButtonVisualState(button, true, true)
+              if (button !== "dummy") {
+            setButtonVisualState(button, true, true)
+        }
+            playstate.currentsong.play().catch(err => {
+                console.warn("Play failed:", err);
+            });
+        };
+      
         console.log(button)
-        playstate.currentsong.play()
     }
 }
 export function addEventListeners(element, location) {
@@ -336,12 +356,12 @@ export function addEventListeners(element, location) {
         element.querySelectorAll(".song").forEach(song => {
             song.addEventListener("click", (e) => {
                 const button = e.target.closest("button");
-                const source = button.closest(".category").firstElementChild.innerHTML;
+                const source = button.closest(".category").firstElementChild.textContent;
                 playstate.songid = button.dataset.songid
                 playstate.source = source
                 console.log(playstate)
                 if (button) {
-                    playsong(button);
+                    playsong(button, false, false, true);
                 }
             })
         })
@@ -349,6 +369,7 @@ export function addEventListeners(element, location) {
     else if (location === "album") {
         element.querySelectorAll(".album-song-btn").forEach(button => {
             button.addEventListener("click", (e) => {
+                console.log("enter")
                 let id = button.dataset.songid
                 let source = songs.find(song => song.id === id)
                 playstate.source = source.category
@@ -359,7 +380,7 @@ export function addEventListeners(element, location) {
                 playstate.songid = button.dataset.songid
                 playsong(button, () => {
                     equaliserchecker(button)
-                });
+                }, false, true);
             })
         })
     }
@@ -377,7 +398,7 @@ export function _albumbtn(button) {
             setButtonVisualState(playstate.albumbtn, false, true)
         }
         playstate.source = button.dataset.albumName
-        playsong(button, null, "albumbtn");
-        reassignbtn()
+        playsong(button, null, "albumbtn", true);
+      setTimeout(reassignbtn,100)
     }
 }

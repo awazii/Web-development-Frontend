@@ -199,6 +199,7 @@ export function render_album(category) {
     addEventListeners(albumsongs, "album")
     let albumbtn=document.querySelector(".albumbtn")
     albumbtn.addEventListener("click",()=>{
+        playstate.songid = albumbtn.dataset.songid
             _albumbtn(albumbtn)
     })
 }

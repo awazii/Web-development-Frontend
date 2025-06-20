@@ -42,7 +42,7 @@
     margin-bottom: 5px;
 }
 .queues{
-    padding: 8px 16px;
+   padding-left: 8px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -50,13 +50,19 @@
     flex: 1;
     & .now-playing-title,.next-from{
         margin-bottom: 6px;
+        text-transform: capitalize;
     }  
 }
 .now-playing-song{
-    padding: 0;
+
     color: #19b34f;
 }
 .now-playing-song:hover{
     padding-left: 8px;
 }
-
+.now-playing-title{
+    margin-top: 10px;
+}
+.now-playing-title,.next-from{
+    padding-left: 8px ;
+}

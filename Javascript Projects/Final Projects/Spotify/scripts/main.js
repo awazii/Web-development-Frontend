@@ -21,7 +21,8 @@ export let playstate = {
     nowplaybtn: null,
     equaliser: null,
     source: null,
-    albumbtn: null
+    albumbtn: null,
+    queuesongs:[]
 };
 let _fetchsongs = async () => {
     let main = document.querySelector('.main-container');
@@ -54,7 +55,8 @@ export function reassignbtn() {
     if (playstate.source) {
         if (playstate.albumpage) {
             let [songbtn, equaliser, albumbtn] = handleAlbumPageReassign()
-            playstate.currentplayingbutton = songbtn
+            console.log(songbtn)
+            if(songbtn) {  playstate.currentplayingbutton = songbtn}
             playstate.equaliser = equaliser
             playstate.albumbtn = albumbtn
             if (!playstate.currentsong.paused) {
@@ -70,7 +72,7 @@ export function reassignbtn() {
             let [songbtn, albumbtn] = handleHomePageReassign()
             playstate.albumbtn = albumbtn
             console.log(songbtn, albumbtn)
-            playstate.currentplayingbutton = songbtn
+            if(songbtn) {  playstate.currentplayingbutton = songbtn}
             if (!playstate.currentsong.paused) {
                 songbtn && setButtonVisualState(playstate.currentplayingbutton, true, true)
                 albumbtn && albumbtn.classList.add("Playing")
@@ -80,7 +82,7 @@ export function reassignbtn() {
     }
 
 }
-function handleAlbumPageReassign() {
+export function handleAlbumPageReassign() {
     console.log("inside album page");
     let albumbtn1 = document.querySelector(".albumbtn")
     let songbtn, equaliser,albumbtn ;
@@ -98,7 +100,7 @@ function handleAlbumPageReassign() {
     })
     return [songbtn, equaliser, albumbtn]
 }
-function handleHomePageReassign() {
+export function handleHomePageReassign() {
     console.log(playstate.albumpage)
     console.log("inside home page");
     let categories = document.querySelectorAll(".category")
@@ -112,7 +114,7 @@ function handleHomePageReassign() {
     })
     categories.forEach(category => {
         let heading = category.firstElementChild
-        if (playstate.source === heading.innerHTML) {
+        if (playstate.source === heading.textContent) {
             songscontainer = category
         }
     })
@@ -127,6 +129,7 @@ function handleHomePageReassign() {
     return [songbtn, albumbtn]
 }
 export function setButtonVisualState(button, isPlaying, useActive) {
+    console.log("here")
     const playIcon = button.querySelector(".play");
     const pauseIcon = button.querySelector(".pause");
     if (isPlaying) {

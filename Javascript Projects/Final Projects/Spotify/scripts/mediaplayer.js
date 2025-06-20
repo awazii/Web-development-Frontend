@@ -1,6 +1,7 @@
-import { playstate,setButtonVisualState } from "./main.js"
+import { playstate, setButtonVisualState } from "./main.js"
 import { default_media } from "./default.js"
 import { controls } from "./controls.js"
+import{playNextInQueue,getQueuedSongsAfterCurrent} from "./queue.js"
 export function mediaplayer(song) {
     if (playstate.default) {
         default_media()
@@ -13,7 +14,7 @@ export function mediaplayer(song) {
         <div class="controls">
             <div class="upper-controls">
                 <div class="controls-left">
-                    <button class="shuffle activated info" data-info="Shuffle">
+                    <button class="shuffle info" data-info="Shuffle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
                             role="img"  viewBox="0 0 16 16">
                             <path
@@ -158,13 +159,17 @@ export function mediaplayer(song) {
                 queueupdater()
             }
         })
-
+      document.querySelector(".next").addEventListener("click",()=>{
+        let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
+        playNextInQueue(nextqueuesong) 
+      })
     }
 }
 export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
+    console.log(playstate.currentplayingbutton)
     if (playstate.currentplayingbutton) {
-        playstate.currentplayingbutton.classList.toggle("active")    
+        playstate.currentplayingbutton.classList.toggle("active")
     }
     playstate.nowplaybtn.classList.toggle("active")
     if (playstate.albumbtn) {
@@ -172,29 +177,33 @@ export function _playpause() {
     }
     if (playstate.currentsong.paused) {
         playstate.currentsong.play();
-        setButtonVisualState(playpausebtn,true,false)
-         if (playstate.currentplayingbutton) {
-              setButtonVisualState(playstate.currentplayingbutton,true,false)
-            }
-            setButtonVisualState(playstate.nowplaybtn,true,false)
-            setButtonVisualState(playstate.albumbtn,true,false)
+        setButtonVisualState(playpausebtn, true, false)
+        playstate.currentplayingbutton && setButtonVisualState(playstate.currentplayingbutton, true, false)
+
+        setButtonVisualState(playstate.nowplaybtn, true, false)
+        playstate.albumbtn &&
+            setButtonVisualState(playstate.albumbtn, true, false)
+
         playpausebtn.dataset.info = "pause"
         playstate.nowplaybtn.dataset.info = "pause"
         if (playstate.albumpage) {
-            playstate.equaliser.style.opacity = 1                       
+            playstate.equaliser.style.opacity = 1
         }
     }
     else {
         playstate.currentsong.pause()
-         setButtonVisualState(playpausebtn,false,false)
-         if (playstate.currentplayingbutton) {
-             setButtonVisualState(playstate.currentplayingbutton,false,false)}
-             setButtonVisualState(playstate.nowplaybtn,false,false)
-             setButtonVisualState(playstate.albumbtn,false,false)
+        setButtonVisualState(playpausebtn, false, false)
+        playstate.currentplayingbutton &&
+            setButtonVisualState(playstate.currentplayingbutton, false, false)
+        
+        setButtonVisualState(playstate.nowplaybtn, false, false)
+        playstate.albumbtn &&
+            setButtonVisualState(playstate.albumbtn, false, false)
         playpausebtn.dataset.info = "play"
         playstate.nowplaybtn.dataset.info = "play"
-         if (playstate.albumpage) {
-        playstate.equaliser.style.opacity = 0}
+        if (playstate.albumpage) {
+            playstate.equaliser.style.opacity = 0
+        }
     }
 }
 export function playingviewupdate() {

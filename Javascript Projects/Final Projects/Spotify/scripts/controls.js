@@ -3,6 +3,7 @@ import { playstate, recent ,setButtonVisualState} from "./main.js"
 import { _playpause,mediaplayer } from "./mediaplayer.js";
 import { cancelPlayTimer } from "./recent.js";
 import { startPlayTimer } from "./recent.js";
+import { playNextInQueue,getQueuedSongsAfterCurrent } from "./queue.js";
 export function controls(currentplayingbutton) {
     const progressContainer = document.querySelector(".progress-bar");
     const progressFill = document.querySelector(".progress");
@@ -151,7 +152,19 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
         }
     });
     playstate.currentsong.addEventListener("ended", () => {
-        playstate.default = true
+        let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
+        console.log(nextqueuesong)
+       if (nextqueuesong) {
+        setTimeout(() => playNextInQueue(nextqueuesong), 100); 
+       }
+       else
+       {
+       defaultinterface()
+    }
+    })
+}
+function defaultinterface() {
+     playstate.default = true
         playstate.isplaying = null;
         playstate.songdetails=null;
         playstate.queue = null;
@@ -171,5 +184,5 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
       playstate.currentplayingbutton && setButtonVisualState(playstate.currentplayingbutton,false,true) 
         playstate.albumpage? setButtonVisualState(playstate.albumbtn,false,false):
         setButtonVisualState(playstate.albumbtn,false,true)
-    })
+       playstate.albumbtn && playstate.albumbtn.classList.remove("Playing")
 }

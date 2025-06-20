@@ -91,6 +91,10 @@
         fill: white;
     }
 }
+.play-pause-control.info:hover{
+    background-color: rgba(255, 255, 255, 0.733);
+    transform: scale(1.05);
+}
 .liked.info:hover svg, 
 .volume-btn.info:hover svg, 
 .queue.info:hover svg, 
@@ -103,9 +107,21 @@
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
-.play-pause-control.info:hover{
-    background-color: rgba(255, 255, 255, 0.733);
-    transform: scale(1.05);
+.play-pause-control.info:active{
+    opacity: .99;
+    transform: scale(0.99);
+}
+.liked.info:active svg, 
+.volume-btn.info:active svg, 
+.queue.info:active svg, 
+.repeat.info:active svg, 
+.next.info:active svg, 
+.prev.info:active svg, 
+.shuffle.info:active svg, 
+.playingview.info:active svg
+{
+    fill: rgba(124, 120, 120, 0.74);
+    transform: scale(0.99);
     transition: all 0.3s ease-in-out;
 }
 .like-btn-container .liked svg{
@@ -142,6 +158,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .3s ease-in-out;
 }
 .activated svg{
     fill:#42d060 ;
@@ -149,6 +166,11 @@
 .activated:hover svg{
     fill: #35a84d !important;
     transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+.activated:active{
+     fill: #093813 !important;
+    transform: scale(0.95);
     transition: all 0.3s ease-in-out;
 }
 .activated::before{

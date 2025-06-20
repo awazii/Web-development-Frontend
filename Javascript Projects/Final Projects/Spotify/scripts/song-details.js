@@ -1,6 +1,7 @@
 import { playstate, songs } from "./main.js"
-import { playingviewupdate ,_playpause} from "./mediaplayer.js"
+import { playingviewupdate, _playpause } from "./mediaplayer.js"
 import { queueupdater } from "./mediaplayer.js"
+import { getQueuedSongsAfterCurrent } from "./queue.js"
 export function song_details() {
   if (playstate.default) {
     document.querySelector('.song-details').innerHTML = ``
@@ -82,26 +83,7 @@ export function song_details() {
       ${credits_details(song.credits)}
     </div>
   </div>
-
   <div class="next-queue">
-    <div class="nq-top">
-      <h4>Next in queue</h4>
-      <button class="open-queue">Open queue</button>
-    </div>
-    <div class="next-queue-detail">
-      <div class="next-queue-image">
-        <img src="Assests/playlist-images/wallpaperflare.com_wallpaper (5).jpg" alt="playlist-image">
-        <button class="play-pause-song info" data-info="Play">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
-            <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="next-queue-info">
-        <h4 class="next-queue-title">Humraah (From "Malang - Unleash The Madness")</h4>
-        <h4 class="next-queue-artist">Sachet Tandon, Kunaal Vermaa, The Fusion Project</h4>
-      </div>
-    </div>
   </div>
    <div class="queue-container">
             <div class="queue-header">
@@ -149,32 +131,7 @@ export function song_details() {
                     </div>
                 </div>
                 <div class="queue-songs">
-                    <h4 class="next-from">
-                        Next from : <span>${playstate.source}</span>
-                    </h4>
-                    <div class="queue-song card">
-                        <div class="queue-song-image card-image"><img
-                                src="https://i.scdn.co/image/ab67616d0000b273afd2bc3f876235be94c0d36d" alt="playlist-image">
-                            <button class="play-pause-song info" data-info="Play">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
-                                    role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
-                                    viewBox="0 0 16 16"
-                                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
-                                    <path
-                                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
-                                    </path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="queue-song-details">
-                            <div class="queue-song-title card-title">
-                                <h4>Nostalgia</h4>
-                            </div>
-                            <div class="queue-song-artists">
-                                <h5>Aahil World,Amit Roy</h5>
-                            </div>
-                        </div>
-                    </div>
+                    ${renderqueuesongs()}
                 </div>
             </div>
         </div>
@@ -208,16 +165,82 @@ export function song_details() {
     document.querySelector(".queue-closing-btn").addEventListener("click", () => {
       queueupdater()
     })
-    document.querySelector(".open-queue").addEventListener("click", () => {
-      queueupdater()
-    })
     let nowplaybtn = document.querySelector(".now-playing-song").querySelector(".play-pause-song")
-    nowplaybtn.addEventListener("click",_playpause)
+    nowplaybtn.addEventListener("click", _playpause)
     nowplaybtn.querySelector(".pause").style.display = "block"
     nowplaybtn.querySelector(".play").style.display = "none"
     nowplaybtn.classList.add("active")
-    nowplaybtn.dataset.info="pause"
+    nowplaybtn.dataset.info = "pause"
     playstate.nowplaybtn = nowplaybtn
+    nextqueuedetails()
     console.log(playstate.nowplaybtn)
+  }
+}
+function renderqueuesongs() {
+ let queuesongs=getQueuedSongsAfterCurrent(false)
+  console.log(queuesongs)
+  let html = `<h4 class="next-from">
+               ${queuesongs.length !== 0 ? `Next from : <span>${playstate.source}</span>` : ``}
+                    </h4>`
+  queuesongs.forEach(songid => {
+    let obj = songs.find(song => song.id === songid);
+    html += `<div class="queue-song card">
+                        <div class="queue-song-image card-image"><img
+                                src="${obj.image}" alt="playlist-image">
+                            <button class="play-pause-song info" data-info="Play">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
+                                    role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
+                                    viewBox="0 0 16 16"
+                                    style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                                    <path
+                                        d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="queue-song-details">
+                            <div class="queue-song-title card-title">
+                                <h4>${obj.title}</h4>
+                            </div>
+                            <div class="queue-song-artists card-artist">
+                                <h5>${obj.credits.join(',')}</h5>
+                            </div>
+                        </div>
+                    </div>`
+  })
+  return html
+}
+function nextqueuedetails() {
+let queuesong= getQueuedSongsAfterCurrent(true)
+  console.log(queuesong)
+  let obj = songs.find(song => song.id === queuesong[0]);
+  let container = document.querySelector(".next-queue")
+  if (obj) {
+    container.innerHTML = `
+    <div class="nq-top">
+      <h4>Next in queue</h4>
+      <button class="open-queue">Open queue</button>
+    </div>
+    <div class="next-queue-detail">
+     <div class="next-queue-image">
+        <img src="${obj.image}">
+        <button class="play-pause-song info" data-info="Play">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+            <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="next-queue-info">
+        <h4 class="next-queue-title">${obj.title}</h4>
+        <h4 class="next-queue-artist">${obj.credits.join(',')}</h4>
+      </div>
+    </div>`
+    document.querySelector(".open-queue").addEventListener("click", () => {
+      queueupdater()
+    })
+  }
+  else {
+    container.innerHTML = ``
+    container.style.display = "none"
   }
 }
