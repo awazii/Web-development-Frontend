@@ -1,7 +1,7 @@
 import { playstate, songs } from "./main.js"
 import { playingviewupdate, _playpause } from "./mediaplayer.js"
 import { queueupdater } from "./mediaplayer.js"
-import { getQueuedSongsAfterCurrent } from "./queue.js"
+import { getQueuedSongsAfterCurrent, playQueuedSong } from "./queue.js"
 export function song_details() {
   if (playstate.default) {
     document.querySelector('.song-details').innerHTML = ``
@@ -165,6 +165,12 @@ export function song_details() {
     document.querySelector(".queue-closing-btn").addEventListener("click", () => {
       queueupdater()
     })
+    document.querySelector(".queue-songs").querySelectorAll(".play-pause-song").forEach(button => {
+      button.addEventListener("click", () => {
+        let id = button.dataset.songid
+        playQueuedSong(id)
+      })
+    })
     let nowplaybtn = document.querySelector(".now-playing-song").querySelector(".play-pause-song")
     nowplaybtn.addEventListener("click", _playpause)
     nowplaybtn.querySelector(".pause").style.display = "block"
@@ -173,12 +179,10 @@ export function song_details() {
     nowplaybtn.dataset.info = "pause"
     playstate.nowplaybtn = nowplaybtn
     nextqueuedetails()
-    console.log(playstate.nowplaybtn)
   }
 }
 function renderqueuesongs() {
- let queuesongs=getQueuedSongsAfterCurrent(false)
-  console.log(queuesongs)
+  let queuesongs = getQueuedSongsAfterCurrent(false)
   let html = `<h4 class="next-from">
                ${queuesongs.length !== 0 ? `Next from : <span>${playstate.source}</span>` : ``}
                     </h4>`
@@ -187,7 +191,7 @@ function renderqueuesongs() {
     html += `<div class="queue-song card">
                         <div class="queue-song-image card-image"><img
                                 src="${obj.image}" alt="playlist-image">
-                            <button class="play-pause-song info" data-info="Play">
+                            <button class="play-pause-song info" data-songid="${obj.id}" data-info="Play">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon"
                                     role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline"
                                     viewBox="0 0 16 16"
@@ -211,8 +215,7 @@ function renderqueuesongs() {
   return html
 }
 function nextqueuedetails() {
-let queuesong= getQueuedSongsAfterCurrent(true)
-  console.log(queuesong)
+  let queuesong = getQueuedSongsAfterCurrent(true)
   let obj = songs.find(song => song.id === queuesong[0]);
   let container = document.querySelector(".next-queue")
   if (obj) {
@@ -224,7 +227,7 @@ let queuesong= getQueuedSongsAfterCurrent(true)
     <div class="next-queue-detail">
      <div class="next-queue-image">
         <img src="${obj.image}">
-        <button class="play-pause-song info" data-info="Play">
+        <button class="play-pause-song info" data-info="Play" data-songid="${obj.id}">
           <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" data-encore-id="icon" role="img" aria-hidden="true" class="e-9812-icon e-9812-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
             <path d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"></path>
           </svg>
@@ -237,6 +240,11 @@ let queuesong= getQueuedSongsAfterCurrent(true)
     </div>`
     document.querySelector(".open-queue").addEventListener("click", () => {
       queueupdater()
+    })
+    let nextbtn = container.querySelector(".play-pause-song")
+    nextbtn.addEventListener("click", () => {
+      let id = nextbtn.dataset.songid
+      playQueuedSong(id)
     })
   }
   else {

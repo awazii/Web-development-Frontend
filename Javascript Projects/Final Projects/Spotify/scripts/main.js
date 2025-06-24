@@ -1,16 +1,16 @@
 import { library } from './library.js';
 import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
-import { fetch_album } from "./album.js";
+import { fetch_album, equaliserchecker } from "./album.js";
+import { playsong } from './home.js';
 export let songs = [];
 export let appdata = JSON.parse(localStorage.getItem("appdata")) || {};
-console.log(appdata)
 export let recent = appdata.recent || { category: "Recently Played", songids: [] }
-console.log(recent)
 export let dailymix = appdata.dailymix || { category: "Daily Mix", date: null, songids: [] }
 export let playstate = {
     songid: null,
     currentsong: new Audio(),
+    volume:0.5,
     default: true,
     isplaying: null,
     songdetails: null,
@@ -22,7 +22,7 @@ export let playstate = {
     equaliser: null,
     source: null,
     albumbtn: null,
-    queuesongs:[]
+    queuesongs: []
 };
 let _fetchsongs = async () => {
     let main = document.querySelector('.main-container');
@@ -55,12 +55,11 @@ export function reassignbtn() {
     if (playstate.source) {
         if (playstate.albumpage) {
             let [songbtn, equaliser, albumbtn] = handleAlbumPageReassign()
-            console.log(songbtn)
-            if(songbtn) {  playstate.currentplayingbutton = songbtn}
+            if (songbtn) { playstate.currentplayingbutton = songbtn }
             playstate.equaliser = equaliser
             playstate.albumbtn = albumbtn
             if (!playstate.currentsong.paused) {
-                songbtn && setButtonVisualState( playstate.currentplayingbutton, true, true)
+                songbtn && setButtonVisualState(playstate.currentplayingbutton, true, true)
                 albumbtn && setButtonVisualState(playstate.albumbtn, true, false)
                 albumbtn && albumbtn.classList.add("Playing")
                 if (equaliser) {
@@ -71,8 +70,7 @@ export function reassignbtn() {
         else {
             let [songbtn, albumbtn] = handleHomePageReassign()
             playstate.albumbtn = albumbtn
-            console.log(songbtn, albumbtn)
-            if(songbtn) {  playstate.currentplayingbutton = songbtn}
+            if (songbtn) { playstate.currentplayingbutton = songbtn }
             if (!playstate.currentsong.paused) {
                 songbtn && setButtonVisualState(playstate.currentplayingbutton, true, true)
                 albumbtn && albumbtn.classList.add("Playing")
@@ -83,28 +81,24 @@ export function reassignbtn() {
 
 }
 export function handleAlbumPageReassign() {
-    console.log("inside album page");
     let albumbtn1 = document.querySelector(".albumbtn")
-    let songbtn, equaliser,albumbtn ;
+    let songbtn, equaliser, albumbtn;
     let songs = document.querySelector(".album-songs")
     songs.querySelectorAll(".album-song").forEach(song => {
-       let equaliser1 = song.querySelector(".equaliser")
-        let  songbtn1 = song.querySelector(".album-song-btn")
+        let equaliser1 = song.querySelector(".equaliser")
+        let songbtn1 = song.querySelector(".album-song-btn")
         if (playstate.songid === songbtn1.dataset.songid) {
             if (playstate.source === songbtn1.dataset.category) {
-                songbtn =songbtn1
-                equaliser =equaliser1
-                albumbtn =albumbtn1
+                songbtn = songbtn1
+                equaliser = equaliser1
+                albumbtn = albumbtn1
             }
         }
     })
     return [songbtn, equaliser, albumbtn]
 }
 export function handleHomePageReassign() {
-    console.log(playstate.albumpage)
-    console.log("inside home page");
     let categories = document.querySelectorAll(".category")
-    console.log(categories)
     let songscontainer, songbtn, albumbtn;
     let albumcards = document.querySelectorAll(".album")
     albumcards.forEach(card => {
@@ -129,7 +123,6 @@ export function handleHomePageReassign() {
     return [songbtn, albumbtn]
 }
 export function setButtonVisualState(button, isPlaying, useActive) {
-    console.log("here")
     const playIcon = button.querySelector(".play");
     const pauseIcon = button.querySelector(".pause");
     if (isPlaying) {
@@ -141,4 +134,22 @@ export function setButtonVisualState(button, isPlaying, useActive) {
         pauseIcon.style.display = "none";
         if (useActive) button.classList.remove("active");
     }
+}
+export function getCurrentAlbumSongButton(button) {
+    if (!button) {
+        button = "dummy"
+        playsong(button)
+    }
+    else {
+        playsong(button, () => {
+            equaliserchecker(button)
+        })
+    }
+}
+
+export function getCurrentHomeSongButton(button) {
+    if (!button) {
+        button = "dummy"
+    }
+    playsong(button)
 }

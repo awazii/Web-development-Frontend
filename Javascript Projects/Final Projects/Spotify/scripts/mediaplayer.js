@@ -1,7 +1,7 @@
 import { playstate, setButtonVisualState } from "./main.js"
 import { default_media } from "./default.js"
 import { controls } from "./controls.js"
-import{playNextInQueue,getQueuedSongsAfterCurrent} from "./queue.js"
+import{playNextInQueue,playPreviousInQueue,getQueuedSongsAfterCurrent,getQueuedSongsBeforeCurrent} from "./queue.js"
 export function mediaplayer(song) {
     if (playstate.default) {
         default_media()
@@ -163,11 +163,19 @@ export function mediaplayer(song) {
         let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
         playNextInQueue(nextqueuesong) 
       })
+      document.querySelector(".prev").addEventListener("click",()=>{
+        let prevqueuesong = getQueuedSongsBeforeCurrent()[0]
+        if (playstate.currentsong.currentTime>=1) {
+             playstate.currentsong.currentTime=0
+        }
+      else{
+         playPreviousInQueue(prevqueuesong)
+      }
+      })
     }
 }
 export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
-    console.log(playstate.currentplayingbutton)
     if (playstate.currentplayingbutton) {
         playstate.currentplayingbutton.classList.toggle("active")
     }

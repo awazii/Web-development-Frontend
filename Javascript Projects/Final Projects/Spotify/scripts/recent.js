@@ -4,10 +4,8 @@ import { appdata, playstate } from "./main.js";
 import { recent,reassignbtn } from "./main.js";
 import { render_recent } from "./home.js";
 export function update_recent(recentsong) {
-    console.log(recentsong, recent.songids.length)
     if (!recent.songids.includes(recentsong)) {
         if (recent.songids.length >= 10) {
-            console.log("recent songs limit reached");
             recent.songids.pop();
             recent.songids.unshift(recentsong)
         }
@@ -16,14 +14,12 @@ export function update_recent(recentsong) {
         }
     }
     else {
-        console.log("song already exists in recent songs");
         let index = recent.songids.indexOf(recentsong);
         recent.songids.splice(index, 1)
         recent.songids.unshift(recentsong)
     }
     appdata.recent = recent
     localStorage.setItem("appdata", JSON.stringify(appdata));
-    console.log(appdata)
     if (playstate.home) {
         render_recent();
         reassignbtn();
@@ -41,7 +37,7 @@ export function startPlayTimer(songId) {
     playTimer = setInterval(() => {
         if (!playstate.currentsong.paused) {
             playedSeconds++;
-            console.log("Played seconds:", playedSeconds);
+            // console.log("Played seconds:", playedSeconds);
             if (playedSeconds >= requiredSeconds) {
                 clearInterval(playTimer);
                 update_recent(songId);

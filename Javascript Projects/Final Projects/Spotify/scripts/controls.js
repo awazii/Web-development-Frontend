@@ -54,7 +54,6 @@ export function controls(currentplayingbutton) {
     });
     function click_position(event) {
          const rect = progressContainer.getBoundingClientRect();
-         console.log(event.clientX,rect.left,rect.width)
             const clickPosition = Math.min((event.clientX - rect.left) / rect.width, 1);
             if (clickPosition<0) {
                 clickPosition=0
@@ -89,6 +88,7 @@ export function controls(currentplayingbutton) {
         let volumePos = (event.clientX - rect.left) / rect.width;
         volumePos = Math.min(Math.max(volumePos, 0), 1);
         playstate.currentsong.volume = volumePos;
+        playstate.volume=volumePos
         volumeFill.style.width = `${volumePos * 100}%`;
         updateVolumeIcon(volumePos);
     }
@@ -140,9 +140,9 @@ export function controls(currentplayingbutton) {
     volumeBtn.dataset.info = volume === 0 ? "Unmute" : "Mute";
     mute = volume === 0;
 }
-    playstate.currentsong.volume = 0.5;
-    volumeFill.style.width = "50%";
-    updateVolumeIcon(0.5);
+    playstate.currentsong.volume = playstate.volume;
+    volumeFill.style.width = `${playstate.volume * 100}%`;
+    updateVolumeIcon(playstate.volume);
 
     playstate.currentsong.addEventListener("timeupdate", () => {
         if (!isDragging) {
@@ -153,7 +153,6 @@ durationconverter(playstate.currentsong.currentTime,elapsedTime)
     });
     playstate.currentsong.addEventListener("ended", () => {
         let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
-        console.log(nextqueuesong)
        if (nextqueuesong) {
         setTimeout(() => playNextInQueue(nextqueuesong), 100); 
        }
@@ -182,7 +181,6 @@ function defaultinterface() {
         song_details()
         cancelPlayTimer()
       playstate.currentplayingbutton && setButtonVisualState(playstate.currentplayingbutton,false,true) 
-        playstate.albumpage? setButtonVisualState(playstate.albumbtn,false,false):
-        setButtonVisualState(playstate.albumbtn,false,true)
+        playstate.albumbtn && setButtonVisualState(playstate.albumbtn,false,false)
        playstate.albumbtn && playstate.albumbtn.classList.remove("Playing")
 }

@@ -3,7 +3,6 @@ import { _playpause } from "./mediaplayer.js";
 import { fetch_home } from "./home.js";
 import { render_album} from "./album.js";
 export function main_content(category) {
-    console.log(playstate.home, playstate.albumpage);
     if (playstate.home=== true) {
         fetch_home();  
     }

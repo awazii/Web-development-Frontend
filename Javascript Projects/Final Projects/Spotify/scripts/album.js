@@ -75,7 +75,6 @@ export function render_album(category) {
     let obj = {}
     appdata.album.find(album => {
         if (album.category === category) {
-            console.log(album.category, category)
             obj = album
         }
     })
@@ -205,7 +204,6 @@ export function render_album(category) {
 }
 export function equaliserchecker(button) {
     let equaliser = button.closest(".album-song").querySelector(".equaliser")
-    console.log(equaliser, playstate.equaliser, equaliser === playstate.equaliser)
     if (!playstate.equaliser) {
         playstate.equaliser = equaliser
         playstate.equaliser.style.opacity = 1

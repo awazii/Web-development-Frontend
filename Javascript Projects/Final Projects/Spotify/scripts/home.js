@@ -126,7 +126,6 @@ export function fetch_home() {
         album.addEventListener("click", (e) => {
             let albumbtn = e.target.closest(".play-pause-song")
             if (albumbtn) {
-                console.log("btn is clicked", albumbtn.dataset)
                 playstate.songid = albumbtn.dataset.songid
                 _albumbtn(albumbtn)
             } else {
@@ -228,7 +227,6 @@ export function slider(swiperEl, index) {
 }
 export function render_recent() {
     let recentcontainer = document.querySelector(".recent")
-    console.log(recent.songids.length)
     if (recent.songids.length >= 7) {
         recentcontainer.innerHTML = `<div class="category">
                       <h2>${appdata.recent.category}</h2>
@@ -298,26 +296,21 @@ function _renderdailymix(dailymix) {
 }
 export function playsong(button, equaliser, albumbtn, manualclick) {
     if (playstate.isplaying && playstate.currentplayingbutton === button) {
-        console.log("same button is clicked")
         _playpause();
     }
     else {
-        console.log("different button is clicked")
-        console.log("🎵 Playing new song:", playstate.songid);
         let song = songs.find(song => song.id === playstate.songid)
         playstate.currentsong.src = song.url;
+        playstate.currentsong.preload = "auto";
         playstate.default = null
         playstate.isplaying = true
         playstate.songdetails = true
         if (playstate.currentplayingbutton) {
-            console.log("removing", playstate.currentplayingbutton)
             setButtonVisualState(playstate.currentplayingbutton, false, true)
         }
         if (manualclick) {
-            console.log("entered")
             queuegenerator()
         }
-        console.log(playstate)
         mediaplayer(song)
         song_details()
         if (playstate.queue) {
@@ -325,30 +318,28 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
             queueupdater()
         }
         playstate.currentsong.onloadeddata = () => {
-             if (albumbtn) {
-            playstate.currentplayingbutton = null
-            playstate.albumbtn = button
-        }
-        else {
-            playstate.currentplayingbutton = button
-        }
-        if (button === "dummy") {
-            playstate.currentplayingbutton = null
-        }
-            if (playstate.albumpage) {
-            if (equaliser) {
-                equaliser()
+            if (albumbtn) {
+                playstate.currentplayingbutton = null
+                playstate.albumbtn = button
             }
-        }
-              if (button !== "dummy") {
-            setButtonVisualState(button, true, true)
-        }
+            else {
+                playstate.currentplayingbutton = button
+            }
+            if (button === "dummy") {
+                playstate.currentplayingbutton = null
+            }
+            if (playstate.albumpage) {
+                if (equaliser) {
+                    equaliser()
+                }
+            }
+            if (button !== "dummy") {
+                setButtonVisualState(button, true, true)
+            }
             playstate.currentsong.play().catch(err => {
                 console.warn("Play failed:", err);
             });
         };
-      
-        console.log(button)
     }
 }
 export function addEventListeners(element, location) {
@@ -359,7 +350,6 @@ export function addEventListeners(element, location) {
                 const source = button.closest(".category").firstElementChild.textContent;
                 playstate.songid = button.dataset.songid
                 playstate.source = source
-                console.log(playstate)
                 if (button) {
                     playsong(button, false, false, true);
                 }
@@ -369,7 +359,6 @@ export function addEventListeners(element, location) {
     else if (location === "album") {
         element.querySelectorAll(".album-song-btn").forEach(button => {
             button.addEventListener("click", (e) => {
-                console.log("enter")
                 let id = button.dataset.songid
                 let source = songs.find(song => song.id === id)
                 playstate.source = source.category
@@ -387,11 +376,9 @@ export function addEventListeners(element, location) {
 }
 export function _albumbtn(button) {
     if (button.classList.contains("Playing")) {
-        console.log("playing")
         _playpause()
     }
     else {
-        console.log(button.dataset, button.dataset.songid)
         button.classList.add("Playing")
         if (playstate.albumbtn) {
             playstate.albumbtn.classList.remove("Playing")
@@ -399,6 +386,6 @@ export function _albumbtn(button) {
         }
         playstate.source = button.dataset.albumName
         playsong(button, null, "albumbtn", true);
-      setTimeout(reassignbtn,100)
+        setTimeout(reassignbtn, 100)
     }
 }

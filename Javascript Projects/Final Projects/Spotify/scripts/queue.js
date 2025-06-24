@@ -1,5 +1,4 @@
-import { appdata, playstate, handleAlbumPageReassign, handleHomePageReassign } from "./main.js";
-import { equaliserchecker } from "./album.js";
+import { appdata, playstate, handleAlbumPageReassign, handleHomePageReassign, getCurrentAlbumSongButton, getCurrentHomeSongButton } from "./main.js";
 import { playsong } from "./home.js";
 export function queuegenerator() {
     let obj = [];
@@ -7,7 +6,6 @@ export function queuegenerator() {
         let value = appdata[keys]
         if (value.length) {
             value.forEach(element => {
-                console.log(element.category, playstate.source)
                 if (element.category === playstate.source) {
                     obj = element.songids
                 }
@@ -19,43 +17,39 @@ export function queuegenerator() {
             }
         }
     }
-    playstate.queuesongs =[...obj]
-    console.log(playstate)
+    playstate.queuesongs = [...obj]
 }
 export function playNextInQueue(nextqueuesong) {
-   console.log(nextqueuesong)
     if (nextqueuesong) {
-        playstate.songid = nextqueuesong
-        if (playstate.albumpage) {
-            let button = handleAlbumPageReassign()[0]
-            console.log(button===playstate.currentplayingbutton,button,playstate.currentplayingbutton)
-            if (!button) {
-                button="dummy"
-                playsong(button)
-            }
-            else{
-              playsong(button,()=>{
-                equaliserchecker(button)
-              })
-            }
-        }
-        else if (playstate.home) {
-            let button = handleHomePageReassign()[0]
-            console.log(button===playstate.currentplayingbutton,button,playstate.currentplayingbutton)
-            if (!button) {
-                button="dummy"
-            }
-            playsong(button)
-        }
+        playQueuedSong(nextqueuesong)
     }
 }
 
-export function playPreviousInQueue() {
+export function playPreviousInQueue(prevqueuesong) {
+    if (prevqueuesong) {
+        playQueuedSong(prevqueuesong)
+    }
+}
+export function playQueuedSong(songId) {
+    if (!songId) return;
+    playstate.songid = songId;
+    const button = playstate.albumpage
+        ? handleAlbumPageReassign()[0]
+        : playstate.home
+            ? handleHomePageReassign()[0]
+            : null;
 
+    playstate.albumpage
+        ? getCurrentAlbumSongButton(button)
+        : getCurrentHomeSongButton(button);
 }
 export function getQueuedSongsAfterCurrent(onlyNext) {
-  const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
- return onlyNext
-    ? playstate.queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
-    : playstate.queuesongs.slice(currentSongIndex + 1);
+    const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
+    return onlyNext
+        ? playstate.queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
+        : playstate.queuesongs.slice(currentSongIndex + 1);
+}
+export function getQueuedSongsBeforeCurrent() {
+    const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
+    return playstate.queuesongs.slice(currentSongIndex - 1, currentSongIndex)
 }
