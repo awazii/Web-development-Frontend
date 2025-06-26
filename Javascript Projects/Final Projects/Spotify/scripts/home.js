@@ -1,5 +1,5 @@
 import { playstate, recent, songs, reassignbtn } from "./main.js"
-import { _playpause, queueupdater } from "./mediaplayer.js";
+import { _playpause, queueupdater, shufflesongs } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata, dailymix, setButtonVisualState } from "./main.js";
@@ -310,6 +310,10 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         }
         if (manualclick) {
             queuegenerator()
+            if (playstate.shuffle.active &&  playstate.shuffle.source  !== playstate.source) {
+                playstate.shuffle.source = playstate.source
+                shufflesongs()
+            }
         }
         mediaplayer(song)
         song_details()
@@ -360,7 +364,7 @@ export function addEventListeners(element, location) {
         element.querySelectorAll(".album-song-btn").forEach(button => {
             button.addEventListener("click", (e) => {
                 let id = button.dataset.songid
-                let source = songs.find(song => song.id === id)
+                const source = songs.find(song => song.id === id)
                 playstate.source = source.category
                 let albumbtn = document.querySelector(".albumbtn")
                 albumbtn.classList.add("Playing")

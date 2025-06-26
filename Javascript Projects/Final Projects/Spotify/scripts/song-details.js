@@ -131,12 +131,12 @@ export function song_details() {
                     </div>
                 </div>
                 <div class="queue-songs">
-                    ${renderqueuesongs()}
                 </div>
             </div>
         </div>
 </div>
 `
+    renderqueuesongs()
     document.querySelector(".show-credits").addEventListener("click", (e) => {
       let credits = e.target.closest(".credits")
       let details = credits.querySelector(".credits-details")
@@ -181,14 +181,15 @@ export function song_details() {
     nextqueuedetails()
   }
 }
-function renderqueuesongs() {
+export function renderqueuesongs() {
   let queuesongs = getQueuedSongsAfterCurrent(false)
-  let html = `<h4 class="next-from">
+  let queuecontainer = document.querySelector(".queue-songs")
+  queuecontainer.innerHTML = `<h4 class="next-from">
                ${queuesongs.length !== 0 ? `Next from : <span>${playstate.source}</span>` : ``}
                     </h4>`
   queuesongs.forEach(songid => {
     let obj = songs.find(song => song.id === songid);
-    html += `<div class="queue-song card">
+   queuecontainer.innerHTML += `<div class="queue-song card">
                         <div class="queue-song-image card-image"><img
                                 src="${obj.image}" alt="playlist-image">
                             <button class="play-pause-song info" data-songid="${obj.id}" data-info="Play">
@@ -212,12 +213,12 @@ function renderqueuesongs() {
                         </div>
                     </div>`
   })
-  return html
 }
-function nextqueuedetails() {
+export function nextqueuedetails() {
   let queuesong = getQueuedSongsAfterCurrent(true)
   let obj = songs.find(song => song.id === queuesong[0]);
   let container = document.querySelector(".next-queue")
+  container.style.display = "block"
   if (obj) {
     container.innerHTML = `
     <div class="nq-top">

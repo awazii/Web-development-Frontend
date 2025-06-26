@@ -44,12 +44,14 @@ export function playQueuedSong(songId) {
         : getCurrentHomeSongButton(button);
 }
 export function getQueuedSongsAfterCurrent(onlyNext) {
-    const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
+    let queuesongs=playstate.shuffle.active?[...playstate.shuffle.songs]:[...playstate.queuesongs]
+    const currentSongIndex = queuesongs.indexOf(playstate.songid);
     return onlyNext
-        ? playstate.queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
-        : playstate.queuesongs.slice(currentSongIndex + 1);
+        ? queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
+        : queuesongs.slice(currentSongIndex + 1);
 }
 export function getQueuedSongsBeforeCurrent() {
-    const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
-    return playstate.queuesongs.slice(currentSongIndex - 1, currentSongIndex)
+     let queuesongs=playstate.shuffle.active?[...playstate.shuffle.songs]:[...playstate.queuesongs]
+    const currentSongIndex = queuesongs.indexOf(playstate.songid);
+    return queuesongs.slice(currentSongIndex - 1, currentSongIndex)
 }

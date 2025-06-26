@@ -22,7 +22,12 @@ export let playstate = {
     equaliser: null,
     source: null,
     albumbtn: null,
-    queuesongs: []
+    queuesongs: [],
+    shuffle:{
+        active:null,
+        source:null,
+        songs:[]
+    }
 };
 let _fetchsongs = async () => {
     let main = document.querySelector('.main-container');
