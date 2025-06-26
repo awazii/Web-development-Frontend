@@ -27,6 +27,10 @@ export let playstate = {
         active:null,
         source:null,
         songs:[]
+    },
+    repeat:{
+        active:null,
+        one:null
     }
 };
 let _fetchsongs = async () => {

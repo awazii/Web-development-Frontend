@@ -292,3 +292,12 @@ button{
 .mute {
     display: none;
 }
+.repeatone{
+    color: #42d060;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    font-size: 12px;
+    transform: translateX(-50%);
+    display: none;
+}

@@ -2,7 +2,7 @@ import { playstate, setButtonVisualState } from "./main.js"
 import { default_media } from "./default.js"
 import { controls } from "./controls.js"
 import { playNextInQueue, playPreviousInQueue, getQueuedSongsAfterCurrent, getQueuedSongsBeforeCurrent } from "./queue.js"
-import { renderqueuesongs,nextqueuedetails } from "./song-details.js"
+import { renderqueuesongs, nextqueuedetails } from "./song-details.js"
 export function mediaplayer(song) {
     if (playstate.default) {
         default_media()
@@ -55,7 +55,8 @@ export function mediaplayer(song) {
                             </path>
                         </svg>
                     </button>
-                    <button class="repeat info" data-info="Repeat">
+                    <button class="repeat info" data-info="Enable Repeat">
+                     <div class=repeatone>1</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
                             role="img" aria-hidden="true" viewBox="0 0 16 16">
                             <path
@@ -160,22 +161,22 @@ export function mediaplayer(song) {
                 queueupdater()
             }
         })
-        let shufflebtn= document.querySelector(".shuffle")
-        shufflebtn.addEventListener("click",()=>{
+        let shufflebtn = document.querySelector(".shuffle")
+        shufflebtn.addEventListener("click", () => {
             if (playstate.shuffle.active) {
-                playstate.shuffle.active=null
-                playstate.shuffle.songs=[]
+                playstate.shuffle.active = null
+                playstate.shuffle.songs = []
                 renderqueuesongs()
                 nextqueuedetails()
             }
-            else{
-                playstate.shuffle.active=true
+            else {
+                playstate.shuffle.active = true
                 if (!playstate.shuffle.source) {
                     playstate.shuffle.source = playstate.source
                 }
                 shufflesongs()
                 renderqueuesongs()
-                nextqueuedetails() 
+                nextqueuedetails()
             }
             shufflecheck()
         })
@@ -189,6 +190,22 @@ export function mediaplayer(song) {
                 playPreviousInQueue(prevqueuesong)
             }
         })
+        document.querySelector(".repeat").addEventListener("click", () => {
+            if (playstate.repeat.active && playstate.repeat.one) {
+                playstate.repeat.active = null
+                playstate.repeat.one = null
+            }
+            else if (playstate.repeat.active && !playstate.repeat.one) {
+                playstate.repeat.one = true
+            }
+
+            else {
+                playstate.repeat.active = true
+                playstate.repeat.one = null
+            }
+            repeatcheck()
+        })
+        repeatcheck()
         document.querySelector(".next").addEventListener("click", () => {
             let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
             playNextInQueue(nextqueuesong)
@@ -299,16 +316,16 @@ export function queueupdater() {
     queue.classList.toggle("activated")
     queuecontainer.classList.toggle("queue-visible")
 }
-export function shufflecheck(){
-let shufflebtn= document.querySelector(".shuffle")
-if (playstate.shuffle.active) {
-    shufflebtn.classList.add("activated")
-    shufflebtn.dataset.info="Disable Shuffle"
-}
-else{
-       shufflebtn.classList.remove("activated")
-       shufflebtn.dataset.info="Enable Shuffle"
-}
+export function shufflecheck() {
+    let shufflebtn = document.querySelector(".shuffle")
+    if (playstate.shuffle.active) {
+        shufflebtn.classList.add("activated")
+        shufflebtn.dataset.info = "Disable Shuffle"
+    }
+    else {
+        shufflebtn.classList.remove("activated")
+        shufflebtn.dataset.info = "Enable Shuffle"
+    }
 }
 export function shufflesongs() {
     const currentSongIndex = playstate.queuesongs.indexOf(playstate.songid);
@@ -316,4 +333,23 @@ export function shufflesongs() {
     const rest = playstate.queuesongs.filter((_, i) => i !== currentSongIndex);
     const shuffled = rest.sort(() => 0.5 - Math.random());
     playstate.shuffle.songs = [currentsong, ...shuffled];
+}
+export function repeatcheck() {
+    let repeatbtn = document.querySelector(".repeat")
+    let repeatone = repeatbtn.querySelector(".repeatone")
+    if (playstate.repeat.active && !playstate.repeat.one) {
+        repeatbtn.classList.add("activated")
+        repeatbtn.dataset.info = "Enable repeat one"
+        repeatone.style.display = "none"
+    }
+    else if (playstate.repeat.active && playstate.repeat.one) {
+        repeatbtn.classList.add("activated")
+        repeatone.style.display = "block"
+        repeatbtn.dataset.info = "Disable repeat"
+    }
+    else {
+        repeatbtn.classList.remove("activated")
+        repeatbtn.dataset.info = "Enable repeat"
+        repeatone.style.display = "none"
+    }
 }

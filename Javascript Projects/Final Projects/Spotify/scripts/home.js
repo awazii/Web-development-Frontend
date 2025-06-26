@@ -16,7 +16,7 @@ export function fetch_home() {
         </div>
           <div class="content">
           <div class="banner">
-           <img src="https://c4.wallpaperflare.com/wallpaper/705/252/985/anime-monkey-d-luffy-one-piece-wallpaper-preview.jpg" alt="banner">
+           <img src="https://c4.wallpaperflare.com/wallpaper/84/515/763/k-pop-iu-sony-wallpaper-preview.jpg" alt="banner">
            <h2>Your soundtrack, your vibe.
 </h2>
           </div>

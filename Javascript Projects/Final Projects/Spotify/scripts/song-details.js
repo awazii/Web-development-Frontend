@@ -179,6 +179,10 @@ export function song_details() {
     nowplaybtn.dataset.info = "pause"
     playstate.nowplaybtn = nowplaybtn
     nextqueuedetails()
+    requestAnimationFrame(() => {
+  document.querySelector(".now-playing-song")?.classList.add("animate");
+});
+setTimeout(requestAnimationFrame,500) 
   }
 }
 export function renderqueuesongs() {
