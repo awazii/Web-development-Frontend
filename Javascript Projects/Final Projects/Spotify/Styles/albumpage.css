@@ -96,6 +96,11 @@
         transform: scale(1.1);
         background-color: #2bf772;
     }
+     &:active{
+        background-color: #1abc54;
+         transform: scale(0.99);
+
+    }
 }
 
 .album-content {
@@ -209,7 +214,10 @@ border: 1px solid #5c5c5c;
         opacity: 1;
     }
 }
-
+.album-song:has(.album-song-btn:active){
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.692);
+}
 .album-song-btn {
     all: unset;
     width: 32px;
@@ -226,6 +234,10 @@ border: 1px solid #5c5c5c;
     &:hover {
         background-color: #1ed760;
         cursor: pointer;
+    }
+     &:active{
+        background-color: #1abc54;
+         transform: scale(0.99);
     }
 }
 .album-song-details{

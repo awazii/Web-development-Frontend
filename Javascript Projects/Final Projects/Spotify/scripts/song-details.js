@@ -182,7 +182,7 @@ export function song_details() {
     requestAnimationFrame(() => {
   document.querySelector(".now-playing-song")?.classList.add("animate");
 });
-setTimeout(requestAnimationFrame,500) 
+setTimeout(requestAnimationFrame,600) 
   }
 }
 export function renderqueuesongs() {

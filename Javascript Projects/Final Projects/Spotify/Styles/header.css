@@ -53,6 +53,12 @@
     background-color: #282828;
     transform: scale(1.03);
 }
+.homebtn:active{
+    background-color: #1f1e1e;
+    transform: scale(.99);
+    opacity: .9;
+}
+
 .search-bar{
     width:90%;
     height: 48px;

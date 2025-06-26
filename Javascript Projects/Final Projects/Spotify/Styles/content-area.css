@@ -102,6 +102,9 @@
         bottom: 15px;
     }
 }
+.song:has(.play-pause-song:active){
+    background-color: #000000ad;
+}
 .song .play-pause-song.active,.album-song-btn.active,.now-playing-song  .play-pause-song.active{
      opacity: 1;
     bottom: 15px;
@@ -118,8 +121,8 @@
 }
 .song-image .play-pause-song{
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,6 +138,11 @@
     &:hover{
         transform: scale(1.1);
         background-color: #2bf772;
+    }
+    &:active{
+        background-color: #1abc54;
+         transform: scale(0.99);
+
     }
 }
 .song-image .play-pause-song::after{
@@ -244,6 +252,11 @@
     &:hover{
         transform: scale(1.1);
         background-color: #1ed760;
+    }
+       &:active{
+        background-color: #1abc54;
+         transform: scale(0.99);
+
     }
  }
  .album:hover .play-pause-song{
