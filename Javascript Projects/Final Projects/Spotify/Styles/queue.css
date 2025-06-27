@@ -36,6 +36,12 @@
             fill: white;
         }
     }
+    &:active{
+        background-color: #202020d8;
+          & svg {
+            fill: rgba(255, 255, 255, 0.76);
+        }
+    }
 }
 .queue-closing-btn::after{
     bottom: 100%;

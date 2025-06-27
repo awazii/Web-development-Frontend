@@ -11,15 +11,17 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
     playstate.home = true;
-    document.querySelector(".content-area").innerHTML = `<div class="c-a-heading">
-            <h5> All</h5>
-        </div>
-          <div class="content">
-          <div class="banner">
+    document.querySelector(".content-area").innerHTML = `
+         <div class="banner">
            <img src="https://c4.wallpaperflare.com/wallpaper/84/515/763/k-pop-iu-sony-wallpaper-preview.jpg" alt="banner">
            <h2>Your soundtrack, your vibe.
 </h2>
           </div>
+          <div class="c-a-heading">
+            <h5> All</h5>
+           <a href="demo.html" class="nav-link">Explore Features</a>
+        </div>
+          <div class="content">
             <div class="mostplayed"></div>
             <div class="dailymix">
             </div>
@@ -310,7 +312,7 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         }
         if (manualclick) {
             queuegenerator()
-            if (playstate.shuffle.active &&  playstate.shuffle.source  !== playstate.source) {
+            if (playstate.shuffle.active && playstate.shuffle.source !== playstate.source) {
                 playstate.shuffle.source = playstate.source
                 shufflesongs()
             }

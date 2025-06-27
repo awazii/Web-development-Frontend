@@ -35,7 +35,7 @@
     position: relative;
 }
 .content-area{
-background: linear-gradient(360deg, #121212 65%, #302555 100%);
+background: linear-gradient(360deg, #121212 65%, #29292c 100%);
 padding: 0 40px;
 overflow-y: auto;
 }

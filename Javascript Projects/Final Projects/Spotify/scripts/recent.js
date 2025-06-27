@@ -1,8 +1,9 @@
 // localStorage.removeItem("appdata");
 import { _rendersongs } from "./home.js";
-import { appdata, playstate } from "./main.js";
+import { appdata, mostplayed, playstate } from "./main.js";
 import { recent,reassignbtn } from "./main.js";
 import { render_recent } from "./home.js";
+import { update_mostplayed } from "./mostplayed.js";
 export function update_recent(recentsong) {
     if (!recent.songids.includes(recentsong)) {
         if (recent.songids.length >= 10) {
@@ -41,6 +42,7 @@ export function startPlayTimer(songId) {
             if (playedSeconds >= requiredSeconds) {
                 clearInterval(playTimer);
                 update_recent(songId);
+               update_mostplayed(songId)
                 playedSeconds = 0; 
             }
         }

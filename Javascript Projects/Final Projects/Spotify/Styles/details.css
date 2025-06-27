@@ -45,6 +45,9 @@
 .hide-playview-btn:hover svg {
     fill: white;
 }
+.hide-playview-btn:active svg {
+    fill: rgba(255, 255, 255, 0.801);
+}
 .hide-playview-btn.info::after{
     left: -50px;
     bottom: 35px;

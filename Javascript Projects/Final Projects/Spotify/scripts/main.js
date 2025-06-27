@@ -7,6 +7,9 @@ export let songs = [];
 export let appdata = JSON.parse(localStorage.getItem("appdata")) || {};
 export let recent = appdata.recent || { category: "Recently Played", songids: [] }
 export let dailymix = appdata.dailymix || { category: "Daily Mix", date: null, songids: [] }
+export let mostplayed=appdata.mostplayed || {category: "Most Played",
+    songs:[]
+}
 export let playstate = {
     songid: null,
     currentsong: new Audio(),

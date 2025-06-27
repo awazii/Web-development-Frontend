@@ -53,7 +53,7 @@ export function getQueuedSongsAfterCurrent(onlyNext) {
             next=[queuesongs[0]]
         }
     }
-    console.log(rest,next)
+    // console.log(rest,next)
     return onlyNext
         ? next
         : rest;
