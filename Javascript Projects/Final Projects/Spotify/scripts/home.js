@@ -7,6 +7,7 @@ import { main_content } from './content-area.js';
 import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
 import { queuegenerator } from "./queue.js";
+import{render_mostplayed} from "./mostplayed.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
@@ -22,7 +23,7 @@ export function fetch_home() {
            <a href="demo.html" class="nav-link">Explore Features</a>
         </div>
           <div class="content">
-            <div class="mostplayed"></div>
+            <div class="mostplayed-container"></div>
             <div class="dailymix">
             </div>
             <div class="recent">
@@ -81,6 +82,7 @@ export function fetch_home() {
         slider(swiperEl, index)
     })
     addEventListeners(catalogcontainer, "home");
+    render_mostplayed();
     render_recent();
     _dailymix();
     function renderalbum_card() {
