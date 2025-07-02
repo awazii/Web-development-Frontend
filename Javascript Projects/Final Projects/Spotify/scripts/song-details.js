@@ -165,12 +165,6 @@ export function song_details() {
     document.querySelector(".queue-closing-btn").addEventListener("click", () => {
       queueupdater()
     })
-    document.querySelector(".queue-songs").querySelectorAll(".play-pause-song").forEach(button => {
-      button.addEventListener("click", () => {
-        let id = button.dataset.songid
-        playQueuedSong(id)
-      })
-    })
     let nowplaybtn = document.querySelector(".now-playing-song").querySelector(".play-pause-song")
     nowplaybtn.addEventListener("click", _playpause)
     nowplaybtn.querySelector(".pause").style.display = "block"
@@ -216,6 +210,7 @@ export function renderqueuesongs() {
                             </div>
                         </div>
                     </div>`
+                    queueeventlistners()
   })
 }
 export function nextqueuedetails() {
@@ -256,4 +251,12 @@ export function nextqueuedetails() {
     container.innerHTML = ``
     container.style.display = "none"
   }
+}
+function queueeventlistners(){
+ document.querySelector(".queue-songs").querySelectorAll(".play-pause-song").forEach(button => {
+      button.addEventListener("click", () => {
+        let id = button.dataset.songid
+        playQueuedSong(id)
+      })
+    })
 }
