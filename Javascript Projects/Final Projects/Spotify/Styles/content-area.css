@@ -96,7 +96,7 @@
 .mostplayed-song-title {
     text-transform: capitalize;
     color: white;
-   width: 80px;
+   width: 45%;
     & h3 {
         font-size: 14.5px;
         overflow: hidden;
@@ -253,7 +253,8 @@
 
 .mostplayedsong .equaliser {
     /* opacity: 1; */
-    margin-left: 10px;
+    position: absolute;
+    right: 10%;
 }
 
 .song-image .play-pause-song::after {
