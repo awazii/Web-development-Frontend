@@ -1,5 +1,7 @@
-export function default_media() {
-    document.querySelector(".media-player").innerHTML=` <div class="current-song">
+import { currentsongupdate } from "./mediaplayer.js";
+export function default_media(isnew) {
+    if (isnew) {
+        document.querySelector(".media-player").innerHTML = ` <div class="current-song">
         </div>
         <div class="controls">
             <div class="upper-controls">
@@ -99,4 +101,42 @@ export function default_media() {
                 </div>
             </div>
         </div>`
+    }
+    else {
+        togglePlayerControls(true)
+    }
+}
+export function togglePlayerControls(isDisabled) {
+    document.querySelector(".current-song").style.visibility = isDisabled ? "hidden" : "visible";
+    document.querySelector(".media-player").classList.add("disabled");
+  const mainSelectors = [
+    ".shuffle",
+    ".prev",
+    ".play-pause-control",
+    ".next",
+    ".repeat",
+    ".playingview",
+    ".queue",
+    ".volume-btn"
+  ];
+
+  mainSelectors.forEach(selector => {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.classList.toggle("disable");
+      el.classList.toggle("info");
+        el.disabled = isDisabled? true : false;
+    }
+  });
+
+  [".volume-track", ".lower-controls"].forEach(selector => {
+    const el = document.querySelector(selector);
+    if (el) el.classList.toggle("not-allowed", isDisabled);
+  });
+
+  const elapsed = document.querySelector(".elapsed-time")?.firstElementChild;
+  const total = document.querySelector(".total-duration")?.firstElementChild;
+
+  if (elapsed) elapsed.textContent = isDisabled ? "-:-" : "0:00";
+  if (total) total.textContent = isDisabled ? "-:-" : "0:00"; // or set dynamically
 }

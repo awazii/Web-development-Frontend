@@ -2,7 +2,7 @@
 import { _rendersongs } from "./home.js";
 import { appdata, mostplayed, playstate } from "./main.js";
 import { recent,reassignbtn } from "./main.js";
-import { render_recent } from "./home.js";
+import { render_recent,EventListeners } from "./home.js";
 import { update_mostplayed } from "./mostplayed.js";
 export function update_recent(recentsong) {
     if (!recent.songids.includes(recentsong)) {
@@ -22,6 +22,7 @@ export function update_recent(recentsong) {
     appdata.recent = recent
     localStorage.setItem("appdata", JSON.stringify(appdata));
     if (playstate.home) {
+        EventListeners(document.querySelector(".recent"), "home", false);
         render_recent();
         reassignbtn();
     }

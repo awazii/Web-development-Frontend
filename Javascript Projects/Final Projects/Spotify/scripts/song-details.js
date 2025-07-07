@@ -1,4 +1,4 @@
-import { playstate, songs } from "./main.js"
+import { playstate, songs, setButtonVisualState } from "./main.js"
 import { playingviewupdate, _playpause } from "./mediaplayer.js"
 import { queueupdater } from "./mediaplayer.js"
 import { getQueuedSongsAfterCurrent, playQueuedSong } from "./queue.js"
@@ -103,7 +103,7 @@ export function song_details() {
                     <h4 class="now-playing-title">
                         Now Playing
                     </h4>
-                    <div class="now-playing-song card">
+                    <div class="now-playing-song card animate">
                         <div class="now-playing-song-image card-image"><img
                                 src="${song.image}" alt="playlist-image">
                             <button class="play-pause-song info" data-info="Play">
@@ -167,16 +167,10 @@ export function song_details() {
     })
     let nowplaybtn = document.querySelector(".now-playing-song").querySelector(".play-pause-song")
     nowplaybtn.addEventListener("click", _playpause)
-    nowplaybtn.querySelector(".pause").style.display = "block"
-    nowplaybtn.querySelector(".play").style.display = "none"
-    nowplaybtn.classList.add("active")
+    setButtonVisualState(nowplaybtn, true, true)
     nowplaybtn.dataset.info = "pause"
     playstate.nowplaybtn = nowplaybtn
     nextqueuedetails()
-    requestAnimationFrame(() => {
-  document.querySelector(".now-playing-song")?.classList.add("animate");
-});
-setTimeout(requestAnimationFrame,600) 
   }
 }
 export function renderqueuesongs() {
@@ -187,7 +181,7 @@ export function renderqueuesongs() {
                     </h4>`
   queuesongs.forEach(songid => {
     let obj = songs.find(song => song.id === songid);
-   queuecontainer.innerHTML += `<div class="queue-song card">
+    queuecontainer.innerHTML += `<div class="queue-song card">
                         <div class="queue-song-image card-image"><img
                                 src="${obj.image}" alt="playlist-image">
                             <button class="play-pause-song info" data-songid="${obj.id}" data-info="Play">
@@ -210,7 +204,7 @@ export function renderqueuesongs() {
                             </div>
                         </div>
                     </div>`
-                    queueeventlistners()
+    queueeventlistners()
   })
 }
 export function nextqueuedetails() {
@@ -252,11 +246,11 @@ export function nextqueuedetails() {
     container.style.display = "none"
   }
 }
-function queueeventlistners(){
- document.querySelector(".queue-songs").querySelectorAll(".play-pause-song").forEach(button => {
-      button.addEventListener("click", () => {
-        let id = button.dataset.songid
-        playQueuedSong(id)
-      })
+function queueeventlistners() {
+  document.querySelector(".queue-songs").querySelectorAll(".play-pause-song").forEach(button => {
+    button.addEventListener("click", () => {
+      let id = button.dataset.songid
+      playQueuedSong(id)
     })
+  })
 }

@@ -7,14 +7,14 @@ import { main_content } from './content-area.js';
 import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
 import { queuegenerator } from "./queue.js";
-import{render_mostplayed} from "./mostplayed.js";
+import { render_mostplayed } from "./mostplayed.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 export function fetch_home() {
     playstate.albumpage = false;
     playstate.home = true;
     document.querySelector(".content-area").innerHTML = `
          <div class="banner">
-           <img src="https://c4.wallpaperflare.com/wallpaper/84/515/763/k-pop-iu-sony-wallpaper-preview.jpg" alt="banner">
+           <img src="Assests/k-pop-iu-sony-wallpaper-preview.jpg" alt="banner">
            <h2>Your soundtrack, your vibe.
 </h2>
           </div>
@@ -81,7 +81,7 @@ export function fetch_home() {
     catalogcontainer.querySelectorAll('.songs-wrapper').forEach((swiperEl, index) => {
         slider(swiperEl, index)
     })
-    addEventListeners(catalogcontainer, "home");
+    EventListeners(catalogcontainer, "home", true);
     render_mostplayed();
     render_recent();
     _dailymix();
@@ -133,6 +133,7 @@ export function fetch_home() {
                 playstate.songid = albumbtn.dataset.songid
                 _albumbtn(albumbtn)
             } else {
+                EventListeners(document.querySelector(".categories"), "home", false)
                 playstate.albumpage = true;
                 playstate.home = false;
                 let homebtn = document.querySelector(".homebtn")
@@ -249,7 +250,7 @@ export function render_recent() {
                 </div>`
         let recentslider = recentcontainer.querySelector(".songs-wrapper")
         slider(recentslider, 9)
-        addEventListeners(recentcontainer, "home");
+        EventListeners(recentcontainer, "home", true);
     }
 }
 export function _dailymix() {
@@ -278,7 +279,7 @@ export function _dailymix() {
     }
     let dailymixslider = dailymixcontainer.querySelector(".songs-wrapper")
     slider(dailymixslider, 10)
-    addEventListeners(dailymixcontainer, "home");
+    EventListeners(dailymixcontainer, "home", true);
 }
 function _renderdailymix(dailymix) {
     let html = `<div class="category">
@@ -321,6 +322,9 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         }
         mediaplayer(song)
         song_details()
+        if (playstate.new) {
+            playstate.new = false
+        }
         if (playstate.queue) {
             playstate.queue = null;
             queueupdater()
@@ -350,23 +354,33 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         };
     }
 }
-export function addEventListeners(element, location) {
+export function EventListeners(element, location, action) {
     if (location === "home") {
         element.querySelectorAll(".song").forEach(song => {
-            song.addEventListener("click", (e) => {
+            let handler = (e) => {
                 const button = e.target.closest("button");
                 const source = button.closest(".category").firstElementChild.textContent;
                 playstate.songid = button.dataset.songid
                 playstate.source = source
                 if (button) {
+                    if (playstate.albumbtn) {
+                        playstate.albumbtn.classList.remove("Playing")
+                        setButtonVisualState(playstate.albumbtn, false, true)
+                    }
                     playsong(button, false, false, true);
                 }
-            })
+            }
+            if (action) {
+                song.addEventListener("click", handler)
+            }
+            else {
+                song.removeEventListener("click", handler)
+            }
         })
     }
     else if (location === "album") {
         element.querySelectorAll(".album-song-btn").forEach(button => {
-            button.addEventListener("click", (e) => {
+            let handler = () => {
                 let id = button.dataset.songid
                 const source = songs.find(song => song.id === id)
                 playstate.source = source.category
@@ -378,7 +392,13 @@ export function addEventListeners(element, location) {
                 playsong(button, () => {
                     equaliserchecker(button)
                 }, false, true);
-            })
+            }
+            if (action) {
+                button.addEventListener("click", handler)
+            }
+            else {
+                button.removeEventListener("click", handler)
+            }
         })
     }
 }

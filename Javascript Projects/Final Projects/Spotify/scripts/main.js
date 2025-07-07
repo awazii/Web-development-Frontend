@@ -2,7 +2,8 @@ import { library } from './library.js';
 import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
 import { fetch_album, equaliserchecker } from "./album.js";
-import { playsong } from './home.js';
+import { playsong,EventListeners} from './home.js';
+
 export let songs = [];
 export let appdata = JSON.parse(localStorage.getItem("appdata")) || {};
 export let recent = appdata.recent || { category: "Recently Played", songids: [] }
@@ -11,6 +12,7 @@ export let mostplayed=appdata.mostplayed || {category: "Most Played",
     songs:[]
 }
 export let playstate = {
+    new: true,
     songid: null,
     currentsong: new Audio(),
     volume:0.5,
@@ -54,6 +56,7 @@ _fetchsongs();
 let homebtn = document.querySelector(".homebtn")
 homebtn.addEventListener("click", () => {
     if (playstate.albumpage) {
+        EventListeners(document.querySelector(".album-songs"), "album", false)
         homebtn.classList.remove("away")
         playstate.home = true;
         playstate.albumpage = false;

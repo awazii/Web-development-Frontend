@@ -1,15 +1,21 @@
 import { playstate, setButtonVisualState } from "./main.js"
-import { default_media } from "./default.js"
+import { default_media ,togglePlayerControls} from "./default.js"
 import { controls } from "./controls.js"
 import { playNextInQueue, playPreviousInQueue, getQueuedSongsAfterCurrent, getQueuedSongsBeforeCurrent } from "./queue.js"
 import { renderqueuesongs, nextqueuedetails } from "./song-details.js"
 export function mediaplayer(song) {
     if (playstate.default) {
-        default_media()
+        if (playstate.new) {
+            default_media(true)
+        }
+        else{
+            console.log("already exists")
+            default_media(false)
+        }
     }
     else if (playstate.currentsong) {
-        document.querySelector(".media-player").innerHTML = `<div class="current-song">
-        ${_currentsong(song)}
+        if (playstate.new) {
+            document.querySelector(".media-player").innerHTML = `<div class="current-song">
             </div>
         </div>
         <div class="controls">
@@ -114,8 +120,86 @@ export function mediaplayer(song) {
                 </div>
             </div>
         </div>`
-        function _currentsong(song) {
-            let html = `<div class="current-song-image">
+            _currentsong(song)
+            controls(playstate.currentplayingbutton)
+            document.querySelector(".playingview").addEventListener("click", playingviewupdate)
+            document.querySelector(".ex-col").addEventListener("click", playingviewupdate)
+            document.querySelector(".queue").addEventListener("click", () => {
+                if (!playstate.songdetails) {
+                    queueupdater()
+                    playingviewupdate()
+                } else {
+                    queueupdater()
+                }
+            })
+            let shufflebtn = document.querySelector(".shuffle")
+            shufflebtn.addEventListener("click", () => {
+                if (playstate.shuffle.active) {
+                    playstate.shuffle.active = null
+                    playstate.shuffle.songs = []
+                    renderqueuesongs()
+                    nextqueuedetails()
+                }
+                else {
+                    playstate.shuffle.active = true
+                    if (!playstate.shuffle.source) {
+                        playstate.shuffle.source = playstate.source
+                    }
+                    shufflesongs()
+                    renderqueuesongs()
+                    nextqueuedetails()
+                }
+                shufflecheck()
+            })
+            shufflecheck()
+            document.querySelector(".prev").addEventListener("click", () => {
+                let prevqueuesong = getQueuedSongsBeforeCurrent()[0]
+                if (playstate.currentsong.currentTime >= 1) {
+                    playstate.currentsong.currentTime = 0
+                }
+                else {
+                    playPreviousInQueue(prevqueuesong)
+                }
+            })
+            document.querySelector(".repeat").addEventListener("click", () => {
+                if (playstate.repeat.active && playstate.repeat.one) {
+                    playstate.repeat.active = null
+                    playstate.repeat.one = null
+                }
+                else if (playstate.repeat.active && !playstate.repeat.one) {
+                    playstate.repeat.one = true
+                }
+
+                else {
+                    playstate.repeat.active = true
+                    playstate.repeat.one = null
+                }
+                repeatcheck()
+            })
+            repeatcheck()
+            document.querySelector(".next").addEventListener("click", () => {
+                let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
+                playNextInQueue(nextqueuesong)
+            })
+        }
+        else {
+            let mediaplayer = document.querySelector(".media-player")
+             document.querySelector(".playingview").classList.add("activated")
+            if ( mediaplayer.classList.contains("disabled") ) {
+               mediaplayer.classList.remove("disabled")
+               togglePlayerControls(false)
+            }
+            currentsongupdate(song)
+        }
+    }
+}
+export function currentsongupdate(song){
+ document.querySelector(".current-song-image").firstElementChild.src = song.image
+            document.querySelector(".current-song-name").firstElementChild.innerHTML = song.title
+            document.querySelector(".current-song-artist").firstElementChild.innerHTML = song.credits.join(", ")
+}
+function _currentsong(song) {
+    document.querySelector(".current-song").innerHTML = `<div class="current-song-image">
                 <img src="${song.image}" alt="current-song-img">
                 <div class="ex-col info" data-info="Collapse">
                     <svg  class="collapse" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -148,69 +232,6 @@ export function mediaplayer(song) {
                     </svg>
                 </button>
                 </div>`
-            return html
-        }
-        controls(playstate.currentplayingbutton)
-        document.querySelector(".playingview").addEventListener("click", playingviewupdate)
-        document.querySelector(".ex-col").addEventListener("click", playingviewupdate)
-        document.querySelector(".queue").addEventListener("click", () => {
-            if (!playstate.songdetails) {
-                queueupdater()
-                playingviewupdate()
-            } else {
-                queueupdater()
-            }
-        })
-        let shufflebtn = document.querySelector(".shuffle")
-        shufflebtn.addEventListener("click", () => {
-            if (playstate.shuffle.active) {
-                playstate.shuffle.active = null
-                playstate.shuffle.songs = []
-                renderqueuesongs()
-                nextqueuedetails()
-            }
-            else {
-                playstate.shuffle.active = true
-                if (!playstate.shuffle.source) {
-                    playstate.shuffle.source = playstate.source
-                }
-                shufflesongs()
-                renderqueuesongs()
-                nextqueuedetails()
-            }
-            shufflecheck()
-        })
-        shufflecheck()
-        document.querySelector(".prev").addEventListener("click", () => {
-            let prevqueuesong = getQueuedSongsBeforeCurrent()[0]
-            if (playstate.currentsong.currentTime >= 1) {
-                playstate.currentsong.currentTime = 0
-            }
-            else {
-                playPreviousInQueue(prevqueuesong)
-            }
-        })
-        document.querySelector(".repeat").addEventListener("click", () => {
-            if (playstate.repeat.active && playstate.repeat.one) {
-                playstate.repeat.active = null
-                playstate.repeat.one = null
-            }
-            else if (playstate.repeat.active && !playstate.repeat.one) {
-                playstate.repeat.one = true
-            }
-
-            else {
-                playstate.repeat.active = true
-                playstate.repeat.one = null
-            }
-            repeatcheck()
-        })
-        repeatcheck()
-        document.querySelector(".next").addEventListener("click", () => {
-            let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
-            playNextInQueue(nextqueuesong)
-        })
-    }
 }
 export function _playpause() {
     let playpausebtn = document.querySelector(".play-pause-control")
@@ -293,8 +314,11 @@ export function playingviewupdate() {
             $(swiperEl).slick('setPosition');
         })
     }
+    console.log(playstate)
 }
 export function queueupdater() {
+    let queuecontainer = document.querySelector(".queue-container")
+    let queue = document.querySelector(".queue")
     if (playstate.queue) {
         playstate.queue = false
         document.querySelector(".playingview").classList.add("activated")
@@ -302,6 +326,8 @@ export function queueupdater() {
         excol.dataset.info = "collapse"
         excol.querySelector(".expand").style.display = "block"
         excol.querySelector(".collapse").style.display = "none"
+        queue.classList.remove("activated")
+        queuecontainer.classList.remove("queue-visible")
     }
     else {
         playstate.queue = true
@@ -310,11 +336,9 @@ export function queueupdater() {
         excol.dataset.info = "expand"
         excol.querySelector(".expand").style.display = "none"
         excol.querySelector(".collapse").style.display = "block"
+        queue.classList.add("activated")
+        queuecontainer.classList.add("queue-visible")
     }
-    let queuecontainer = document.querySelector(".queue-container")
-    let queue = document.querySelector(".queue")
-    queue.classList.toggle("activated")
-    queuecontainer.classList.toggle("queue-visible")
 }
 export function shufflecheck() {
     let shufflebtn = document.querySelector(".shuffle")

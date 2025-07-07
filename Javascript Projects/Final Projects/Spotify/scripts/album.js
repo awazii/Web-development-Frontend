@@ -3,7 +3,7 @@ import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
-import { playsong, addEventListeners,_albumbtn } from "./home.js";
+import { playsong, EventListeners,_albumbtn } from "./home.js";
 export function fetch_album() {
     let album = [
         {
@@ -195,7 +195,7 @@ export function render_album(category) {
         }
     })
     let albumsongs = document.querySelector(".album-songs");
-    addEventListeners(albumsongs, "album")
+    EventListeners(albumsongs, "album",true)
     let albumbtn=document.querySelector(".albumbtn")
     albumbtn.addEventListener("click",()=>{
         playstate.songid = albumbtn.dataset.songid

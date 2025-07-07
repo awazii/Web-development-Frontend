@@ -1,6 +1,6 @@
 import { song_details } from "./song-details.js"
 import { playstate, recent, setButtonVisualState } from "./main.js"
-import { _playpause, mediaplayer } from "./mediaplayer.js";
+import { _playpause, mediaplayer, playingviewupdate } from "./mediaplayer.js";
 import { cancelPlayTimer } from "./recent.js";
 import { startPlayTimer } from "./recent.js";
 import { playNextInQueue, getQueuedSongsAfterCurrent } from "./queue.js";
@@ -153,8 +153,8 @@ export function controls(currentplayingbutton) {
     });
     playstate.currentsong.addEventListener("ended", () => {
         if (playstate.repeat.one) {
-           playstate.currentsong.currentTime=0
-           playstate.currentsong.play()
+            playstate.currentsong.currentTime = 0
+            playstate.currentsong.play()
         }
         else {
             let nextqueuesong = getQueuedSongsAfterCurrent(true)[0]
@@ -170,20 +170,17 @@ export function controls(currentplayingbutton) {
 function defaultinterface() {
     playstate.default = true
     playstate.isplaying = null;
-    playstate.songdetails = null;
     playstate.queue = null;
-    let main = document.querySelector(".main-container")
-    main.classList.add("two")
-    let details = document.querySelector('.song-details')
-    details.style.display = "none"
-    if (playstate.albumpage) {
-        playstate.equaliser.style.opacity = 0
-    }
-    document.querySelectorAll('.songs-wrapper').forEach((swiperEl) => {
-        $(swiperEl).slick('setPosition');
-    })
+    playingviewupdate() 
+    document.querySelector(".playingview").classList.remove("activated")
+    document.querySelector(".queue").classList.remove("activated")
+    let excol = document.querySelector(".ex-col")
+    excol.dataset.info = "collapse"
+    excol.querySelector(".expand").style.display = "block"
+    excol.querySelector(".collapse").style.display = "none"
+    console.log(playstate)
+    playstate.equaliser && (playstate.equaliser.style.opacity = 0)
     mediaplayer()
-    song_details()
     cancelPlayTimer()
     playstate.currentplayingbutton && setButtonVisualState(playstate.currentplayingbutton, false, true)
     playstate.albumbtn && setButtonVisualState(playstate.albumbtn, false, false)
