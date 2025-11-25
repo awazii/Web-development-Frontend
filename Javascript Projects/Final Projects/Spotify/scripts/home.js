@@ -2,7 +2,8 @@ import { playstate, recent, songs, reassignbtn } from "./main.js"
 import { _playpause, queueupdater, shufflesongs } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
-import { appdata, dailymix, setButtonVisualState } from "./main.js";
+import { appdata, dailymix } from "./main.js";
+import { setButtonVisualState } from "../utils/visualstates.js";
 import { main_content } from './content-area.js';
 import { equaliserchecker } from "./album.js";
 import { update_recent } from "./recent.js";
@@ -348,6 +349,10 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
             if (button !== "dummy") {
                 setButtonVisualState(button, true, true)
             }
+           let playpausebtn = document.querySelector(".play-pause-control")
+            playpausebtn.querySelector(".play").style.display = "none"
+            playpausebtn.querySelector(".pause").style.display = "block"
+            playpausebtn.dataset.info = "pause"
             playstate.currentsong.play().catch(err => {
                 console.warn("Play failed:", err);
             });

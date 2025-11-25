@@ -3,7 +3,7 @@ import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
 import { fetch_album, equaliserchecker } from "./album.js";
 import { playsong,EventListeners} from './home.js';
-
+import { setButtonVisualState } from '../utils/visualstates.js';
 export let songs = [];
 export let appdata = JSON.parse(localStorage.getItem("appdata")) || {};
 export let recent = appdata.recent || { category: "Recently Played", songids: [] }
@@ -136,19 +136,6 @@ export function handleHomePageReassign() {
         })
     }
     return [songbtn, albumbtn]
-}
-export function setButtonVisualState(button, isPlaying, useActive) {
-    const playIcon = button.querySelector(".play");
-    const pauseIcon = button.querySelector(".pause");
-    if (isPlaying) {
-        playIcon.style.display = "none";
-        pauseIcon.style.display = "block";
-        if (useActive) button.classList.add("active");
-    } else {
-        playIcon.style.display = "block";
-        pauseIcon.style.display = "none";
-        if (useActive) button.classList.remove("active");
-    }
 }
 export function getCurrentAlbumSongButton(button) {
     if (!button) {

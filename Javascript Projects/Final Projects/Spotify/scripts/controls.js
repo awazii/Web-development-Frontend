@@ -1,5 +1,6 @@
 import { song_details } from "./song-details.js"
-import { playstate, recent, setButtonVisualState } from "./main.js"
+import { setButtonVisualState } from "../utils/visualstates.js";
+import { playstate, recent} from "./main.js"
 import { _playpause, mediaplayer, playingviewupdate } from "./mediaplayer.js";
 import { cancelPlayTimer } from "./recent.js";
 import { startPlayTimer } from "./recent.js";
@@ -11,9 +12,6 @@ export function controls(currentplayingbutton) {
     const totalDuration = document.querySelector(".total-duration").firstElementChild;
     totalDuration.textContent = `0:00`
     let playpausebtn = document.querySelector(".play-pause-control")
-    playpausebtn.querySelector(".play").style.display = "none"
-    playpausebtn.querySelector(".pause").style.display = "block"
-    playpausebtn.dataset.info = "pause"
     playpausebtn.addEventListener("click", () => {
         _playpause(currentplayingbutton)
     })

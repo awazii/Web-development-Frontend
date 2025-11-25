@@ -1,5 +1,6 @@
-import { playstate, setButtonVisualState } from "./main.js"
-import { default_media ,togglePlayerControls} from "./default.js"
+import { playstate } from "./main.js"
+import { setButtonVisualState } from "../utils/visualstates.js";
+import { default_media, togglePlayerControls } from "./default.js"
 import { controls } from "./controls.js"
 import { playNextInQueue, playPreviousInQueue, getQueuedSongsAfterCurrent, getQueuedSongsBeforeCurrent } from "./queue.js"
 import { renderqueuesongs, nextqueuedetails } from "./song-details.js"
@@ -8,7 +9,7 @@ export function mediaplayer(song) {
         if (playstate.new) {
             default_media(true)
         }
-        else{
+        else {
             console.log("already exists")
             default_media(false)
         }
@@ -184,19 +185,19 @@ export function mediaplayer(song) {
         }
         else {
             let mediaplayer = document.querySelector(".media-player")
-             document.querySelector(".playingview").classList.add("activated")
-            if ( mediaplayer.classList.contains("disabled") ) {
-               mediaplayer.classList.remove("disabled")
-               togglePlayerControls(false)
+            document.querySelector(".playingview").classList.add("activated")
+            if (mediaplayer.classList.contains("disabled")) {
+                mediaplayer.classList.remove("disabled")
+                togglePlayerControls(false)
             }
             currentsongupdate(song)
         }
     }
 }
-export function currentsongupdate(song){
- document.querySelector(".current-song-image").firstElementChild.src = song.image
-            document.querySelector(".current-song-name").firstElementChild.innerHTML = song.title
-            document.querySelector(".current-song-artist").firstElementChild.innerHTML = song.credits.join(", ")
+export function currentsongupdate(song) {
+    document.querySelector(".current-song-image").firstElementChild.src = song.image
+    document.querySelector(".current-song-name").firstElementChild.innerHTML = song.title
+    document.querySelector(".current-song-artist").firstElementChild.innerHTML = song.credits.join(", ")
 }
 function _currentsong(song) {
     document.querySelector(".current-song").innerHTML = `<div class="current-song-image">
@@ -249,7 +250,7 @@ export function _playpause() {
 
         setButtonVisualState(playstate.nowplaybtn, true, false)
         playstate.albumbtn &&
-            setButtonVisualState(playstate.albumbtn, true, false)
+        setButtonVisualState(playstate.albumbtn, true, false)
 
         playpausebtn.dataset.info = "pause"
         playstate.nowplaybtn.dataset.info = "pause"
@@ -261,11 +262,11 @@ export function _playpause() {
         playstate.currentsong.pause()
         setButtonVisualState(playpausebtn, false, false)
         playstate.currentplayingbutton &&
-            setButtonVisualState(playstate.currentplayingbutton, false, false)
+        setButtonVisualState(playstate.currentplayingbutton, false, false)
 
         setButtonVisualState(playstate.nowplaybtn, false, false)
         playstate.albumbtn &&
-            setButtonVisualState(playstate.albumbtn, false, false)
+        setButtonVisualState(playstate.albumbtn, false, false)
         playpausebtn.dataset.info = "play"
         playstate.nowplaybtn.dataset.info = "play"
         if (playstate.albumpage) {

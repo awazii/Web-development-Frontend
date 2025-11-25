@@ -1,4 +1,5 @@
-import { playstate, songs, setButtonVisualState } from "./main.js"
+import { playstate, songs} from "./main.js"
+import { setButtonVisualState } from "../utils/visualstates.js";
 import { playingviewupdate, _playpause } from "./mediaplayer.js"
 import { queueupdater } from "./mediaplayer.js"
 import { getQueuedSongsAfterCurrent, playQueuedSong } from "./queue.js"

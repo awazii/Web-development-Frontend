@@ -12,7 +12,7 @@ let Thumbnail =document.querySelector('.Thumbnail').addEventListener('change', f
     if (file) {
         const reader = new FileReader();
         reader.readAsDataURL(file); 
-        reader.onload = function(e) {
+        reader.onload = (e)=>{
             const img = document.querySelector('.img').firstElementChild;
             img.src = e.target.result; 
         };
