@@ -1,4 +1,4 @@
-import { library } from './library.js';
+// import { library } from './library.js';
 import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
 import { fetch_album, equaliserchecker } from "./album.js";
@@ -41,7 +41,7 @@ export let playstate = {
 let _fetchsongs = async () => {
     let main = document.querySelector('.main-container');
     main.classList.add("two")
-    main.innerHTML = `<div class="library"></div>
+    main.innerHTML = `
     <div class="content-area"></div>
     <div class="song-details"></div>`;
     mediaplayer();
@@ -49,7 +49,7 @@ let _fetchsongs = async () => {
     let data = await res.json();
     songs = data
     fetch_album();
-    library();
+    // library();
     main_content();
 }
 _fetchsongs();

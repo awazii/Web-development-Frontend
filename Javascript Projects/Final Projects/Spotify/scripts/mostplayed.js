@@ -1,4 +1,4 @@
-import { appdata, mostplayed, playstate ,songs} from "./main.js";
+import { appdata, mostplayed, playstate, songs } from "./main.js";
 export function update_mostplayed(songId) {
     let obj = {}
     mostplayed.songs.forEach(song => {
@@ -18,7 +18,7 @@ export function update_mostplayed(songId) {
     render_mostplayed()
 }
 export function render_mostplayed() {
-    let mostplayedcontainer = document.querySelector(".mostplayed-container");
+    let mostplayedcontainer = document.querySelector(".mostplayed-content");
     mostplayedcontainer.innerHTML = ``;
     let rendersongs = []
     if (mostplayed.songs.length >= 4 && mostplayed.songs.length <= 8) {

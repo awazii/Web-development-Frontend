@@ -6,7 +6,7 @@ Javascript Strings propertoes and functions)
 3,.CharCodeAt() it will give you its unicode.
 4,.concat()you can add new string with it.
 5,.include() it will give you true and false based on what is written inside the bracket like"awais".include(a) is will be true beacuse it is included.
-6,indexOf(): Returns the index of the first occurrence of a specified value.
+6,whileindexOf(): Returns the index of the first occurrence of a specified value.
 7,.lastIndexOf(): Returns the index of the last occurrence of a specified value.
 8,.replace(searchValue, newValue): Replaces a specified value with another value in a string
 9,search(regex): Searches a string for a specified value and returns its position.

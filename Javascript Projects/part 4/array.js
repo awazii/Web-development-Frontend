@@ -23,7 +23,7 @@ console.log(array)
 //5, shift() to rip of first element of array
 console.log(array.shift());
 console.log(array);
-//6, unshift() to add new element in the beginning of an array
+//6, unshift() to add new element in the beginning of an array lo
 console.log(array.unshift(69));
 console.log(array);
 //7, delete to delete the element value 
@@ -51,4 +51,14 @@ console.log(array1); // but the orignal array is same
 console.log(array1.reverse()) 
 console.log(Array.isArray("a"))// to check if it is an array
 // array1.find return the first matching element or undefined if nothing finds
+let find = array1.find((element)=>{
+    return element>4
+})
+console.log(find)
+let arr4 = [1,2,3,4,5,6]
+let arr5 = arr4.map((element)=> element
+)
+console.log(arr4.every((element)=> arr5.includes(element)
+))
+
 

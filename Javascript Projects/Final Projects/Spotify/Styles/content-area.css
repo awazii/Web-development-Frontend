@@ -20,7 +20,7 @@
     transition: .3s ease-in-out;
     display: flex;
     align-items: center;
-
+     cursor: pointer;
     &:hover {
         background-color: #1ed760;
     }
@@ -59,7 +59,11 @@
     border-radius: inherit;
 }
 
-.mostplayed-container {
+.mostplayed-container h2{
+    font-size: 20px;
+    padding: 5px 20px 0px;
+}
+.mostplayed-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;

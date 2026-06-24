@@ -21,10 +21,13 @@ export function fetch_home() {
           </div>
           <div class="c-a-heading">
             <h5> All</h5>
-           <a href="demo.html" class="nav-link">Explore Features</a>
         </div>
           <div class="content">
-            <div class="mostplayed-container"></div>
+            <div class="mostplayed-container">
+            <h2>Most Played Songs</h2>
+           <div class="mostplayed-content">
+           </div>
+            </div>
             <div class="dailymix">
             </div>
             <div class="recent">
@@ -359,7 +362,7 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         };
     }
 }
-export function EventListeners(element, location, action) {
+export function EventListeners(element, location, action) { 
     if (location === "home") {
         element.querySelectorAll(".song").forEach(song => {
             let handler = (e) => {
