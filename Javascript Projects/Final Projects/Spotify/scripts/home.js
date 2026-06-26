@@ -193,19 +193,19 @@ export function slider(swiperEl, index) {
             },
             {
                 breakpoint: 1100,
-                settings: { slidesToShow: 3, slidesToScroll: 3 }
+                settings: { slidesToShow: 4, slidesToScroll: 3 }
             },
             {
                 breakpoint: 900,
-                settings: { slidesToShow: 2, slidesToScroll: 2, dots: false, infinite: true }
+                settings: { slidesToShow: 3, slidesToScroll: 2, dots: false, infinite: true }
             },
             {
                 breakpoint: 600,
-                settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
+                settings: { slidesToShow: 2, slidesToScroll: 1, dots: false, infinite: true }
             },
             {
                 breakpoint: 480,
-                settings: { slidesToShow: 1, slidesToScroll: 1, dots: false, infinite: true }
+                settings: { slidesToShow: 2, slidesToScroll: 1, dots: false, infinite: true }
             }
         ]
     });
@@ -236,7 +236,7 @@ export function slider(swiperEl, index) {
 }
 export function render_recent() {
     let recentcontainer = document.querySelector(".recent")
-    if (recent.songids.length >= 7) {
+    if (recent.songids.length >= 1) {
         recentcontainer.innerHTML = `<div class="category">
                       <h2>${appdata.recent.category}</h2>
                       <div class="songs">
@@ -255,6 +255,18 @@ export function render_recent() {
         let recentslider = recentcontainer.querySelector(".songs-wrapper")
         slider(recentslider, 9)
         EventListeners(recentcontainer, "home", true);
+    }
+    else {
+        recentcontainer.innerHTML = `
+        <div class="category">
+<h2 style="padding-bottom: 0px" >
+  Recently Played
+</h2>
+          <p style="color:#b3b3b3; text-align:center;  padding:10px;">
+    Your Recently Listened Songs will be Display here
+  </p>
+        </div>
+       `
     }
 }
 export function _dailymix() {
@@ -344,7 +356,7 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
             if (button === "dummy") {
                 playstate.currentplayingbutton = null
             }
-            if (playstate.albumpage) {
+            if (playstate.albumpage ) {
                 if (equaliser) {
                     equaliser()
                 }
@@ -352,7 +364,7 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
             if (button !== "dummy") {
                 setButtonVisualState(button, true, true)
             }
-           let playpausebtn = document.querySelector(".play-pause-control")
+            let playpausebtn = document.querySelector(".play-pause-control")
             playpausebtn.querySelector(".play").style.display = "none"
             playpausebtn.querySelector(".pause").style.display = "block"
             playpausebtn.dataset.info = "pause"
@@ -362,7 +374,7 @@ export function playsong(button, equaliser, albumbtn, manualclick) {
         };
     }
 }
-export function EventListeners(element, location, action) { 
+export function EventListeners(element, location, action) {
     if (location === "home") {
         element.querySelectorAll(".song").forEach(song => {
             let handler = (e) => {

@@ -3,7 +3,7 @@ import { _playpause } from "./mediaplayer.js";
 import { song_details } from "./song-details.js";
 import { mediaplayer } from "./mediaplayer.js";
 import { appdata } from "./main.js";
-import { playsong, EventListeners,_albumbtn } from "./home.js";
+import { playsong, EventListeners, _albumbtn } from "./home.js";
 export function fetch_album() {
     let album = [
         {
@@ -183,25 +183,30 @@ export function render_album(category) {
         }
     })
     let albumsongs = document.querySelector(".album-songs");
-    EventListeners(albumsongs, "album",true)
-    let albumbtn=document.querySelector(".albumbtn")
-    albumbtn.addEventListener("click",()=>{
+    EventListeners(albumsongs, "album", true)
+    let albumbtn = document.querySelector(".albumbtn")
+    albumbtn.addEventListener("click", () => {
         playstate.songid = albumbtn.dataset.songid
-            _albumbtn(albumbtn)
+        _albumbtn(albumbtn)
     })
 }
 export function equaliserchecker(button) {
-    let equaliser = button.closest(".album-song").querySelector(".equaliser")
+    let container = button.closest(".album-song") || button.closest(".mostplayedsong");
+
+    let equaliser = container ? container.querySelector(".equaliser") : null;
+
+    if (!equaliser) return; 
+
     if (!playstate.equaliser) {
-        playstate.equaliser = equaliser
-        playstate.equaliser.style.opacity = 1
+        playstate.equaliser = equaliser;
+        playstate.equaliser.style.opacity = 1;
     }
     else if (playstate.equaliser && playstate.equaliser === equaliser) {
-         playstate.equaliser.style.opacity = 1
+        playstate.equaliser.style.opacity = 1;
     }
     else if (playstate.equaliser && playstate.equaliser !== equaliser) {
-        playstate.equaliser.style.opacity = 0
-        playstate.equaliser = equaliser
-        playstate.equaliser.style.opacity = 1
+        playstate.equaliser.style.opacity = 0; 
+        playstate.equaliser = equaliser;
+        playstate.equaliser.style.opacity = 1; 
     }
 }

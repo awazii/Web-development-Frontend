@@ -299,7 +299,7 @@
 .albums {
     width: 100%;
     display: grid;
-    grid-template-columns: 450px 450px;
+    grid-template-columns: 30% 30%;
     justify-content: center;
     gap: 70px;
     column-gap: 100px;
@@ -402,4 +402,213 @@
 
 .pause {
     display: none;
+}
+@media (max-width:1400px){
+
+.mostplayed-content{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.albums{
+    grid-template-columns:40% 40%;
+    gap:40px;
+}
+
+}
+@media (max-width:1200px){
+
+.banner h2{
+    font-size:40px;
+}
+.mostplayed-container p ,.category p {
+    font-size: 20px;
+}
+.song{
+    width:170px;
+}
+
+.albums{
+    grid-template-columns:45% 45%;
+    column-gap:40px;
+}
+
+.about-album{
+    width:calc(100% - 30px);
+}
+
+.album-song-img{
+    width:80px;
+}
+
+.album-song-name{
+    font-size:15px;
+}
+
+}
+@media (max-width:992px){
+
+.banner{
+    aspect-ratio:16/4;
+}
+
+.banner h2{
+    font-size:34px;
+    margin-left:20px;
+}
+.mostplayed-container p ,.category p {
+    font-size: 15px;
+}
+
+.mostplayed-content{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.song{
+    width:160px;
+}
+
+.category h2{
+    font-size:20px;
+}
+
+.song-title{
+    font-size:13px;
+}
+
+.song-artist{
+    font-size:13px;
+}
+
+.albums{
+    grid-template-columns:1fr;
+    gap:30px;
+}
+
+.album{
+    max-width:420px;
+    margin:auto;
+}
+
+}
+@media (max-width:768px){
+
+.c-a-heading{
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.banner{
+    aspect-ratio:16/5;
+}
+.mostplayed-container p ,.category p {
+    font-size: 15px;
+}
+.banner h2{
+    font-size:28px;
+}
+
+.content{
+    margin:15px 0;
+}
+
+.song{
+    width:150px;
+}
+
+.song-image .play-pause-song{
+    width:42px;
+    height:42px;
+}
+
+.mostplayedsong{
+    gap:12px;
+}
+
+.mostplayed-song-title{
+    width:55%;
+}
+
+}
+@media (max-width:600px){
+
+.banner{
+    aspect-ratio:16/6;
+}
+
+.banner h2{
+    font-size:22px;
+    margin-left:15px;
+}
+
+.mostplayed-content{
+    grid-template-columns:1fr;
+}
+
+.song{
+    width:140px;
+}
+
+.category h2{
+    padding:15px;
+    font-size:18px;
+}
+
+.custom-prev,
+.custom-next{
+    width:28px;
+    height:28px;
+}
+
+.song-image .play-pause-song{
+    width:38px;
+    height:38px;
+}
+
+.album-song-img{
+    width:70px;
+}
+
+.album-song-name{
+    font-size:14px;
+}
+
+}
+@media (max-width:480px){
+
+.banner{
+    aspect-ratio:16/7;
+}
+
+.banner h2{
+    font-size:18px;
+}
+.mostplayed-container p ,.category p {
+    font-size: 12px;
+}
+.song{
+    width:130px;
+}
+
+.song-title{
+    font-size:12px;
+}
+
+.song-artist{
+    font-size:12px;
+}
+
+.mostplayedsong-song-img{
+    width:56px;
+    height:56px;
+}
+
+.album .play-pause-song{
+    width:42px;
+    height:42px;
+}
+
+.about-album{
+    width:calc(100% - 20px);
+}
+
 }

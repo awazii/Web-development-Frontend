@@ -96,9 +96,10 @@
         transform: scale(1.1);
         background-color: #2bf772;
     }
-     &:active{
+
+    &:active {
         background-color: #1abc54;
-         transform: scale(0.99);
+        transform: scale(0.99);
 
     }
 }
@@ -179,7 +180,7 @@
 .album-song {
     width: 100%;
     height: 50px;
-border: 1px solid #5c5c5c;
+    border: 1px solid #5c5c5c;
     margin-top: 10px;
     transition: all 0.1s ease;
     border-radius: 5px;
@@ -210,14 +211,18 @@ border: 1px solid #5c5c5c;
 .album-song:hover {
     background-color: #2a292a;
     border: none;
-    & .album-song-btn,.like-equaliser-container .liked {
+
+    & .album-song-btn,
+    .like-equaliser-container .liked {
         opacity: 1;
     }
 }
-.album-song:has(.album-song-btn:active){
+
+.album-song:has(.album-song-btn:active) {
     background-color: #121212;
     border: 1px solid rgba(255, 255, 255, 0.692);
 }
+
 .album-song-btn {
     all: unset;
     width: 32px;
@@ -228,48 +233,60 @@ border: 1px solid #5c5c5c;
     justify-content: center;
     align-items: center;
     opacity: 0;
-  & svg{
-    fill: black;
-  }
+
+    & svg {
+        fill: black;
+    }
+
     &:hover {
         background-color: #1ed760;
         cursor: pointer;
     }
-     &:active{
+
+    &:active {
         background-color: #1abc54;
-         transform: scale(0.99);
+        transform: scale(0.99);
     }
 }
-.album-song-details{
+
+.album-song-details {
     width: 250px;
 }
-.album-song-img{
+
+.album-song-img {
     width: 40px;
     height: 40px;
 }
+
 .album-song-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
-.album-song-details{
+
+.album-song-details {
     display: flex;
     align-items: center;
     gap: 10px;
-    & h3{
+
+    & h3 {
         font-size: .9rem;
     }
 }
-.num{
+
+.num {
     color: #c9c1c1;
 }
-.album-song:first-child .liked.info::after{
-   bottom: -250%;
+
+.album-song:first-child .liked.info::after {
+    bottom: -250%;
 }
-.album-song .liked.info::after{
-   bottom: 180%;
+
+.album-song .liked.info::after {
+    bottom: 180%;
 }
+
 .album-song .like-equaliser-container {
     flex: 1;
     display: flex;
@@ -277,44 +294,327 @@ border: 1px solid #5c5c5c;
     align-items: center;
     gap: 70px;
 }
-.like-equaliser-container .liked{
-opacity: 0;
+
+.like-equaliser-container .liked {
+    opacity: 0;
 }
-.line-end{
+
+.line-end {
     width: 95%;
     height: 2px;
-    background-color: #5c5c5c;;
+    background-color: #5c5c5c;
+    ;
     margin: 20px auto;
 }
+
 .album-song-details h3 {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
-.bio{
+
+.bio {
     position: absolute;
     bottom: 0%;
     width: 80%;
     padding: 20px;
-    & p{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    font-weight: 500;
+
+    & p {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        font-weight: 500;
     }
-    & h3{
+
+    & h3 {
         font-size: 18px;
         margin-bottom: 5px;
     }
 }
-.equaliser{
+
+.equaliser {
     width: 16px;
     height: 16px;
     opacity: 0;
 }
-.equaliser img{
+
+.equaliser img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* ==========================================
+                1400px
+========================================== */
+
+@media (max-width:1400px) {
+
+    .artist-name h1 {
+        font-size: 4rem;
+    }
+
+    .artist-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+/* ==========================================
+                1200px
+========================================== */
+
+@media (max-width:1200px) {
+
+    .artist-container {
+        gap: 20px;
+    }
+
+    .artist-image-container {
+        width: 170px;
+        height: 170px;
+    }
+
+    .artist-name h1 {
+        font-size: 3.2rem;
+    }
+
+    .artist-details-container {
+        height: auto;
+    }
+
+    .album-content {
+        gap: 15px;
+    }
+
+    .biobox {
+        height: 330px;
+    }
+
+}
+
+/* ==========================================
+                992px
+========================================== */
+
+@media (max-width:992px) {
+
+    .album-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-artist {
+        order: 2;
+    }
+
+    .album-songs-container {
+        order: 1;
+    }
+
+    .artist-image-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .artist-name h1 {
+        font-size: 2.8rem;
+    }
+
+    .artist-container {
+        gap: 18px;
+    }
+
+    .albumbtn {
+        width: 56px;
+        height: 56px;
+    }
+
+    .biobox {
+        max-width: 650px;
+        margin: auto;
+        margin-top: 15px;
+    }
+
+}
+
+/* ==========================================
+                768px
+========================================== */
+
+@media (max-width:768px) {
+
+    .album-artist-banner {
+        height: 320px;
+    }
+
+    .artist-container {
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 15px;
+    }
+
+    .artist-image-container {
+        width: 120px;
+        height: 120px;
+        margin-left: 20px;
+    }
+
+    .artist-name h1 {
+        font-size: 2.2rem;
+    }
+
+    .artist-details-container {
+        padding: 0;
+    }
+
+    .artist-details-container .artist-followers h3 {
+        font-size: 14px;
+    }
+
+    .album-songs-container,
+    .about-artist {
+        padding: 15px;
+    }
+
+    .album-song {
+        gap: 10px;
+    }
+
+    .album-song .like-equaliser-container {
+        gap: 25px;
+    }
+
+    .biobox {
+        height: 280px;
+    }
+
+    .rank {
+        width: 70px;
+        height: 70px;
+    }
+
+    .bio h3 {
+        font-size: 16px;
+    }
+
+    .bio p {
+        font-size: 14px;
+    }
+
+}
+
+/* ==========================================
+                600px
+========================================== */
+
+@media (max-width:600px) {
+
+    .album-artist-banner {
+        height: 280px;
+    }
+
+    .artist-container {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        left: 0;
+    }
+
+    .artist-image-container {
+        margin-left: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    .artist-name h1 {
+        font-size: 2rem;
+    }
+
+    .albumbtn {
+        width: 50px;
+        height: 50px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .album-song {
+        padding: 8px;
+    }
+
+    .album-song-details {
+        width: 180px;
+    }
+
+    .album-song-details h3 {
+        font-size: 13px;
+    }
+
+    .num {
+        font-size: 13px;
+    }
+
+    .biobox {
+        height: 240px;
+    }
+
+    .rank {
+        width: 60px;
+        height: 60px;
+    }
+
+    .rank p {
+        font-size: .55rem;
+    }
+
+}
+
+/* ==========================================
+                480px
+========================================== */
+
+@media (max-width:480px) {
+
+    .artist-name h1 {
+        font-size: 1.6rem;
+    }
+
+    .artist-image-container {
+        width: 85px;
+        height: 85px;
+    }
+
+    .album-song-img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .album-song-details {
+        width: 150px;
+    }
+
+    .album-song-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .album-song .like-equaliser-container {
+        gap: 15px;
+    }
+
+    .bio {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .bio h3 {
+        font-size: 15px;
+    }
+
+    .bio p {
+        font-size: 13px;
+    }
+
 }

@@ -28,8 +28,6 @@
 .song-details{
     height: 100%;
     max-height: 84vh;
-    display: flex;
-    flex-direction: column;
     gap: 8px;
     display: none;
     position: relative;
@@ -54,4 +52,63 @@ overflow-y: auto;
     bottom: 0;
     visibility: visible;
     transition: all 0.3s ease-in-out;
+}
+.slick-track {
+  margin-left: 0 !important;  
+}
+@media (max-width:1400px){
+
+.main-container{
+    grid-template-columns:1fr 22%;
+}
+
+.content-area{
+    padding:0 30px;
+}
+
+}
+@media (max-width:1200px){
+
+.main-container{
+    grid-template-columns:1fr 290px;
+}
+
+.content-area{
+    padding:0 24px;
+}
+
+}
+@media (max-width:1000px){
+
+.main-container{
+    grid-template-columns:1fr ;
+    gap:6px;
+}
+
+.content-area{
+    padding:0 18px;
+}
+
+}
+@media (max-width:800px){
+
+.main-container{
+    grid-template-columns:1fr 
+}
+
+.content-area{
+    padding:0 14px;
+}
+
+}
+@media (max-width:700px){
+
+.main-container{
+    grid-template-columns:1fr;
+}
+
+.content-area{
+    padding:0 12px;
+}
+
 }

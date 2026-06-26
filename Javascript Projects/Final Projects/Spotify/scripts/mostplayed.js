@@ -1,4 +1,6 @@
 import { appdata, mostplayed, playstate, songs } from "./main.js";
+import { playsong } from "./home.js";
+import { equaliserchecker } from "./album.js";
 export function update_mostplayed(songId) {
     let obj = {}
     mostplayed.songs.forEach(song => {
@@ -21,7 +23,7 @@ export function render_mostplayed() {
     let mostplayedcontainer = document.querySelector(".mostplayed-content");
     mostplayedcontainer.innerHTML = ``;
     let rendersongs = []
-    if (mostplayed.songs.length >= 4 && mostplayed.songs.length <= 8) {
+    if (mostplayed.songs.length >= 1 && mostplayed.songs.length <= 8) {
         rendersongs = mostplayed.songs.sort((a, b) => b.playedtime - a.playedtime);
     }
     else if (mostplayed.songs.length > 8) {
@@ -50,7 +52,30 @@ export function render_mostplayed() {
         });
     }
     else {
-        mostplayedcontainer.style.padding = "0px";
-        mostplayedcontainer.innerHTML = ``;
+        mostplayedcontainer.style.cssText = `
+  display: block;
+  position: static;
+  color: #b3b3b3;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+`;
+        mostplayedcontainer.innerHTML = `<p>Your Most Listened Songs will be Dispaly Here</p>`;
+    }
+    mostplayedcontainer.removeEventListener('click', handleMostPlayedClick);
+    mostplayedcontainer.addEventListener('click', handleMostPlayedClick);
+}
+function handleMostPlayedClick(e) {
+    let button = e.target.closest(".play-pause-song");
+    if (!button) {
+        const songCard = e.target.closest(".mostplayedsong");
+        if (songCard) {
+            button = songCard.querySelector(".play-pause-song");
+        }
+    }
+    if (button) {
+        playstate.songid = button.dataset.songid;
+        playstate.source = "Most Played"; 
+        playsong(button, equaliserchecker(button), false, true); 
     }
 }

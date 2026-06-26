@@ -138,5 +138,5 @@ export function togglePlayerControls(isDisabled) {
   const total = document.querySelector(".total-duration")?.firstElementChild;
 
   if (elapsed) elapsed.textContent = isDisabled ? "-:-" : "0:00";
-  if (total) total.textContent = isDisabled ? "-:-" : "0:00"; // or set dynamically
+  if (total) total.textContent = isDisabled ? "-:-" : "0:00"; 
 }

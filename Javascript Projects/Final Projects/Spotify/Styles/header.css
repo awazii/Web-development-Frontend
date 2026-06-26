@@ -9,7 +9,7 @@
     flex-shrink: 0;
 }
 .left{
-    width: 200px;
+    width: 15%;
 }
 .logo{
     width: 80px;
@@ -20,7 +20,7 @@
     position: relative;
 }
 .middle{
-    width: 550px;
+    flex-grow: 1;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -111,7 +111,7 @@
     }
 }
 .right{
-    width: 200px;
+    width:15%;
     display: flex;
     justify-content: center;
     align-items: center;

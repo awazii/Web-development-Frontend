@@ -72,3 +72,54 @@
 .now-playing-title,.next-from{
     padding-left: 8px ;
 }
+
+@media (max-width: 1024px) {
+  .queue-header {
+    height: 56px;
+    padding: 6px 12px;
+  }
+  .queue-header h4 {
+    font-size: 1rem;
+  }
+  .queue-closing-btn {
+    width: 28px;
+    height: 28px;
+  }
+  .queues {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .queue-header {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .queue-header h4::after {
+    bottom: -10%;
+  }
+  .queue-closing-btn {
+    width: 24px;
+    height: 24px;
+  }
+  .queues {
+    gap: 12px;
+    padding-left: 4px;
+  }
+  .now-playing-title,
+  .next-from {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+}
+@media (max-width: 400px) {
+  .queue-header h4 {
+    font-size: 0.85rem;
+  }
+  .queues {
+    gap: 8px;
+  }
+  .now-playing-song:hover {
+    padding-left: 4px;
+  }
+}

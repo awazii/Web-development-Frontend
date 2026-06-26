@@ -2,20 +2,21 @@
 import { main_content } from './content-area.js';
 import { mediaplayer } from './mediaplayer.js';
 import { fetch_album, equaliserchecker } from "./album.js";
-import { playsong,EventListeners} from './home.js';
+import { playsong, EventListeners } from './home.js';
 import { setButtonVisualState } from '../utils/visualstates.js';
 export let songs = [];
 export let appdata = JSON.parse(localStorage.getItem("appdata")) || {};
 export let recent = appdata.recent || { category: "Recently Played", songids: [] }
 export let dailymix = appdata.dailymix || { category: "Daily Mix", date: null, songids: [] }
-export let mostplayed=appdata.mostplayed || {category: "Most Played",
-    songs:[]
+export let mostplayed = appdata.mostplayed || {
+    category: "Most Played",
+    songs: []
 }
 export let playstate = {
     new: true,
     songid: null,
     currentsong: new Audio(),
-    volume:0.5,
+    volume: 0.5,
     default: true,
     isplaying: null,
     songdetails: null,
@@ -28,14 +29,14 @@ export let playstate = {
     source: null,
     albumbtn: null,
     queuesongs: [],
-    shuffle:{
-        active:null,
-        source:null,
-        songs:[]
+    shuffle: {
+        active: null,
+        source: null,
+        songs: []
     },
-    repeat:{
-        active:null,
-        one:null
+    repeat: {
+        active: null,
+        one: null
     }
 };
 let _fetchsongs = async () => {
@@ -83,13 +84,20 @@ export function reassignbtn() {
             }
         }
         else {
-            let [songbtn, albumbtn] = handleHomePageReassign()
-            playstate.albumbtn = albumbtn
-            if (songbtn) { playstate.currentplayingbutton = songbtn }
+            let [songbtn, equaliser, albumbtn] = handleHomePageReassign(); 
+            playstate.albumbtn = albumbtn;
+            playstate.equaliser = equaliser; 
+
+            if (songbtn) { playstate.currentplayingbutton = songbtn; }
+
             if (!playstate.currentsong.paused) {
-                songbtn && setButtonVisualState(playstate.currentplayingbutton, true, true)
-                albumbtn && albumbtn.classList.add("Playing")
-                albumbtn && setButtonVisualState(playstate.albumbtn, true, true)
+                songbtn && setButtonVisualState(playstate.currentplayingbutton, true, true);
+                albumbtn && albumbtn.classList.add("Playing");
+                albumbtn && setButtonVisualState(playstate.albumbtn, true, true);
+
+                if (playstate.equaliser) {
+                    playstate.equaliser.style.opacity = 1;
+                }
             }
         }
     }
@@ -113,29 +121,42 @@ export function handleAlbumPageReassign() {
     return [songbtn, equaliser, albumbtn]
 }
 export function handleHomePageReassign() {
-    let categories = document.querySelectorAll(".category")
-    let songscontainer, songbtn, albumbtn;
-    let albumcards = document.querySelectorAll(".album")
+    let categories = document.querySelectorAll(".category");
+    let mostPlayedContainer = document.querySelector(".mostplayed-content");
+    let songbtn, equaliser, albumbtn;
+    let albumcards = document.querySelectorAll(".album");
+
     albumcards.forEach(card => {
         if (card.dataset.albumName === playstate.source) {
-            albumbtn = card.querySelector(".play-pause-song")
+            albumbtn = card.querySelector(".play-pause-song");
         }
-    })
-    categories.forEach(category => {
-        let heading = category.firstElementChild
-        if (playstate.source === heading.textContent) {
-            songscontainer = category
-        }
-    })
-    if (songscontainer) {
-        songscontainer.querySelectorAll(".song").forEach(song => {
-            let songbtn1 = song.querySelector(".play-pause-song")
-            if (playstate.songid === songbtn1.dataset.songid) {
-                songbtn = songbtn1
+    });
+
+    if (playstate.source === "Most Played" && mostPlayedContainer) {
+        mostPlayedContainer.querySelectorAll(".mostplayedsong").forEach(row => {
+            let btn = row.querySelector(".play-pause-song");
+            if (playstate.songid === btn.dataset.songid) {
+                songbtn = btn;
+                equaliser = row.querySelector(".equaliser");
             }
-        })
+        });
     }
-    return [songbtn, albumbtn]
+    else {
+        categories.forEach(category => {
+            let heading = category.firstElementChild;
+            if (playstate.source === heading.textContent.trim()) {
+                category.querySelectorAll(".song").forEach(row => {
+                    let btn = row.querySelector(".play-pause-song");
+                    if (playstate.songid === btn.dataset.songid) {
+                        songbtn = btn;
+                        equaliser = row.querySelector(".equaliser");
+                    }
+                });
+            }
+        });
+    }
+
+    return [songbtn, equaliser, albumbtn];
 }
 export function getCurrentAlbumSongButton(button) {
     if (!button) {
@@ -155,3 +176,4 @@ export function getCurrentHomeSongButton(button) {
     }
     playsong(button)
 }
+console.log(appdata)

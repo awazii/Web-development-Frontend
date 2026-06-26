@@ -2,22 +2,29 @@ import { appdata, playstate, handleAlbumPageReassign, handleHomePageReassign, ge
 import { playsong } from "./home.js";
 export function queuegenerator() {
     let obj = [];
-    for (const keys in appdata) {
-        let value = appdata[keys]
-        if (value.length) {
-            value.forEach(element => {
-                if (element.category === playstate.source) {
-                    obj = element.songids
+    if (playstate.source === "Most Played" && appdata.mostplayed) {
+     
+        let sortedSongs = [...appdata.mostplayed.songs].sort((a, b) => b.playedtime - a.playedtime).slice(0,8);
+        obj = sortedSongs.map(song => song.songid);
+    }
+    else {
+        for (const keys in appdata) {
+            let value = appdata[keys]
+            if (value.length) {
+                value.forEach(element => {
+                    if (element.category === playstate.source) {
+                        obj = element.songids
+                    }
+                });
+            }
+            else {
+                if (value.category === playstate.source) {
+                    obj = value.songids
                 }
-            });
-        }
-        else {
-            if (value.category === playstate.source) {
-                obj = value.songids
             }
         }
     }
-    playstate.queuesongs = [...obj]
+    playstate.queuesongs = [...obj];
 }
 export function playNextInQueue(nextqueuesong) {
     if (nextqueuesong) {
@@ -44,13 +51,13 @@ export function playQueuedSong(songId) {
         : getCurrentHomeSongButton(button);
 }
 export function getQueuedSongsAfterCurrent(onlyNext) {
-    let queuesongs=playstate.shuffle.active?[...playstate.shuffle.songs]:[...playstate.queuesongs]
+    let queuesongs = playstate.shuffle.active ? [...playstate.shuffle.songs] : [...playstate.queuesongs]
     const currentSongIndex = queuesongs.indexOf(playstate.songid);
-    let next=queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
-    let rest= queuesongs.slice(currentSongIndex + 1) 
+    let next = queuesongs.slice(currentSongIndex + 1, currentSongIndex + 2)
+    let rest = queuesongs.slice(currentSongIndex + 1)
     if (playstate.repeat.active) {
-        if (next.length===0) {
-            next=[queuesongs[0]]
+        if (next.length === 0) {
+            next = [queuesongs[0]]
         }
     }
     // console.log(rest,next)
@@ -59,12 +66,12 @@ export function getQueuedSongsAfterCurrent(onlyNext) {
         : rest;
 }
 export function getQueuedSongsBeforeCurrent() {
-     let queuesongs=playstate.shuffle.active?[...playstate.shuffle.songs]:[...playstate.queuesongs]
+    let queuesongs = playstate.shuffle.active ? [...playstate.shuffle.songs] : [...playstate.queuesongs]
     const currentSongIndex = queuesongs.indexOf(playstate.songid);
-    let prev=queuesongs.slice(currentSongIndex - 1, currentSongIndex)
+    let prev = queuesongs.slice(currentSongIndex - 1, currentSongIndex)
     if (playstate.repeat.active) {
-        if (prev.length===0) {
-            prev=queuesongs.slice(-1)
+        if (prev.length === 0) {
+            prev = queuesongs.slice(-1)
         }
     }
     return prev
